@@ -1,0 +1,88 @@
+<div
+    class="w-full h-full flex justify-center items-center bg-gray-200 text-white p-4 lg:rounded-lg md:rounded-md sm:rounded-sm rounded lg:shadow-xl md:shadow-lg shadow-md border border-gray-300">
+    <form class="w-full flex justify-center items-center flex-col" id="uploading_ads_form">
+        <div class="w-full flex md:justify-center justify-start items-center">
+            <h1 class="w-full lg:font-extrabold md:font-bold font-semibold md:text-base text-sm text-blue-800">
+                Upload Ads</h1>
+        </div>
+
+        <div class="w-full flex justify-center items-center mt-2">
+            <p class="w-full text-black font-light md:text-sm text-xs">
+                Please upload ads here(in png/jpg/jpeg):
+            </p>
+        </div>
+        <div class="w-full flex justify-center items-center mt-2">
+            <input type="file" name="filename"
+                class="w-8/12 flex justify-center items-center bg-white text-black md:text-sm text-xs lg:py-1 p-2 pl-2 lg:my-0.5 rounded-sm cursor-pointer question_paper_pdf_file"
+                required />
+
+            <select name="selectedOption" id="resolution"
+                class="w-4/12 flex justify-center items-center bg-white text-black md:text-sm text-xs lg:py-1.5 p-2.5 lg:my-0.5 ml-0.5 rounded-sm cursor-pointer">
+                <option value="1024px">1024px</option>
+                <option value="768px">768px</option>
+                <option value="640px">640px</option>
+                <option value="300px">300px</option>
+            </select>
+        </div>
+        <div class="w-full flex justify-between items-center font-semibold mt-2">
+            <button type="submit"
+                class="lg:w-5/12 md:w-4/12 w-3/12 inline-block md:font-bold font-semibold md:text-sm text-xs bg-blue-800 text-white hover:bg-blue-700 p-1 rounded-sm outline-none cursor-pointer">
+                Upload
+            </button>
+            <p class="lg:w-6/12 md:w-6/12 w-8/12 font-semibold text-center md:text-sm text-xs text-black p-1"><span
+                    id="msgSent"></span></p>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Uploading Ads Form
+    const uploading_ads_form = document.querySelector('#uploading_ads_form');
+
+    uploading_ads_form.addEventListener("submit", submitForm);
+
+    function submitForm(e) {
+        e.preventDefault();
+        const fileInput = document.querySelector('#uploading_ads_form');
+        const resolution = document.querySelector('#resolution');
+        const msgSent = document.querySelector('#msgSent');
+
+        // console.log("fileInput: ", fileInput[0].files[0]);
+        // console.log("resolution: ", resolution);
+        // console.log("msgSent: ", msgSent);
+
+        let formData = new FormData();
+
+        formData.append("filename", fileInput[0].files[0]);
+        formData.append("image_resolution_value", resolution.value);
+
+        function gettingMsgSentFunc(successMsg) {
+            msgSent.textContent = successMsg;
+        }
+
+        if (formData !== undefined || formData !== null || formData !== '') {
+            // console.log("formData: ", formData);
+            async function uploadAdsFunc(formData) {
+                try {
+                    fetch("/api/uploading_ads", {
+                        method: 'POST',
+                        mode: "cors",
+                        body: formData
+                    })
+                        .then((response) => response.json())
+                        .then((obj) => {
+                            if (obj === "File uploaded") {
+                                gettingMsgSentFunc("Image has been sent!")
+                            } else {
+                                gettingMsgSentFunc("Image send failed!")
+                            }
+                        })
+                } catch (error) {
+                    console.log("Error: ", error);
+                }
+            }
+            uploadAdsFunc(formData);
+        }
+        fileInput[0].value = '';
+    }
+</script>

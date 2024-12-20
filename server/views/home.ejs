@@ -1,0 +1,282 @@
+<!-- ============= -->
+<!--   Home Page -->
+<!-- ============= -->
+
+<!-- Header -->
+<%- include ('partials/headerForHomeProfileAndSettings') %>
+
+<!-- Main -->
+<main class="w-full flex justify-center items-center flex-row overflow-hidden border border-none lg:mt-16 mt-8">
+  <div class="w-full flex justify-center items-center flex-col">
+    <div class="w-full flex justify-center items-center flex-col">
+      <% advertisement.map((item, index)=> { %>
+      <% if(item.image_resolution_value==='768px' || item.image_resolution_value==='640px' ||
+            item.image_resolution_value==='300px' ){ %>
+      <!-- image_resolution_value === '768px' -->
+      <% if(item.image_resolution_value==='768px' ){ %>
+      <div class="w-full lg:hidden md:flex hidden h-full justify-center items-center flex-col">
+        <span class="w-full h-full flex justify-center items-center">
+          <img src="<%= item.filename %>" class="min-w-full min-h-full object-fill
+                                 aspect-auto advertisementPhoto" alt="" />
+        </span>
+      </div>
+      <% } %>
+
+      <!-- image_resolution_value === '640px' -->
+      <% if(item.image_resolution_value==='640px' ){ %>
+      <div class="w-full md:hidden sm:flex hidden h-full justify-center items-center flex-col">
+        <span class="w-full h-full flex justify-center items-center">
+          <img src="<%= item.filename %>" class="min-w-full min-h-full object-fill
+                                 aspect-auto advertisementPhoto" alt="" />
+        </span>
+      </div>
+      <% } %>
+
+      <!-- image_resolution_value === '300px' -->
+      <% if(item.image_resolution_value==='300px' ){ %>
+      <div class="w-full sm:hidden flex h-full justify-center items-center flex-col">
+        <span class="w-full h-full flex justify-center items-center">
+          <img src="<%= item.filename %>" class="min-w-full min-h-full object-fill
+                                 aspect-auto advertisementPhoto" alt="" />
+        </span>
+      </div>
+      <% } %>
+      <% } %>
+      <% }) %>
+    </div>
+    <div class="w-full flex justify-center items-start flex-row">
+      <div class="w-full flex justify-center items-start flex-row lg:px-1">
+        <div class="lg:w-4/5 w-full h-full flex justify-center items-center flex-col lg:px-2">
+          <div class="w-full h-full flex justify-center items-center flex-col px-2 bg-white">
+            <div class="w-full flex justify-between items-start sm:flex-row flex-col md:p-4 sm:p-2 pt-0">
+
+              <!-- Welcome Part -->
+              <h1 class="sm:w-1/3 w-full xl:text-2xl lg:text-xl md:text-lg text-base text-blue-800 font-extrabold my-2 underline">
+                Welcome To Home!
+              </h1>
+
+              <!-- Search Part -->
+              <div class="sm:w-2/3 w-full flex justify-center items-center flex-col md:rounded-md sm:rounded rounded-sm sm:p-2 p-1">
+                <form action="/api/search_Colleges_Exams_Courses_by_user" method="POST" class="w-full flex flex-row shadow-md form_search">
+                  <input type="text" name="form_search_home" id="form_search_home" placeholder="Search here..." class="w-9/12 flex justify-center items-center lg:text-lg md:text-base sm:text-sm text-xs md:rounded-l-md sm:rounded-l rounded-l-sm lg:p-2 p-1 outline-none border border-purple-500">
+                  <button type="submit" class="w-3/12 flex justify-center items-center lg:text-lg md:text-base sm:text-sm text-xs bg-blue-800 hover:bg-blue-700 text-white  md:rounded-r-md sm:rounded-r rounded-r-sm lg:p-2 p-1">
+                    Search
+                  </button>
+                </form>
+                <div class="w-full flex justify-start items-center flex-col text-xs">
+                  <p class="w-full flex justify-start items-center flex-row text-xs text-gray-500 mt-1 italic showing_search_direction">
+                    Search Colleges, engg., medical, design, management, college name, state, city
+                  </p>
+                  <div class="w-full flex justify-start items-start text-red-600 no_query_message">
+                    <span class="w-full visible text-xs">
+                      <% if(typeof message !=='undefined' ) { %>
+                      <%= message %>
+                      <% } %>
+                    </span>
+                    <span class="w-auto invisible">hey</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-full flex justify-center items-start flex-col my-1" name="latestnews">
+
+              <!-- Main Part -->
+              <div class="w-full h-auto flex justify-around items-start bg-slate-200 flex-col lg:py-2 py-1 lg:px-4 px-2">
+                <h1 class="xl:text-2xl lg:text-xl md:text-lg lg:font-extrabold md:font-bold font-semibold lg:my-2 my-1">
+                  Latest Articles & Blogs
+                </h1>
+
+                <!-- Getting the url of newsAPI and pass it to javascript in the script tag -->
+                <input class="hidden url_of_newsAPI" value="<%= url %>" />
+
+                <div class="w-full h-auto flex flex-wrap overflow-y-auto newsArticles">
+                  <ul class="w-full h-auto flex justify-center items-center flex-col newsUL">
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lg:w-1/5 lg:flex hidden h-full justify-center items-center flex-col">
+          <div class="w-full flex justify-center items-center lg:text-base bg-white font-bold p-2 px-1 cursor-pointer">
+            <a href="/api/previous_years_question_papers" class="w-full flex justify-center items-center bg-blue-800 hover:bg-blue-700 text-white p-2 px-1">
+              <h1>Previous Years Question Papers</h1>
+            </a>
+          </div>
+          <!-- image_resolution_value === '1024px' -->
+          <% advertisement.map((item, index)=> { %>
+          <% if(item.image_resolution_value==='1024px' ){ %>
+          <div class="w-full lg:flex hidden h-full justify-center items-center flex-col lg:mt-4">
+            <span class="w-full h-full flex justify-center items-center">
+              <img src="<%= item.filename %>" class="min-w-full min-h-full object-fill
+                           aspect-auto advertisementPhoto" alt="" />
+            </span>
+          </div>
+          <% } %>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Script Tag  -->
+<script>
+  function myFunction() {
+    if (document.querySelector('.dropDownDiv').style.display === 'flex') {
+      document.querySelector('.dropDownDiv').style.display = 'none';
+    } else {
+      document.querySelector('.dropDownDiv').style.display = 'flex';
+    }
+  }
+
+  const url = document.querySelector('.url_of_newsAPI').value;
+
+  if (url) {
+    const reports = async () => {
+      try {
+        await fetch(url)
+          .then((res) => {
+            return res.json();
+          })
+          .then((data) => {
+            if (data) {
+              data.results.map((item) => {
+                try {
+                  if (item) {
+
+                    document.querySelector(".newsUL").innerHTML +=
+                      `<li class="w-full flex justify-center items-start flex-col bg-gray-200 sm:mb-3 mb-2 rounded-md p-4 shadow-md newsLI">
+                                              <form class="w-full flex justify-start items-start flex-col form">
+                                                <h1 class="w-full text-gray-700 lg:text-lg md:text-base text-sm md:font-bold font-semibold mb-1 underline" name="articleTitle">${item.title}</h1>
+                                                <p class="w-full lg:text-base md:text-sm text-xs text-justify text-gray-600" name="articleContentAndLink">${item.content.substring(0, 300)}
+                                                <a href=${item.link} rel="noopener noreferrer" class="lg:text-base md:text-sm text-xs text-bold text-purple-600">...Continue Reading</a></p>
+                                                <p class="w-full md:text-sm text-xs text-gray-600 text-right mt-1" name="articlePublishedDate">Published on: ${item.pubDate}</p>
+                                                <button type="submit" class="lg:text-base md:text-sm text-xs text-white p-1 px-2 my-1 rounded-sm cursor-pointer bg-blue-800 hover:bg-green-600 btn" name="getArticleLink" style={backgroundColor: "#2563eb"} value=${item.link}><strong>Save</strong></button>
+                                              </form>
+                                           </li>`;
+
+                    let forms = document.querySelectorAll('.form');
+
+                    for (let i = 0; i < forms.length; i++) {
+                      forms[i].addEventListener('submit', (event) => {
+                        event.preventDefault();
+
+                        let dataBtn = forms[i].children[3];
+                        let dataTitle = forms[i].children[0].textContent;
+                        let dataContent = forms[i].children[1].textContent;
+                        let dataPublishDate = forms[i].children[2].textContent;
+                        let data = forms[i].children[3].value;
+
+
+                        // Save the data
+                        if (dataBtn.innerHTML === '<strong>Save</strong>') {
+                          dataBtn.innerHTML = '<i>Saved &check;</i>';
+                          dataBtn.style.backgroundColor = '#059669';
+
+                          let fetchFunc = async (dataTitle, dataContent, dataPublishDate, data) => {
+                            try {
+                              let fetchItem = await fetch("/api/gettingArticle", {
+                                  method: 'POST',
+                                  mode: 'cors',
+                                  cache: 'no-cache',
+                                  credentials: 'same-origin',
+                                  redirect: 'follow',
+                                  referrerPolicy: 'no-referrer',
+                                  headers: new Headers({
+                                    "Content-Type": "application/json"
+                                  }),
+                                  body: JSON.stringify({
+                                    dataTitle: dataTitle,
+                                    dataContent: dataContent,
+                                    dataPublishDate: dataPublishDate,
+                                    data: data,
+                                    signalData: "save"
+                                  }),
+                                })
+                                .then((response) => response.json())
+                                .then((obj) => obj)
+                                .then(console.log("received!"));
+                            } catch (error) {
+                              console.log("This is the error in home.ejs > fetchFunc > fetchItem", error)
+                            }
+                          }
+                          fetchFunc(dataTitle, dataContent, dataPublishDate, data);
+
+                          // Delete the data 
+                        } else {
+                          dataBtn.innerHTML = '<strong>Save</strong>';
+                          dataBtn.style.backgroundColor = '#1e40af';
+
+                          let fetchFunc = async (dataTitle, dataContent, dataPublishDate, data) => {
+                            try {
+                              let fetchItem = await fetch("/api/gettingArticle", {
+                                  method: 'POST',
+                                  mode: 'cors',
+                                  cache: 'no-cache',
+                                  credentials: 'same-origin',
+                                  redirect: 'follow',
+                                  referrerPolicy: 'no-referrer',
+                                  headers: new Headers({
+                                    "Content-Type": "application/json"
+                                  }),
+                                  body: JSON.stringify({
+                                    dataTitle: dataTitle,
+                                    dataContent: dataContent,
+                                    dataPublishDate: dataPublishDate,
+                                    data: data,
+                                    signalData: "delete"
+                                  }),
+                                })
+                                .then((response) => response.json())
+                                .then((obj) => obj)
+                                .then(console.log("received!"));
+                            } catch (error) {
+                              console.log("This is the error in home.ejs > fetchFunc > fetchItem", error)
+                            }
+                          }
+                          fetchFunc(dataTitle, dataContent, dataPublishDate, data);
+                        }
+                      });
+                    }
+                  }
+                } catch (error) {
+                  console.log("This is the error in home.ejs > then(data) > if > try-catch", error);
+                }
+              });
+            } else {
+              document.querySelector(".newsUL").innerHTML = `<p class=>Data is not available.</p>`
+            }
+          })
+          .catch((err) => {
+            console.log("This is the error in home.ejs > .then .catch", err);
+          });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    reports();
+  }
+
+  if (document.querySelector('.invalid_message') !== null) {
+    setTimeout(() => {
+      document.querySelector('.invalid_message').style.visibility = 'hidden';
+    }, 2000);
+  }
+
+  const no_query_message = document.querySelector('.no_query_message');
+  const item = no_query_message.children[0];
+
+  if (item && item.textContent !== undefined && item.style.visibility === 'visible') {
+    item.style.visibility = 'hidden';
+  } else {
+    item.style.visibility = 'visible';
+    setTimeout(function() {
+      item.style.visibility = 'hidden';
+    }, 2000); // 3000 milliseconds = 1 seconds
+  }
+</script>
+
+<!-- Footer  -->
+<%- include('partials/footer') %>

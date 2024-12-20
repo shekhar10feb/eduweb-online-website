@@ -1,0 +1,247 @@
+<form class="w-full flex justify-center items-center flex-col blogByAuthorFirstDiv">
+    <h1 class="w-full text-black lg:text-base md:text-sm text-xs md:font-semibold font-medium mb-1 underline">
+        Write your new blog here and click on "Your Blogs" button to go to your blogs.</h1>
+
+    <input class="w-full sm:text-sm text-xs rounded-sm" type="text" name="blogTitle" id="blogTitle"
+        placeholder="Write Title Here...">
+
+    <div class="w-full flex justify-evenly lg:items-center items-start lg:flex-row flex-col md:text-sm text-xs my-1">
+        <div class="lg:w-1/2 w-full flex justify-start items-start md:flex-row flex-col lg:my-0 my-2">
+            <div class="w-auto flex lg:justify-center justify-start md:items-start items-center flex-row">
+                <label for="category" class="w-24 font-semibold">Category:</label>
+                <select name="selectedOption" id="category"
+                    class="border border-black-600 bg-white pl-2 rounded-sm p-0.5 cursor-pointer"
+                    onchange="selectingOthersFunction()">
+                    <option value="">Please choose an option</option>
+                    <option value="About MBA">MBA</option>
+                    <option value="About Engineering">Engineering</option>
+                    <option value="About Medical">Medical</option>
+                    <option value="About Design">Design</option>
+                    <option value="About Study Abroad">Study Abroad</option>
+                    <option value="About Eduweb Online">Eduweb Online</option>
+                    <option value="About Others">Others</option>
+                </select>
+            </div>
+            <div class="w-auto hidden justify-start items-center md:mx-2 mx-0 md:my-0 mt-1"
+                id="specifyForOthersOptionDiv">
+                <label for="specifyForOthersOption"
+                    class="w-24 md:hidden flex font-semibold">Name:</label>
+                <input type="text" class="w-40 pl-2 p-0.5" id="specifyForOthersOption" placeholder="Please specify...">
+            </div>
+        </div>
+
+        <div class="lg:w-1/2 w-full flex justify-start items-center">
+            <div class="w-full flex justify-center items-center chosenDiv">
+                <label for="subcategory_related_to_mba_engg_medical_design"
+                    class="w-2/6 font-semibold">Sub-Category:</label>
+                <select name="selectedOption_for_mba_engg_medical_design"
+                    id="subcategory_related_to_mba_engg_medical_design"
+                    class="w-4/6 border border-black-600 bg-white text-sm pl-2 rounded-sm p-0.5 cursor-pointer">
+                    <option value="">Please choose an option</option>
+                    <option value="Overview">Overview</option>
+                    <option value="Courses">Courses</option>
+                    <option value="Career">Career</option>
+                    <option value="Admission">Admission</option>
+                    <option value="Top Ranked Colleges">Top Ranked Colleges</option>
+                    <option value="Exams">Exams</option>
+                    <option value="Colleges By Location">Colleges By Location</option>
+                    <option value="College Reviews">College Reviews</option>
+                </select>
+            </div>
+
+            <div class="w-full hidden justify-center items-center chosenDiv">
+                <label for="subcategory_related_to_study_abroad" class="w-2/6 font-semibold">Sub-Category:</label>
+                <select name="selectedOption_for_study_abroad" id="subcategory_related_to_study_abroad"
+                    class="w-4/6 border border-black-600 bg-white text-sm pl-2 rounded-sm p-0.5 cursor-pointer">
+                    <option value="">Please choose an option</option>
+                    <option value="Overview in Study Abroad">Overview in Study Abroad</option>
+                    <option value="Colleges in Study Abroad">Colleges in Study Abroad</option>
+                    <option value="Countries in Study Abroad">Countries in Study Abroad</option>
+                    <option value="Application Process in Study Abroad">Application Process in Study Abroad</option>
+                    <option value="Scholarships in Study Abroad">Scholarships in Study Abroad</option>
+                </select>
+            </div>
+
+            <div class="w-full hidden justify-center items-center chosenDiv">
+                <label for="subcategory_related_to_eduweb_online" class="w-2/6 font-semibold">Sub-Category:</label>
+                <select name="selectedOption_for_study_abroad" id="subcategory_related_to_eduweb_online"
+                    class="w-4/6 border border-black-600 bg-white text-sm pl-2 rounded-sm p-0.5 cursor-pointer">
+                    <option value="">Please choose an option</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Data Science">Data Science</option>
+                    <option value="Management">Management</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Creativity & Design">Creativity & Design</option>
+                    <option value="Emerging Technologies">Emerging Technologies</option>
+                    <option value="Healthcare">Healthcare</option>
+                    <option value="Energy & Environment">Energy & Environment</option>
+                    <option value="Social Sciences">Social Sciences</option>
+                    <option value="Personal Development">Personal Development</option>
+                    <option value="Degree Programs">Degree Programs</option>
+                </select>
+            </div>
+
+            <div class="w-full hidden justify-center items-center chosenDiv">
+                <label for="subcategory_related_to_others" class="w-2/6 font-semibold">Sub-Category:</label>
+                <select name="selectedOption_for_others" id="subcategory_related_to_others"
+                    class="w-4/6 border border-black-600 bg-white text-sm pl-2 rounded-sm p-0.5 cursor-pointer">
+                    <option value="">Please choose an option</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+    <textarea class="w-full sm:text-sm text-xs rounded-sm" name="blogDescription" id="textarea" cols="20" rows="10"
+        placeholder="Write your blog here..."></textarea>
+    <label for="dateInput" class="w-full md:text-sm text-xs font-semibold my-2" id="dateLabel">Published on:<input
+            type="date" class="w-3/12 ml-3 py-1 px-3 rounded-sm cursor-pointer" name="dateInput" id="dateInput"></label>
+    <div class="w-full flex justify-start items-center my-2 mx-1">
+        <button type="submit"
+            class="lg:text-base md:text-sm text-xs bg-blue-600 text-white p-1 px-2 rounded-sm cursor-pointer hover:bg-green-600 deleteBtn"
+            id="createBlogPostBtn">Post</button>
+        <span class="ml-4 text-white italic" id="postMsgShownToUser"></span>
+    </div>
+</form>
+
+<script>
+    let blogByAuthorFirstDiv = document.querySelector('.blogByAuthorFirstDiv');
+    let postMsgShownToUser = document.querySelector("#postMsgShownToUser");
+
+
+    blogByAuthorFirstDiv.children[1].value = '';
+    blogByAuthorFirstDiv.children[2].children[0].children[0].children[1].value = '';
+    blogByAuthorFirstDiv.children[2].children[0].children[1].children[1].value = '';
+    blogByAuthorFirstDiv.children[2].children[1].children[0].value = '';
+    blogByAuthorFirstDiv.children[2].children[1].children[1].value = '';
+    blogByAuthorFirstDiv.children[2].children[1].children[2].value = '';
+    blogByAuthorFirstDiv.children[2].children[1].children[3].value = '';
+    blogByAuthorFirstDiv.children[3].value = '';
+    blogByAuthorFirstDiv.children[4].children[0].value = '';
+
+    function selectingOthersFunction() {
+        let subcategory_related_to_mba_engg_medical_design = blogByAuthorFirstDiv.children[2].children[1].children[0];
+        let subcategory_related_to_study_abroad = blogByAuthorFirstDiv.children[2].children[1].children[1];
+        let subcategory_related_to_eduweb_online = blogByAuthorFirstDiv.children[2].children[1].children[2];
+        let subcategory_related_to_others = blogByAuthorFirstDiv.children[2].children[1].children[3];
+        let categoryValue = document.querySelector("#category").value;
+
+        if (categoryValue == 'About MBA' ||
+            categoryValue == 'About Engineering' ||
+            categoryValue == 'About Medical' ||
+            categoryValue == 'About Design' || categoryValue == '') {
+            subcategory_related_to_mba_engg_medical_design.style.display = 'flex';
+            subcategory_related_to_study_abroad.style.display = 'none';
+            subcategory_related_to_eduweb_online.style.display = 'none';
+            subcategory_related_to_others.style.display = 'none';
+            specifyForOthersOptionDiv.style.display = 'none';
+        } else if (categoryValue == 'About Study Abroad') {
+            subcategory_related_to_mba_engg_medical_design.style.display = 'none';
+            subcategory_related_to_study_abroad.style.display = 'flex';
+            subcategory_related_to_eduweb_online.style.display = 'none';
+            subcategory_related_to_others.style.display = 'none';
+            specifyForOthersOptionDiv.style.display = 'none';
+        } else if (categoryValue == 'About Eduweb Online') {
+            subcategory_related_to_mba_engg_medical_design.style.display = 'none';
+            subcategory_related_to_study_abroad.style.display = 'none';
+            subcategory_related_to_eduweb_online.style.display = 'flex';
+            subcategory_related_to_others.style.display = 'none';
+            specifyForOthersOptionDiv.style.display = 'none';
+        } else if (categoryValue == 'About Others') {
+            subcategory_related_to_mba_engg_medical_design.style.display = 'none';
+            subcategory_related_to_study_abroad.style.display = 'none';
+            subcategory_related_to_eduweb_online.style.display = 'none';
+            subcategory_related_to_others.style.display = 'flex';
+            specifyForOthersOptionDiv.style.display = 'flex';
+        }
+
+    }
+
+    blogByAuthorFirstDiv.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const blogTitle = blogByAuthorFirstDiv.children[1].value;
+        const blogCategory = blogByAuthorFirstDiv.children[2].children[0].children[0].children[1].value;
+        const value_of_others_option = blogByAuthorFirstDiv.children[2].children[0].children[1].children[1].value;
+        const blogSubCategory = document.querySelectorAll('.chosenDiv');
+        const blogDescription = blogByAuthorFirstDiv.children[3].value;
+        const dateInput = blogByAuthorFirstDiv.children[4].children[0].value;
+
+        let blogSubCategoryArr = [...blogSubCategory];
+        let newBlogSubCategoryArr = [];
+        blogSubCategoryArr.map(item => {
+
+            const style = window.getComputedStyle(item);
+
+            if (style.display === 'flex') {
+                newBlogSubCategoryArr.push(item);
+            }
+        });
+
+        const blogSubCategoryValue = newBlogSubCategoryArr[0].children[1].value;
+
+        if (
+            blogTitle !== "" && blogTitle !== null && blogTitle !== undefined &&
+            blogCategory !== "" && blogCategory !== null && blogCategory !== undefined &&
+            blogSubCategoryValue !== "" && blogSubCategoryValue !== null && blogSubCategoryValue !== undefined &&
+            blogDescription !== "" && blogDescription !== null && blogDescription !== undefined &&
+            dateInput !== "" && dateInput !== null && dateInput !== undefined
+        ) {
+            let authorBlogCategory = null;
+
+            if (blogCategory !== 'About Others') {
+                authorBlogCategory = blogCategory;
+            } else {
+                if (value_of_others_option !== "" && value_of_others_option !== null && value_of_others_option !== undefined)
+                    authorBlogCategory = "Others " + value_of_others_option;
+            }
+
+            const postSendToUserMsg = (msg) => {
+                postMsgShownToUser.innerHTML = msg;
+                postMsgShownToUser.classList.add('fadeIn');
+
+                setTimeout(() => {
+                    postMsgShownToUser.classList.remove('fadeIn');
+                }, 3000);
+            }
+
+            let fetchFunc = async (blogTitle, authorBlogCategory, blogSubCategoryValue, blogDescription, dateInput) => {
+                try {
+                    let fetchItem = await fetch("/api/postBlogByAuthor", {
+                        method: 'POST',
+                        mode: 'cors',
+                        cache: 'no-cache',
+                        credentials: 'same-origin',
+                        redirect: 'follow',
+                        referrerPolicy: 'no-referrer',
+                        headers: new Headers({ "Content-Type": "application/json" }),
+                        body: JSON.stringify({ blogTitle: blogTitle, authorBlogCategory: authorBlogCategory, blogSubCategoryValue: blogSubCategoryValue, blogDescription: blogDescription, dateInput: dateInput }),
+                    })
+                        .then((response) => response.json())
+                        .then((obj) => {
+                            if (obj.message === "File has been uploaded!") {
+                                postSendToUserMsg("Post has been sent!")
+                            } else {
+                                postSendToUserMsg("Post send failed!")
+                            }
+                        })
+                        .then(postSendToUserMsg("Your post has been sent!"));
+                } catch (error) {
+                    console.log("This is the error in profileForAuthor.ejs > fetchFunc > fetchItem", error)
+                }
+            }
+            fetchFunc(blogTitle, authorBlogCategory, blogSubCategoryValue, blogDescription, dateInput);
+        }
+
+        blogByAuthorFirstDiv.children[1].value = '';
+        blogByAuthorFirstDiv.children[2].children[0].children[0].children[1].value = '';
+        blogByAuthorFirstDiv.children[2].children[0].children[1].children[1].value = '';
+        blogByAuthorFirstDiv.children[2].children[1].children[0].value = '';
+        blogByAuthorFirstDiv.children[2].children[1].children[1].value = '';
+        blogByAuthorFirstDiv.children[2].children[1].children[2].value = '';
+        blogByAuthorFirstDiv.children[2].children[1].children[3].value = '';
+        blogByAuthorFirstDiv.children[3].value = '';
+        blogByAuthorFirstDiv.children[4].children[0].value = '';
+    });
+</script>

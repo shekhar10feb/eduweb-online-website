@@ -1,0 +1,74 @@
+<h2 class="sm:w-4/12 lg:flex hidden w-full text-left">Entrance-Exams:
+</h2>
+<h2 class="sm:w-4/12 w-full lg:hidden flex text-left">
+    Exams:
+</h2>
+<form class="sm:w-8/12 w-full flex justify-between items-center flex-row sm:text-sm text-xs sm:font-medium font-light exam">
+    <input type="text" name="exam" value="<%= user.entrance_exam %>" 
+    class="w-10/12 border border-gray-500 rounded-sm pl-1 mr-1" placeholder="Write Entrance Exam Names...">
+    <button type="submit"
+        class="w-2/12 bg-blue-800 text-white hover:bg-green-600 border border-blue-800 rounded-sm exam_btn">OK</button>
+</form>
+
+<script>
+    const exam = document.querySelector('.exam');
+
+    exam.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // console.log("It is working here!");
+
+        const formData = new FormData();
+        formData.append("entrance_exam", exam.children[0].value);
+
+        const updatedFunc = (message) => {
+            if (message === 'Entrance Exam Info updated!') {
+                document.querySelector('.exam_btn').innerHTML = '&#10004;';
+                document.querySelector('.exam_btn').style.backgroundColor = '#059669';
+                // Refresh the page after a delay of 1 seconds
+                setTimeout(function () {
+                    document.querySelector('.exam_btn').innerHTML = 'OK';
+                }, 1000); // 3000 milliseconds = 1 seconds
+
+            } else {
+                document.querySelector('.exam_btn').innerHTML = '&#10006;';
+                document.querySelector('.exam_btn').style.backgroundColor = 'red';
+
+                // Refresh the page after a delay of 1 seconds
+                setTimeout(function () {
+                    document.querySelector('.exam_btn').innerHTML = 'OK';
+                }, 1000); // 3000 milliseconds = 1 seconds
+
+            }
+        }
+
+        if (formData !== null && formData !== undefined && formData !== '') {
+            // console.log(formData);
+            let fetchFunc = async (formData) => {
+                try {
+                    const options = {
+                        method: 'POST',
+                        mode: "no-cors",
+                        body: formData,
+                    };
+                    let fetchItem = await fetch("/api/post_entrance_exam_college_info", options)
+                        .then((response) => response.json())
+                        .then(obj => {
+                            if (obj.message === "Entrance Exam Info updated!") {
+                                updatedFunc('Entrance Exam Info updated!');
+                            } else {
+                                updatedFunc('Entrance Exam updation failed!');
+                            }
+                        })
+                        .then(console.log("received!"));
+                } catch (error) {
+                    console.log("This is the error in profileForCollege.ejs >  exam_profileForCollege.ejs", error)
+                }
+            }
+            fetchFunc(formData);
+        }
+        // Refresh the page after a delay of 1 seconds
+        setTimeout(function () {
+            location.reload();
+        }, 1000); // 3000 milliseconds = 1 seconds
+    });
+</script>

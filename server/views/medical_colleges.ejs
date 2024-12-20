@@ -1,0 +1,185 @@
+<% all_colleges.map((item, index)=> { %>
+<% if( (item.name !=="" && item.name !==undefined && item.name !==null) ||
+                          (item.profile_image !=="" && item.profile_image !==undefined && item.profile_image
+                          !==null) || (item.college_website !=="" && item.college_website !==undefined &&
+                          item.college_website !==null) || (item.district_name !=="" && item.district_name
+                          !==undefined && item.district_name !==null) || (item.courses_offered !=="" &&
+                          item.courses_offered !==undefined && item.courses_offered !==null)) { %>
+<% if(item.medical_rank) { %>
+<!-- Open  -->
+<a href="https://eduweb-online-website.onrender.com/api/search_All_Colleges/<%= item.name %>" class="w-full flex justify-start items-start flex-row bg-white md:mb-2 mb-1 md:p-2 p-2 hover:bg-gray-100 cursor-pointer border border-gray-400 rounded-lg shadow-lg selected_college_by_user" id="<%= item.id %>">
+  <div class="w-full flex justify-start items-start flex-col md:ml-2 ml-1">
+
+    <!-- name -->
+    <div class="w-full flex justify-start items-center md:text-lg text-[0.8rem] text-blue-800 md:font-bold font-semibold">
+      <h1 class="w-auto">
+
+        <%- item.name ? '<span class="college_name">' + item.name + '</span>' : '' %>
+
+        <%- item.college_short_name ? '<span>(' + item.college_short_name + ')</span>' : '' %>
+      </h1>
+    </div>
+    <!-- name ends here -->
+
+    <!-- ownership -->
+    <div class="w-full flex justify-start items-start flex-col md:mt-2 mt-1">
+      <%- item.ownership ? `<div class="w-full flex justify-start items-start flex-row">
+                                          <h2 class="w-auto md:text-sm text-xs md:font-semibold font-medium">
+                                              Ownership:
+                                              <span class="text-blue-800">` + item.ownership + `</span>
+                                          </h2>
+                                  </div>` : '' %>
+    </div>
+    <!-- ownership ends here -->
+
+    <!-- Rank  -->
+    <% if(item.engineering_rank || item.medical_rank || item.law_rank ||
+                                  item.management_rank || item.fashion_design_rank || item.pharmacy_rank) { %>
+    <div class="w-full md:flex hidden justify-start items-center flex-col md:text-sm text-xs md:font-semibold font-medium md:mt-2 mt-1">
+      <h2 class="w-full">Rank by NIRF</h2>
+
+      <div class="w-full flex justify-start items-center flex-wrap text-red-700 md:text-sm text-xs font-medium">
+        <!-- Engineering Rank  -->
+        <%- item.engineering_rank ? `<div class="w-24 flex justify-center items-center flex-col p-1 md:m-2 md:ml-0 m-1 ml-0 border border-red-700 sm:rounded-sm rounded">
+                                              <h2>Engineering </h2>
+                                              <p>#` + item.engineering_rank + `</p>
+                                      </div>` : '' %>
+        <!-- Engineering Rank ends here -->
+
+        <!-- Medical Rank  -->
+        <%- item.medical_rank ? `<div class="w-24 flex justify-center items-center flex-col p-1 md:m-2 md:ml-0 m-1 ml-0 border border-red-700 sm:rounded-sm rounded">
+                                          <h2>Medical </h2>
+                                          <p>#` + item.medical_rank + `</p>
+                                  </div>` : '' %>
+        <!-- Medical Rank ends here -->
+
+        <!-- Law Rank  -->
+        <%- item.law_rank ? `<div class="w-24 flex justify-center items-center flex-col p-1 md:m-2 md:ml-0 m-1 ml-0 border border-red-700 sm:rounded-sm rounded">
+                                      <h2>Law </h2>
+                                      <p>#` + item.law_rank + `</p> </div>` : '' %>
+        <!-- Law Rank ends here -->
+
+        <!-- Management Rank  -->
+        <%- item.management_rank ? `<div
+                  class="w-24 flex justify-center items-center flex-col p-1 md:m-2 md:ml-0 m-1 ml-0 border border-red-700 sm:rounded-sm rounded">
+                  <h2>Management </h2>
+                  <p>#` + item.management_rank + `</p> </div>` : '' %>
+        <!-- Management Rank ends here -->
+
+        <!-- Fashion Design Rank  -->
+        <%- item.fashion_design_rank ? `<div
+              class="w-24 flex justify-center items-center flex-col p-1 md:m-2 md:ml-0 m-1 ml-0 border border-red-700 sm:rounded-sm rounded">
+              <h2>Fashion Design </h2>
+              <p>#` + item.fashion_design_rank + `</p> </div>` : '' %>
+        <!-- Fashion Design Rank ends here -->
+
+        <!-- Pharmacy Rank  -->
+        <%- item.pharmacy_rank ? `<div
+          class="w-24 flex justify-center items-center flex-col p-1 md:m-2 md:ml-0 m-1 ml-0 border border-red-700 sm:rounded-sm rounded">
+          <h2>Pharmacy </h2>
+          <p>#` + item.pharmacy_rank + `</p> </div>` : '' %>
+        <!-- Pharmacy Rank ends here -->
+      </div>
+    </div>
+    <% } %>
+
+    <!-- Fees  -->
+    <% if(item.engineering_fees || item.medical_fees || item.law_fees || item.management_fees ||
+          item.fashion_design_fees || item.pharmacy_fees) { %>
+    <div class="w-full flex justify-start items-center flex-col md:text-sm text-xs md:font-semibold font-medium md:mt-2 mt-1">
+      <h2 class="w-full">Fees</h2>
+
+      <div class="w-full flex justify-start items-center flex-wrap">
+        <!-- Engineering Fees  -->
+        <%- item.engineering_fees ? `<div
+                      class="w-auto flex justify-center items-center flex-row ml-0 mr-3">
+                      <h2 class="text-black">
+                          B.E./B.Tech:
+                      </h2>
+                      <p class="text-blue-800 pl-1">` + item.engineering_fees + `</p> </div>` : '' %>
+        <!-- Engineering Fees ends here -->
+
+        <!-- Medical Fees  -->
+        <%- item.medical_fees ? ` <div class="w-auto flex justify-center items-center flex-row ml-0 mr-3">
+                  <h2 class="text-black">
+                      Medical:
+                  </h2>
+                  <p class="text-blue-800 pl-1">` + item.medical_fees + `</p> </div>` : '' %>
+        <!-- Medical Fees ends here -->
+
+        <!-- Law Fees  -->
+        <%- item.law_fees ? `<div class="w-auto flex justify-center items-center flex-row ml-0 mr-3">
+              <h2 class="text-black">
+                  Law:
+              </h2>
+              <p class="text-blue-800 pl-1">` + item.law_fees + `</p> </div>` : '' %>
+        <!-- Law Fees ends here -->
+
+        <!-- Management Fees  -->
+        <%- item.management_fees ? `<div class="w-auto flex justify-center items-center flex-row ml-0 mr-3">
+                  <h2 class="text-black">
+                      Management:
+                  </h2>
+                  <p class="text-blue-800 pl-1">` + item.management_fees + `</p> </div>` : '' %>
+        <!-- Management Fees ends here -->
+
+        <!-- Fashion Design Fees  -->
+        <%- item.fashion_design_fees ? `<div
+                      class="w-auto flex justify-center items-center flex-row ml-0 mr-3">
+                      <h2 class="text-black">
+                          Fashion Design:
+                      </h2>
+                      <p class="text-blue-800 pl-1">` + item.fashion_design_fees + `</p> </div>` : '' %>
+        <!-- Fashion Design Fees ends here -->
+
+        <!-- Pharmacy Fees  -->
+        <%- item.pharmacy_fees ? `<div
+                          class="w-auto flex justify-center items-center flex-row ml-0 mr-3">
+                          <h2 class="text-black">
+                              Pharmacy:
+                          </h2>
+                          <p class="text-blue-800 pl-1">` + item.pharmacy_fees + `</p> </div>` : '' %>
+        <!-- Pharmacy Fees ends here -->
+      </div>
+    </div>
+    <% } %>
+
+    <!-- Other Info -->
+    <% if(item.college_website || item.city || item.state_or_ut_name) { %>
+    <div class="w-full flex justify-start items-center flex-row md:mt-2 mt-1 md:text-sm text-xs md:font-semibold font-medium">
+      <!-- College Website  -->
+      <%- item.college_website ? `<h1 class="sm:w-1/2 w-full my-1">
+                                          Website:
+                                          <span class="text-blue-800">` + item.college_website + ` </span>
+                                          </h1>` : '' %>
+      <!-- College Website ends here -->
+
+      <!-- City  -->
+      <%- item.city ? `<h1 class="sm:w-1/2 w-full my-1">
+                                              City:
+                                              <span class="text-blue-800">` + item.city + ` </span>
+                                              </h1>` : '' %>
+      <!-- City ends here -->
+
+      <!-- District  -->
+      <%- item.district_name ? `<h1 class="sm:w-1/2 w-full my-1">
+                                                  District:
+                                                  <span class="text-blue-800">` + item.district_name + ` </span>
+                                                  </h1>` : '' %>
+      <!-- District ends here -->
+
+      <!-- State or UT  -->
+      <%- item.state_or_ut_name ? `<h1 class="sm:w-1/2 w-full my-1">
+                                                      State/UT:
+                                                      <span class="text-blue-800">` + item.state_or_ut_name + `
+                                                      </span>
+                                                      </h1>` : '' %>
+      <!-- State or UT ends here -->
+    </div>
+    <% } %>
+  </div>
+</a>
+<!-- Ends -->
+<% } %>
+<% } %>
+<% }) %>

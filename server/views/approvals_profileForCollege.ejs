@@ -1,0 +1,79 @@
+<h2 class="sm:w-4/12 sm:flex hidden w-full text-left">
+    Approvals:
+</h2>
+<h2 class="sm:w-4/12 w-full sm:hidden flex text-left">
+    Approvals
+</h2>
+<form class="sm:w-8/12 w-full flex justify-start items-center flex-row sm:text-sm text-xs sm:font-medium font-light approvals">
+    <input type="text" name="approvals" value="<%= user.approvals %>"
+    class="w-10/12 border border-gray-500 rounded-sm pl-1 mr-1" placeholder="Write Approvals...">
+    <button type="submit"
+        class="w-2/12 bg-blue-800 text-white hover:bg-green-600 border border-blue-800 rounded-sm approvals_btn">OK</button>
+</form>
+
+<script>
+    const approvals = document.querySelector('.approvals');
+
+    approvals.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // console.log("It is working here!");
+
+        const formData = new FormData();
+        formData.append("approvals", approvals.children[0].value);
+
+        const updatedFunc = (message) => {
+            if (message === 'Approvals Info updated!') {
+                document.querySelector('.approvals_btn').innerHTML = '&#10004;';
+                document.querySelector('.approvals_btn').style.backgroundColor = '#059669';
+
+                // Refresh the page after a delay of 1 seconds
+                setTimeout(function () {
+                    document.querySelector('.approvals_btn').innerHTML = 'OK';
+                }, 1000); // 3000 milliseconds = 1 seconds
+
+            } else {
+                document.querySelector('.approvals_btn').innerHTML = '&#10006;';
+                document.querySelector('.approvals_btn').style.backgroundColor = 'red';
+
+                // Refresh the page after a delay of 1 seconds
+                setTimeout(function () {
+                    document.querySelector('.approvals_btn').innerHTML = 'OK';
+                }, 1000); // 3000 milliseconds = 1 seconds
+
+            }
+        }
+
+        if (formData !== null && formData !== undefined && formData !== '') {
+            // console.log(formData);
+            let fetchFunc = async (formData) => {
+                try {
+                    const options = {
+                        method: 'POST',
+                        mode: "no-cors",
+                        body: formData,
+                    };
+                    let fetchItem = await fetch("/api/post_approvals_college_info", options)
+                        .then((response) => response.json())
+                        .then(obj => {
+                            if (obj.message === "Approvals Info updated!") {
+                                updatedFunc('Approvals Info updated!');
+                            } else {
+                                updatedFunc('Approvals Info updation failed!');
+                            }
+                        })
+                        .then(console.log("received!"));
+                } catch (error) {
+                    console.log("This is the error in profileForCollege.ejs > approvals_profileForCollege.ejs", error)
+                }
+            }
+            fetchFunc(formData);
+        }
+
+        // Refresh the page after a delay of 1 seconds
+        setTimeout(function () {
+            location.reload();
+        }, 1000); // 3000 milliseconds = 1 seconds
+
+        // window.location.reload();
+    });
+</script>

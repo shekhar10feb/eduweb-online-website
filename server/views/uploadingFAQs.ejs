@@ -1,0 +1,111 @@
+<div class="w-full flex justify-center items-center" style="height: 15rem;">
+    <!-- Upload FAQs -->
+    <div
+        class="w-full flex justify-center items-center bg-gray-200 text-white p-4 lg:rounded-lg md:rounded-md sm:rounded-sm rounded lg:shadow-xl md:shadow-lg shadow-md border border-gray-300">
+        <form class="w-full flex justify-center items-center flex-col formFAQs">
+            <div class="w-full flex md:justify-center justify-start items-center">
+                <h1 class="w-full lg:font-extrabold md:font-bold font-semibold md:text-base text-sm text-blue-800">
+                    Upload Frequently Asked Questions (FAQs)</h1>
+            </div>
+            <div class="w-full flex justify-center items-center mt-2">
+                <input type="text" name="question"
+                    class="w-full flex justify-center items-center bg-white text-black md:text-sm text-xs lg:py-1 p-2 pl-2 lg:my-0.5 rounded-sm question_paper_pdf_file"
+                    placeholder="Enter Question..." required />
+            </div>
+            <div class="w-full flex justify-between items-center flex-row mt-2">
+                <input type="text" name="answer"
+                    class="w-full flex justify-center items-center bg-white text-black md:text-sm text-xs lg:py-1 p-2 pl-2 lg:my-0.5 rounded-sm question_paper_pdf_file"
+                    placeholder="Enter Answer..." required />
+            </div>
+            <div class="w-full flex justify-between items-center font-semibold mt-2">
+                <button type="submit"
+                    class="lg:w-5/12 md:w-4/12 w-3/12 inline-block md:font-bold font-semibold md:text-sm text-xs bg-blue-800 text-white hover:bg-blue-700 p-1 rounded-sm outline-none cursor-pointer">
+                    Upload
+                </button>
+                <p class="lg:w-6/12 md:w-6/12 w-8/12 font-semibold text-center md:text-sm text-xs text-black p-1"><span
+                        id="msgSent"></span></p>
+            </div>
+        </form>
+    </div>
+
+</div>
+<script>
+    // Uploading FAQs Form
+    const formFAQs = document.querySelector('.formFAQs');
+    // console.log('formFAQs: ', formFAQs);
+
+    function myFunc(e) {
+        e.preventDefault();
+
+        const question = formFAQs[0].value;
+        const answer = formFAQs[1].value;
+
+        const formData = new FormData();
+        formData.append("question", question.trim());
+        formData.append("answer", answer.trim());
+
+        // console.log(formData);
+
+        const messageFunc = (message) => {
+            document.querySelector('#msgSent').style.display = 'flex';
+
+            if (message === 'FAQ is successfully uploaded!') {
+                document.querySelector('#msgSent').innerHTML = message;
+                setTimeout(function () {
+                    document.querySelector('#msgSent').style.display = 'none';
+                }, 3000);
+            } else if (message === 'FAQ uploading has failed!') {
+                document.querySelector('#msgSent').innerHTML = message;
+                setTimeout(function () {
+                    document.querySelector('#msgSent').style.display = 'none';
+                }, 3000);
+            } else {
+                document.querySelector('#msgSent').innerHTML = message;
+                setTimeout(function () {
+                    document.querySelector('#msgSent').style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        if (formData !== undefined || formData !== null || formData !== '') {
+
+            async function uploadingFAQs_Func(formData) {
+                try {
+                    const options = {
+                        method: 'POST',
+                        mode: "no-cors",
+                        body: formData,
+                    };
+                    await fetch("/api/uploadingFAQs", options)
+                        .then((response) => response.json())
+                        .then(obj => {
+                            if (obj.message === "FAQ is uploaded successfully!") {
+                                messageFunc('FAQ is successfully uploaded!');
+                            } else if (obj.message === "FAQ uploading has failed!") {
+                                messageFunc('FAQ uploading has failed!');
+                            } else {
+                                messageFunc('FAQ uploading has failed!');
+                            }
+                        }
+                        )
+                } catch (error) {
+                    console.log("This is the error in uploadingFAQs.ejs > uploadingFAQs_Func", error)
+                }
+            }
+            uploadingFAQs_Func(formData);
+        }
+
+        formFAQs[0].value = '';
+        formFAQs[1].value = '';
+
+        removeHandler();
+    }
+
+    formFAQs.addEventListener('submit', (e) => {
+        myFunc(e);
+    });
+
+    function removeHandler() {
+        formFAQs.removeEventListener("submit", myFunc);
+    }
+</script>

@@ -1,0 +1,141 @@
+<form class="w-full h-full flex justify-center items-start flex-col bg-white text-black"
+    id="display_question_papers_and_college_list_form">
+    <h1 class="text-gray-700 lg:text-lg md:text-base text-sm font-bold lg:mt-0 md:my-2 my-1 text_size_of_title">
+        List of Question Papers</h1>
+    <table class="w-full border border-gray-700">
+        <tr>
+            <th class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                File</th>
+            <th class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                Board</th>
+            <th class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                Action</th>
+        </tr>
+
+        <% if(Question_Papers.length> 0){ %>
+            <% Question_Papers.map((item, index)=> { %>
+                <tr class="question_paper_info">
+                    <td
+                        class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                        <%= item.name %>
+                    </td>
+                    <td
+                        class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                        <%= item.board_name %>
+                    </td>
+
+                    <td
+                        class="text-center lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                        <div>
+                            <button
+                                class="text-purple-700 underline cursor-pointer question_paper_delete_btn">Delete</button>
+                        </div>
+                        <div class="w-full h-screen hidden justify-center items-center flex-col bg-black-200 fixed lg:top-10 top-8 left-0 bg-transparent question_paper_delete_asker"
+                            style="background-color: #00000085;">
+                            <div
+                                class="flex justify-center items-center flex-col bg-purple-500 p-6 border border-white">
+                                <div class="text-white mb-2">
+                                    <h2>Do you surely want to delete the User Information?</h2>
+                                </div>
+                                <div>
+                                    <button type="submit"
+                                        class="bg-white mx-2 p-1 px-3 rounded-sm question_paper_answer_is_yes_for_user_btn">Yes</button>
+                                    <button type="submit"
+                                        class="bg-white mx-2 p-1 px-3 rounded-sm question_paper_answer_is_no_for_user_btn">No</button>
+                                </div>
+                                <p class="hidden question_paper_Id">
+                                    <%= item._id %>
+                                </p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <% }) %>
+                    <% } else{ %>
+                        <p class=" text-gray-600 md:text-sm text-xs">No Question Paper List available!</p>
+                        <% } %>
+    </table>
+</form>
+
+<!-- Script Tag -->
+<script>
+    // <---------- Deleting a Question Paper process start ----------> 
+    const question_paper_delete_btns = document.querySelectorAll('.question_paper_delete_btn');
+
+    for (let i = 0; i < question_paper_delete_btns.length; i++) {
+        const question_paper_delete_askers = document.querySelectorAll('.question_paper_delete_asker');
+        question_paper_delete_btns[i].addEventListener("click", (e) => {
+            e.preventDefault();
+
+            if (question_paper_delete_askers[i].style.display === 'flex') {
+                question_paper_delete_askers[i].style.display = 'none';
+            } else {
+                question_paper_delete_askers[i].style.display = 'flex';
+            }
+        });
+    }
+
+    const question_paper_answer_is_no_for_user_btns = document.querySelectorAll('.question_paper_answer_is_no_for_user_btn');
+
+    for (let i = 0; i < question_paper_answer_is_no_for_user_btns.length; i++) {
+
+        const question_paper_delete_askers = document.querySelectorAll('.question_paper_delete_asker');
+        question_paper_answer_is_no_for_user_btns[i].addEventListener("click", (e) => {
+            e.preventDefault();
+
+            if (question_paper_delete_askers[i].style.display === 'none') {
+                question_paper_delete_askers[i].style.display = 'flex';
+            } else {
+                question_paper_delete_askers[i].style.display = 'none';
+            }
+        });
+    }
+
+    const question_paper_answer_is_yes_for_user_btns = document.querySelectorAll('.question_paper_answer_is_yes_for_user_btn');
+
+    for (let i = 0; i < question_paper_answer_is_yes_for_user_btns.length; i++) {
+
+        const question_paper_delete_askers = document.querySelectorAll('.question_paper_delete_asker');
+        const question_paper_infos = document.querySelectorAll('.question_paper_info');
+        const question_paper_Ids = document.querySelectorAll('.question_paper_Id');
+
+        question_paper_answer_is_yes_for_user_btns[i].addEventListener("click", (e) => {
+            e.preventDefault();
+
+            const question_paper_Id = question_paper_Ids[i].textContent;
+
+            if (question_paper_delete_askers[i].style.display === 'none') {
+                question_paper_delete_askers[i].style.display = 'flex';
+            } else {
+                question_paper_delete_askers[i].style.display = 'none';
+            }
+
+            const formData = new FormData();
+            formData.append("question_paper_Id", question_paper_Id.trim());
+            // console.log(formData);
+
+            if (formData !== undefined && formData !== null && formData !== '') {
+                // console.log(formData);
+                async function delete_Question_paper_by_Admin_Func(formData) {
+                    try {
+                        const options = {
+                            method: 'POST',
+                            mode: "no-cors",
+                            body: formData,
+                        };
+                        await fetch("/api/delete_Question_paper_by_Admin", options)
+                            .then((response) => response.json())
+                            .then((obj) => obj)
+                    } catch (error) {
+                        console.log("This is the error in displayQuestionPaper.ejs > question_paper_answer_is_yes_for_user_btn[i] > delete_Question_paper_by_Admin_Func", error)
+                    }
+                }
+                delete_Question_paper_by_Admin_Func(formData);
+            }
+            question_paper_infos[i].remove();
+        });
+
+    }
+    // <---------- Deleting a Question Paper process end ---------->
+
+</script>

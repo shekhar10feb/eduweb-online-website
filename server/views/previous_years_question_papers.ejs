@@ -1,0 +1,191 @@
+<!-- ============= -->
+<!--   Home Page -->
+<!-- ============= -->
+
+<!-- Header -->
+<%- include ('partials/headerForHomeProfileAndSettings') %>
+
+<!-- Main -->
+<main class="w-full flex justify-center items-center flex-row overflow-hidden border border-none lg:mt-14 mt-8">
+  <div class="w-full flex justify-center items-center flex-col">
+    <div class="w-full flex justify-center items-center flex-col">
+      <% advertisement.map((item, index)=> { %> <%
+      if(item.image_resolution_value==='768px' ||
+      item.image_resolution_value==='640px' ||
+      item.image_resolution_value==='300px' ){ %>
+      <!-- image_resolution_value === '768px' -->
+      <% if(item.image_resolution_value==='768px' ){ %>
+      <div class="w-full lg:hidden md:flex hidden h-full justify-center items-center flex-col">
+        <span class="w-full h-full flex justify-center items-center">
+          <img src="<%= item.filename %>" class="min-w-full min-h-full object-fill aspect-auto advertisementPhoto" alt="" />
+        </span>
+      </div>
+      <% } %>
+
+      <!-- image_resolution_value === '640px' -->
+      <% if(item.image_resolution_value==='640px' ){ %>
+      <div class="w-full md:hidden sm:flex hidden h-full justify-center items-center flex-col">
+        <span class="w-full h-full flex justify-center items-center">
+          <img src="<%= item.filename %>" class="min-w-full min-h-full object-fill aspect-auto advertisementPhoto" alt="" />
+        </span>
+      </div>
+      <% } %>
+
+      <!-- image_resolution_value === '300px' -->
+      <% if(item.image_resolution_value==='300px' ){ %>
+      <div class="w-full sm:hidden flex h-full justify-center items-center flex-col">
+        <span class="w-full h-full flex justify-center items-center">
+          <img src="<%= item.filename %>" class="min-w-full min-h-full object-fill aspect-auto advertisementPhoto" alt="" />
+        </span>
+      </div>
+      <% } %> <% } %> <% }) %>
+    </div>
+    <div class="w-full flex justify-center items-start flex-row">
+      <div class="w-full flex justify-center items-start flex-col lg:px-1">
+        <div class="w-full flex md:justify-between justify-center md:items-start items-center md:flex-row flex-col bg-white p-1 border border-gray-300">
+          <div class="w-1/2 md:flex hidden justify-start items-center text-xl font-bold ml-4 my-auto">
+            <h1 class="w-auto lg:text-lg md:text-base underline text-wrap">
+              Search your University/Board in your State/UT
+            </h1>
+          </div>
+          <div class="w-auto md:hidden flex justify-start items-center text-xl font-bold">
+            <h1 class="w-auto text-center sm:text-base text-sm underline text-wrap">
+              Search your University/Board in your State/UT
+            </h1>
+          </div>
+          <div class="w-auto h-full flex justify-start items-start flex-col md:p-2 p-1">
+            <form class="w-full flex justify-center items-center flex-row form_search">
+              <input type="text" name="state" class="bg-gray-100 md:p-1 sm:text-sm text-xs focus:outline-none border border-gray-500 rounded" id="state" value="" placeholder="Search your State/UT" />
+              <button type="submit" class="bg-green-600 hover:bg-blue-800 text-white md:p-1 sm:p-[0.1rem] p-[0.07rem] sm:text-sm text-xs px-1 ml-1 rounded">
+                Search
+              </button>
+            </form>
+            <p class="w-full flex justify-start items-center flex-row invisible md:text-xs sm:text-[0.7rem] text-[0.6rem] text-red-500 invalid_input">
+              Please enter valid input.
+            </p>
+          </div>
+        </div>
+        <div class="w-full h-full flex justify-center items-start flex-row lg:mt-4 md:mt-3 sm:mt-2 mt-1">
+          <div class="lg:w-4/5 w-full h-full flex justify-center items-center flex-col lg:pr-2 border-r border-gray-200">
+            <div class="w-full flex justify-center items-center bg-gray-300">
+              <div class="w-full h-full flex justify-start items-center lg:flex-row flex-col">
+                <div class="w-full flex justify-start items-start flex-col md:px-2 px-1 result">
+                  <p class="w-full flex justify-center items-center text-gray-600 p-4 md:text-base sm:text-sm text-xs italic search_query_sign">Search Your Query!</p>
+                </div>
+                <div class="w-full hidden justify-start items-start flex-col md:px-2 px-1 downloaded_pdfs">
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="lg:w-1/5 lg:flex hidden h-full justify-center items-center flex-col">
+            <!-- image_resolution_value === '1024px' -->
+            <% advertisement.map((item, index)=> { %> <%
+            if(item.image_resolution_value==='1024px' ){ %>
+            <div class="w-full lg:flex hidden h-full justify-center items-center flex-col">
+              <span class="w-full h-full flex justify-center items-center">
+                <img src="<%= item.filename %>" class="min-w-full min-h-full object-fill aspect-auto advertisementPhoto" alt="" />
+              </span>
+            </div>
+            <% } %> <% }) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  const form_search = document.querySelector(".form_search");
+  const invalid_input = document.querySelector(".invalid_input");
+  const result = document.querySelector('.result');
+  const search_query_sign = document.querySelector('.search_query_sign');
+  const downloaded_pdfs = document.querySelector('.downloaded_pdfs');
+
+  form_search.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    result.innerHTML = '';
+    search_query_sign.style.display = 'none';
+    downloaded_pdfs.style.display = 'none';
+    result.style.display = 'flex';
+
+    const formData = new FormData();
+    formData.append("form_search_input", form_search.children[0].value);
+
+    const updatedFunc = (message) => {
+      if (message === "Query not found!") {
+        document.querySelector(".invalid_input").style.visibility = "visible";
+
+        setTimeout(function() {
+          document.querySelector(".invalid_input").style.visibility = "hidden";
+        }, 1000);
+      } else {
+        document.querySelector(".invalid_input").style.visibility = "hidden";
+
+      }
+    };
+
+    if (formData !== null && formData !== undefined && formData !== "") {
+      let fetchFunc = async (formData) => {
+        try {
+          const options = {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: formData,
+          };
+          let fetchItem = await fetch(
+              "/api/previous_years_question_papers",
+              options
+            )
+            .then(response => response.json()).then(text => {
+              if (text.message === 'Query not found!') {
+                updatedFunc(text.message);
+              } else {
+                // console.log(text);
+                if (result.innerHTML == '') {
+                  text.map((item, index) => {
+                    result.innerHTML += `<h1 class="w-full bg-white p-1 md:mb-2 mb-1 hover:bg-blue-800 hover:text-white md:text-base sm:text-sm text-xs rounded-sm cursor-pointer educational_board" id=${item._id}><p class="w-full p-1 border border-gray-400 hover:border-white rounded-sm">${item.board_name}</p></h1>`;
+                  });
+                }
+
+                if (result.innerHTML !== '') {
+                  const board_all = document.querySelectorAll('.educational_board');
+                  // console.log('board_all: ', board_all);
+
+                  board_all.forEach((item, index) => {
+                    item.addEventListener('click', (e) => {
+                      // console.log(e.currentTarget.id);
+                      result.style.display = 'none';
+                      downloaded_pdfs.style.display = 'flex';
+                      text.map((item, index) => {
+                        if (item._id === e.currentTarget.id) {
+                          downloaded_pdfs.innerHTML += `<div class="w-full flex justify-center items-center flex-row md:mb-2 mb-1 md:text-base sm:text-sm text-xs bg-white p-1 rounded-sm cursor-pointer">
+                            <div class="w-full flex justify-between items-center flex-row p-1 border border-gray-400 rounded-sm" key=${item._id}><p class="w-auto">${item.name}</p>
+                            <a href=${item.question_paper} class="w-auto bg-green-600 hover:bg-blue-800 text-white md:px-2 px-1 py-1 rounded" download=${item.name}>Download</a></div></div>`;
+
+                        }
+                      })
+                    })
+                  })
+                }
+              }
+            });
+        } catch (error) {
+          console.log(
+            "This is the error in profileForCollege.ejs >  overall_rank_profileForCollege.ejs",
+            error
+          );
+        }
+      };
+      fetchFunc(formData);
+    }
+    form_search.children[0].value = '';
+  });
+</script>
+
+<!-- Footer  -->
+<%- include('partials/footer') %>

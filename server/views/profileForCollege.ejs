@@ -1,0 +1,1041 @@
+<!-- ============= -->
+<!--   Profile Page For Author -->
+<!-- ============= -->
+
+<!-- Header -->
+<%- include ('partials/headerForProfileAndSettingsForCollege') %>
+
+<!-- Main -->
+<main class="w-full h-full flex justify-center items-center flex-row">
+  <div class="w-full h-full flex justify-around items-center flex-col bg-white lg:px-2 px-0 lg:mt-14 md:mt-7 mt-5">
+
+    <div class="w-full flex justify-center items-center flex-col">
+      <% advertisement.map((item, index)=> { %>
+      <% if(item.image_resolution_value==='768px' || item.image_resolution_value==='640px' ||
+                        item.image_resolution_value==='300px' ){ %>
+      <!-- image_resolution_value === '768px' -->
+      <% if(item.image_resolution_value==='768px' ){ %>
+      <div class="w-full lg:hidden md:flex hidden h-full justify-center items-center flex-col">
+        <span class="w-full h-full flex justify-center items-center">
+          <img src="<%= item.filename %>" class="min-w-full min-h-full object-fill
+                         aspect-auto advertisementPhoto" alt="" />
+        </span>
+      </div>
+      <% } %>
+
+      <!-- image_resolution_value === '640px' -->
+      <% if(item.image_resolution_value==='640px' ){ %>
+      <div class="w-full md:hidden sm:flex hidden h-full justify-center items-center flex-col">
+        <span class="w-full h-full flex justify-center items-center">
+          <img src="<%= item.filename %>" class="min-w-full min-h-full object-fill
+                         aspect-auto advertisementPhoto" alt="" />
+        </span>
+      </div>
+      <% } %>
+
+      <!-- image_resolution_value === '300px' -->
+      <% if(item.image_resolution_value==='300px' ){ %>
+      <div class="w-full sm:hidden flex h-full justify-center items-center flex-col">
+        <span class="w-full h-full flex justify-center items-center">
+          <img src="<%= item.filename %>" class="min-w-full min-h-full object-fill
+                         aspect-auto advertisementPhoto" alt="" />
+        </span>
+      </div>
+      <% } %>
+      <% } %>
+      <% }) %>
+
+    </div>
+
+
+    <div class="w-full flex justify-center items-center flex-row">
+      <div class="w-full h-full flex justify-center items-start flex-row">
+        <div class="w-full h-full flex justify-center items-center flex-col p-4 lg:px-2 px-0">
+          <!-- Buttons -->
+          <div class="w-full flex justify-start items-center flex-row lg:pl-0 pl-2 text-white">
+            <button class="lg:w-36 md:w-32 w-16 lg:text-base md:text-sm text-xs md:font-semibold font-medium text-center bg-red-600 mr-3 p-1 md:rounded-md sm:rounded-sm rounded lg:shadow-lg md:shadow-md shadow cursor-pointer" id="editBtn" onclick="editFunc()">Edit</button>
+            <button class="lg:w-36 md:w-32 w-16 lg:text-base md:text-sm text-xs md:font-semibold font-medium text-center bg-pink-600 p-1 md:rounded-md sm:rounded-sm rounded lg:shadow-lg md:shadow-md shadow cursor-pointer" id="previewBtn" onclick="previewFunc()">Preview</button>
+          </div>
+
+          <div class="w-full flex justify-center items-start flex-row">
+            <div class="lg:w-9/12 w-full flex justify-center items-center flex-row">
+              <!-- Edit Board -->
+              <div class="w-full flex justify-center items-start flex-col bg-gray-200 p-1 md:rounded-sm rounded md:mt-4 sm:mt-3 mt-2 editBoard">
+
+                <div class="w-full flex justify-center md:items-start items-center flex-row md:px-auto px-0 md:mt-3 mt-1">
+
+                  <!-- User Name -->
+                  <div class="w-full text-center md:my-2 my-1">
+                    <h1 class="xl:text-2xl lg:text-xl md:text-base text-sm font-bold">
+                      <%= user.name %>
+                    </h1>
+                  </div>
+                </div>
+
+                <div class="w-full flex justify-center items-center flex-col">
+                  <div class="w-full h-full flex justify-start items-start flex-col md:mt-2 mt-1">
+                    <div class="w-full h-full flex justify-between items-center flex-col md:mt-2 mt-1">
+
+                      <!-- College Rank -->
+                      <h3 class="md:w-11/12 w-full text-left sm:text-sm text-xs md:font-semibold font-medium mt-2 mb-1">
+                        College Rank(according to NIRF):</h3>
+                      <div class="md:w-11/12 w-full flex justify-center items-center flex-col sm:text-sm text-xs md:mb-2 mb-1 sm:p-4 p-2 bg-white md:rounded-md sm:rounded-sm rounded">
+                        <div class="w-full flex justify-between items-center sm:flex-row flex-col sm:text-sm text-xs md:mb-2 mb-1">
+                          <!-- Engineering College Rank -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center">
+                            <%- include ('engineering_rank_profileForCollege') %>
+                          </div>
+
+                          <!-- Medical College Rank -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center sm:mt-0 mt-1">
+                            <%- include ('medical_rank_profileForCollege') %>
+                          </div>
+
+                        </div>
+
+                        <div class="w-full flex justify-between items-center sm:flex-row flex-col sm:text-sm text-xs md:mb-2 mb-1">
+                          <!-- Management College Rank -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center">
+                            <%- include ('management_rank_profileForCollege') %>
+                          </div>
+
+                          <!-- Law College Rank -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center sm:mt-0 mt-1">
+                            <%- include ('law_rank_profileForCollege') %>
+                          </div>
+                        </div>
+                        <div class="w-full flex justify-between items-center sm:flex-row flex-col sm:text-sm text-xs md:mb-2 mb-1">
+                          <!-- Fashion Design College Rank -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center">
+                            <%- include ('fashion_design_rank_profileForCollege') %>
+                          </div>
+
+                          <!-- Pharmacy College Rank -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center sm:mt-0 mt-1">
+                            <%- include ('pharmacy_rank_profileForCollege') %>
+                          </div>
+                        </div>
+
+                        <div class="w-full flex justify-start items-center sm:flex-row flex-col sm:text-sm text-xs">
+                          <!-- Overall College Rank -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center">
+                            <%- include ('overall_rank_profileForCollege') %>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Particulars -->
+                      <h3 class="md:w-11/12 w-full text-left sm:text-sm text-xs md:font-semibold font-medium mt-2 mb-1">
+                        Particulars:</h3>
+                      <div class="md:w-11/12 w-full flex justify-center items-center flex-col sm:text-sm text-xs md:mb-2 mb-1 sm:p-4 p-2 bg-white md:rounded-md sm:rounded-sm rounded">
+                        <div class="w-full flex justify-between items-center sm:flex-row flex-col sm:text-sm text-xs md:mb-2 mb-1">
+                          <!-- College Short Name -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center">
+                            <%- include ('short_name_profileForCollege') %>
+                          </div>
+
+                          <!-- Institute Type -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center sm:mt-0 mt-1">
+                            <%- include ('institute_type_profileForCollege') %>
+                          </div>
+                        </div>
+
+                        <div class="w-full flex justify-between items-center sm:flex-row flex-col sm:text-sm text-xs md:mb-2 mb-1">
+                          <!-- Courses Offered -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center">
+                            <%- include ('courses_offered_profileForCollege') %>
+                          </div>
+
+                          <!-- College Campus -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center sm:mt-0 mt-1">
+                            <%- include ('college_campus_profileForCollege') %>
+                          </div>
+                        </div>
+
+                        <div class="w-full flex justify-between items-center sm:flex-row flex-col sm:text-sm text-xs md:mb-2 mb-1">
+                          <!-- University Name -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center">
+                            <%- include ('university_name_profileForCollege') %>
+                          </div>
+
+                          <!-- Approvals -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center sm:mt-0 mt-1">
+                            <%- include ('approvals_profileForCollege') %>
+                          </div>
+                        </div>
+
+                        <div class="w-full flex justify-between items-center sm:flex-row flex-col sm:text-sm text-xs md:mb-2 mb-1">
+                          <!-- Ownership -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center">
+                            <%- include ('ownership_profileForCollege') %>
+                          </div>
+
+                          <!-- College Admission -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center sm:mt-0 mt-1">
+                            <%- include ('college_admission_profileForCollege') %>
+                          </div>
+                        </div>
+
+                        <div class="w-full flex sm:justify-between justify-center items-center sm:flex-row flex-row sm:text-sm text-xs md:mb-2 mb-1">
+                          <!-- Entrance Exam -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center">
+                            <%- include ('entrance_exam_profileForCollege') %>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- College Contact Information -->
+                      <h3 class="md:w-11/12 w-full text-left sm:text-sm text-xs md:font-semibold font-medium mt-2 mb-1">
+                        College Contact Information:</h3>
+                      <div class="md:w-11/12 w-full flex justify-center items-center flex-col sm:text-sm text-xs md:mb-2 mb-1 sm:p-4 p-2 bg-white md:rounded-md sm:rounded-sm rounded">
+                        <div class="w-full flex justify-between items-center sm:flex-row flex-col sm:text-sm text-xs md:mb-2 mb-1">
+                          <!-- Contact Number -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center">
+                            <%- include ('contact_profileForCollege') %>
+                          </div>
+
+                          <!-- City -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center sm:mt-0 mt-1">
+                            <%- include ('city_profileForCollege') %>
+                          </div>
+                        </div>
+
+                        <div class="w-full flex justify-between items-center sm:flex-row flex-col sm:text-sm text-xs md:mb-2 mb-1">
+                          <!-- State Name -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center">
+                            <%- include ('state_or_ut_profileForCollege') %>
+                          </div>
+
+                          <!-- District Name -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center sm:mt-0 mt-1">
+                            <%- include ('district_name_profileForCollege') %>
+                          </div>
+                        </div>
+
+                        <div class="w-full flex justify-between items-center sm:flex-row flex-col sm:text-sm text-xs md:mb-2 mb-1">
+                          <!-- Email -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center">
+                            <%- include ('email_profileForCollege') %>
+                          </div>
+
+                          <!-- College Website -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center sm:mt-0 mt-1">
+                            <%- include ('college_website_profileForCollege') %>
+                          </div>
+                        </div>
+
+
+
+                      </div>
+
+                      <!-- College Fees -->
+                      <h3 class="md:w-11/12 w-full text-left sm:text-sm text-xs md:font-semibold font-medium mt-2 mb-1">
+                        College Fees(in Range):</h3>
+                      <div class="md:w-11/12 w-full flex justify-center items-center flex-col sm:text-sm text-xs md:mb-2 mb-1 sm:p-4 p-2 bg-white md:rounded-md sm:rounded-sm rounded">
+                        <div class="w-full flex justify-between items-center sm:flex-row flex-col sm:text-sm text-xs md:mb-2 mb-1">
+                          <!-- Engineering College Fees -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center">
+                            <%- include ('engineering_fees_profileForCollege') %>
+                          </div>
+
+                          <!-- Medical College Fees -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center sm:mt-0 mt-1">
+                            <%- include ('medical_fees_profileForCollege') %>
+                          </div>
+
+                        </div>
+
+                        <div class="w-full flex justify-between items-center sm:flex-row flex-col sm:text-sm text-xs md:mb-2 mb-1">
+                          <!-- Management College Fees -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center">
+                            <%- include ('management_fees_profileForCollege') %>
+                          </div>
+
+                          <!-- Law College Fees -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center sm:mt-0 mt-1">
+                            <%- include ('law_fees_profileForCollege') %>
+                          </div>
+                        </div>
+                        <div class="w-full flex justify-between items-center sm:flex-row flex-col sm:text-sm">
+                          <!-- Fashion Design College Fees -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center">
+                            <%- include ('fashion_design_fees_profileForCollege') %>
+                          </div>
+
+                          <!-- Pharmacy College Fees -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center sm:mt-0 mt-1">
+                            <%- include ('pharmacy_fees_profileForCollege') %>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Files -->
+                      <h3 class="md:w-11/12 w-full text-left sm:text-sm text-xs md:font-semibold font-medium mt-2 mb-1">
+                        Files:</h3>
+                      <div class="md:w-11/12 w-full flex justify-center items-center flex-col sm:text-sm text-xs md:mb-2 mb-1 sm:p-4 p-2 bg-white md:rounded-md sm:rounded-sm rounded">
+                        <div class="w-full flex justify-between items-center sm:flex-row flex-col sm:text-sm text-xs md:mb-2 mb-1">
+                          <!-- Profile Image -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center">
+                            <%- include ('profile_image_profileForCollege') %>
+                          </div>
+
+                          <!-- Cover Image -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center sm:mt-0 mt-1">
+                            <%- include ('cover_image_profileForCollege') %>
+                          </div>
+                        </div>
+
+                        <div class="w-full flex sm:justify-between justify-center items-center sm:flex-row flex-col sm:text-sm text-xs">
+                          <!-- College Details Brochure -->
+                          <div class="sm:w-5/12 w-11/12 flex justify-center items-center">
+                            <%- include ('college_details_brochure_profileForCollege')
+                                                                %>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- News, Events and Description -->
+                      <h3 class="md:w-11/12 w-full text-left sm:text-sm text-xs md:font-semibold font-medium mt-2 mb-1">
+                        News, Events and Description:</h3>
+                      <div class="md:w-11/12 w-full flex justify-center items-center flex-col sm:text-sm text-xs md:mb-2 mb-1 sm:p-4 p-2 bg-white md:rounded-md sm:rounded-sm rounded">
+                        <div class="w-full flex justify-between items-center flex-col sm:text-sm text-xs">
+                          <!-- Latest, News and Events -->
+                          <div class="w-full flex justify-center items-center mb-2">
+                            <%- include ('latest_news_and_events_profileForCollege') %>
+                          </div>
+
+                          <!-- College Description -->
+                          <div class="w-full flex justify-center items-center">
+                            <%- include ('description_profileForCollege') %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Preview Board -->
+              <div class="w-full hidden justify-center items-start flex-col bg-gray-200 p-1 md:rounded-sm rounded md:mt-4 sm:mt-3 mt-2 previewBoard">
+
+                <% if(user.cover_image==='' || user.cover_image===undefined || user.cover_image===null) { %>
+                <img class="w-full hidden" src="" alt="" />
+
+                <div class="w-full flex justify-center md:items-start items-center flex-row relative lg:top-2 bottom-3 md:mt-3 mt-4">
+                  <!-- User Name -->
+                  <div class="w-11/12 h-full flex justify-start items-center text-center rounded-md">
+                    <div class="md:w-20 sm:w-16 w-12 flex justify-center items-center md:p-1 bg-yellow-400 mr-5 rounded-md">
+                      <img src="<%= user.profile_image %>" class="w-full bg-white object-contain aspect-square rounded-md" alt="" />
+                    </div>
+
+                    <h1 class="lg:text-xl md:text-base sm:text-sm sm:flex hidden font-bold">
+                      <%= user.name %>
+                      <% if(user.college_short_name !=='' && user.college_short_name !==undefined && user.college_short_name !==null) { %>
+                      (<%= user.college_short_name %>)
+                      <% } %>
+                    </h1>
+
+                    <h1 class="sm:hidden flex font-bold" style="font-size: 0.7rem;">
+                      <%= user.name %>
+                      <% if(user.college_short_name !=='' && user.college_short_name !==undefined && user.college_short_name !==null) { %>
+                      (<%= user.college_short_name %>)
+                      <% } %>
+                    </h1>
+                    <% if (user.verification_process==='false' ) { %>
+                    <p class="sm:flex hidden text-xs text-red-600 ml-2"><strong><i>(Not
+                          Verified)</i></strong></p>
+
+                    <p class="sm:hidden flex text-red-600 ml-2" style="font-size: 0.7rem;"><strong><i>(Not
+                          Verified)</i></strong></p>
+                    <% } else if(user.verification_process==='true' ) { %>
+                    <p class="sm:flex hidden text-xs text-green-600 ml-2">
+                      <strong><i>(Verified)</i></strong>
+                    </p>
+
+                    <p class="sm:hidden flex text-green-600 ml-2" style="font-size: 0.7rem;">
+                      <strong><i>(Verified)</i></strong>
+                    </p>
+                    <% } %>
+
+                  </div>
+                </div>
+                <% } else { %>
+                <img class="w-full flex lg:h-48 md:h-36 sm:h-24 h-20 justify-center items-center object-fill aspect-square" src="<%= user.cover_image %>" alt="" />
+
+                <div class="w-full flex justify-center md:items-start items-center flex-row relative lg:bottom-10 bottom-3 md:mt-3 mt-2">
+                  <!-- User Name -->
+                  <div class="w-11/12 h-full flex sm:justify-start justify-between sm:items-center items-start text-center md:rounded-md rounded-sm">
+                    <% if(user.profile_image !=='' && user.profile_image !==undefined &&
+                                                        user.profile_image !==null) { %>
+                    <div class="md:w-20 sm:w-16 w-12 flex justify-center items-center sm:p-1 p-0 bg-yellow-400 mr-5 md:rounded-md rounded-sm">
+                      <img src="<%= user.profile_image %>" class="w-full bg-white object-contain aspect-square md:rounded-md rounded-sm" alt="" />
+                    </div>
+                    <% } %>
+
+                    <h1 class="xl:text-2xl lg:text-xl md:text-base sm:text-sm sm:flex hidden font-bold">
+                      <%= user.name %>
+                      <% if(user.college_short_name !=='' && user.college_short_name !==undefined && user.college_short_name !==null) { %>
+                      (<%= user.college_short_name %>)
+                      <% } %>
+                    </h1>
+
+                    <h1 class="sm:hidden flex font-bold" style="font-size: 0.7rem;">
+                      <%= user.name %>
+                      <% if(user.college_short_name !=='' && user.college_short_name !==undefined && user.college_short_name !==null) { %>
+                      (<%= user.college_short_name %>)
+                      <% } %>
+                    </h1>
+                    <% if (user.verification_process==='false' ) { %>
+                    <p class="sm:flex hidden text-xs text-red-600 ml-2">
+                      <strong><i>(Not
+                          Verified)</i></strong>
+                    </p>
+
+                    <p class="sm:hidden flex items-start text-red-600 ml-2" style="font-size: 0.6rem;"><strong><i>(Not
+                          Verified)</i></strong></p>
+                    <% } else if(user.verification_process==='true' ) { %>
+                    <p class="sm:flex hidden text-xs text-green-600 ml-2">
+                      <strong><i>(Verified)</i></strong>
+                    </p>
+
+                    <p class="sm:hidden flex items-start text-green-600 ml-2" style="font-size: 0.6rem;">
+                      <strong><i>(Verified)</i></strong>
+                    </p>
+                    <% } %>
+                  </div>
+                </div>
+                <% } %>
+
+                <div class="w-full flex justify-center items-center flex-col">
+
+                  <div class="w-full flex justify-start items-start flex-col lg:mt-6 md:mt-2">
+                    <!-- Latest News and Events -->
+                    <% if(user.latest_news_and_events !=='' && user.latest_news_and_events !==undefined && user.latest_news_and_events !==null) { %>
+                    <div class="w-full flex justify-start items-center flex-col md:mb-4 mb-2">
+                      <h2 class="md:w-11/12 w-full sm:text-sm text-xs md:font-semibold font-medium text-left my-1">
+                        Latest News and Events
+                      </h2>
+                      <div class="md:w-11/12 w-full md:flex hidden justify-start items-start flex-col text-black md:text-sm text-xs bg-white md:p-4 sm:mb-3 p-2 md:rounded-md sm:rounded-sm rounded latest_news_and_events" style="font-size: 0.8rem;">
+                        <ul class="list-disc w-auto flex justify-start items-start flex-col pl-4">
+                          <% user.latest_news_and_events.split('++ ').map(item => { %>
+                          <li>
+                            <%= item %></li>
+                          <%  }) %>
+                        </ul>
+                      </div>
+
+                      <div class="md:w-11/12 w-full md:hidden flex justify-start items-start flex-col text-black md:text-sm text-xs bg-white p-2 mb-2 md:rounded-md sm:rounded-sm rounded latest_news_and_events" style="font-size: 0.7rem;">
+
+                        <ul class="list-disc w-auto flex justify-center items-start flex-col pl-2">
+                          <% user.latest_news_and_events.split('++ ').map(item => { %>
+                          <li>
+                            <%= item %>
+                          </li>
+                          <%  }) %>
+                        </ul>
+                      </div>
+                    </div>
+                    <% } %>
+
+                    <!-- College Rank -->
+                    <% if((user.engineering_rank !=='' &&    user.engineering_rank !==undefined &&    user.engineering_rank !==null) || 
+                                                                  (user.medical_rank !=='' &&        user.medical_rank !==undefined &&        user.medical_rank !==null) || 
+                                                                      (user.law_rank !=='' &&            user.law_rank !==undefined &&            user.law_rank !==null) || 
+                                                               (user.management_rank !=='' &&     user.management_rank !==undefined &&     user.management_rank !==null) || 
+                                                           (user.fashion_design_rank !=='' && user.fashion_design_rank !==undefined && user.fashion_design_rank !==null) || 
+                                                                (user.pharmacy_rank !==''  &&       user.pharmacy_rank !==undefined &&       user.pharmacy_rank !==null) ||
+                                                                 (user.overall_rank !==''  &&        user.overall_rank !==undefined &&       user.overall_rank !==null)) { %>
+                    <div class="w-full flex justify-start items-center flex-col md:mb-4 mb-2">
+                      <h2 class="md:w-11/12 w-full sm:text-sm text-xs md:font-semibold font-medium text-left my-1">
+                        College Rank
+                      </h2>
+
+                      <div class="md:w-11/12 w-full flex justify-start items-center md:flex-row flex-wrap bg-white text-red-700 gap-1 p-2 md:rounded-md sm:rounded-sm rounded">
+                        <% if(user.engineering_rank !=='' &&  user.engineering_rank !==undefined && user.engineering_rank !==null) { %>
+                        <div class="w-28 flex justify-start items-center flex-col md:text-sm text-xs sm:rounded-sm rounded latest_news_and_events border border-red-700">
+                          <h1>Engineering</h1>
+                          <h1>
+                            #<%= user.engineering_rank %>
+                          </h1>
+                        </div>
+                        <% } %>
+
+                        <% if(user.medical_rank !=='' && user.medical_rank !==undefined &&  user.medical_rank !==null) { %>
+                        <div class="w-28 flex justify-start items-center flex-col md:text-sm text-xs sm:rounded-sm rounded latest_news_and_events border border-red-700">
+                          <h1>Medical</h1>
+                          <h1>
+                            #<%= user.medical_rank %>
+                          </h1>
+
+                        </div>
+                        <% } %>
+
+                        <% if(user.law_rank !=='' && user.law_rank !==undefined && user.law_rank !==null) { %>
+                        <div class="w-28 flex justify-start items-center flex-col md:text-sm text-xs sm:rounded-sm rounded latest_news_and_events border border-red-700">
+                          <h1>Law</h1>
+                          <h1>
+                            #<%= user.law_rank %>
+                          </h1>
+
+                        </div>
+                        <% } %>
+
+                        <% if(user.management_rank !=='' && user.management_rank !==undefined && user.management_rank !==null) { %>
+                        <div class="w-28 flex justify-start items-center flex-col md:text-sm text-xs sm:rounded-sm rounded latest_news_and_events border border-red-700">
+                          <h1>Management</h1>
+                          <h1>
+                            #<%= user.management_rank %>
+                          </h1>
+
+                        </div>
+                        <% } %>
+
+                        <% if(user.fashion_design_rank !=='' && user.fashion_design_rank !==undefined && user.fashion_design_rank !==null) { %>
+                        <div class="w-28 flex justify-start items-center flex-col md:text-sm text-xs sm:rounded-sm rounded latest_news_and_events border border-red-700">
+                          <h1>Fashion
+                            Design
+                          </h1>
+                          <h1>
+                            #<%= user.fashion_design_rank %>
+                          </h1>
+
+                        </div>
+                        <% } %>
+
+                        <% if(user.pharmacy_rank !=='' && user.pharmacy_rank !==undefined && user.pharmacy_rank !==null) { %>
+                        <div class="w-28 flex justify-start items-center flex-col md:text-sm text-xs sm:rounded-sm rounded latest_news_and_events border border-red-700">
+                          <h1>Pharmacy
+                          </h1>
+                          <h1>
+                            #<%= user.pharmacy_rank %>
+                          </h1>
+
+                        </div>
+                        <% } %>
+
+                        <% if(user.overall_rank !=='' && user.overall_rank !==undefined && user.overall_rank !==null) { %>
+                        <div class="w-28 flex justify-start items-center flex-col md:text-sm text-xs sm:rounded-sm rounded latest_news_and_events border border-red-700">
+                          <h1>Overall</h1>
+                          <h1>
+                            #<%= user.overall_rank %>
+                          </h1>
+
+                        </div>
+                        <% } %>
+
+
+                      </div>
+                    </div>
+                    <% } %>
+
+
+                    <!-- About College -->
+                    <% if((user.institute_type !=='' &&    user.institute_type !==undefined &&    user.institute_type !==null) || 
+                                                              (user.approvals !=='' &&        user.approvals !==undefined &&        user.approvals !==null) || 
+                                                                  (user.courses_offered !=='' &&     user.courses_offered !==undefined &&     user.courses_offered !==null) || 
+                                                           (user.college_campus !=='' &&     user.college_campus !==undefined &&     user.college_campus !==null) || 
+                                                       (user.ownership !=='' && user.ownership !==undefined && user.ownership !==null) || 
+                                                             (user.university_name !==''  &&       user.university_name !==undefined &&       user.university_name !==null) || 
+                                                             (user.college_admission !==''  &&       user.college_admission !==undefined &&       user.college_admission !==null) || 
+                                                             (user.entrance_exam !==''  &&       user.entrance_exam !==undefined &&       user.entrance_exam !==null) || 
+                                                             (user.tel !==''  &&       user.tel !==undefined &&       user.tel !==null) || 
+                                                             (user.email !==''  &&       user.email !==undefined &&       user.email !==null) || 
+                                                             (user.city !==''  &&       user.city !==undefined &&       user.city !==null) || 
+                                                             (user.district_name !==''  &&       user.district_name !==undefined &&       user.district_name !==null) || 
+                                                             (user.state_or_ut_name !==''  &&       user.state_or_ut_name !==undefined &&       user.state_or_ut_name !==null) || 
+                                                             (user.college_website !==''  &&       user.college_website !==undefined &&       user.college_website !==null) || 
+                                                             (user.college_rating !==''  &&       user.college_rating !==undefined &&       user.college_rating !==null) || 
+                                                             (user.college_details_brochure !==''  &&       user.college_details_brochure !==undefined &&       user.college_details_brochure !==null)
+                                                        
+                                                        ) { %>
+                    <div class="w-full flex justify-center items-center flex-col md:text-base sm:text-sm text-xs md:mb-4 mb-2">
+                      <h2 class="md:w-11/12 w-full sm:text-sm text-xs md:font-semibold font-medium text-left my-1">
+                        About College
+                      </h2>
+                      <div class="md:w-11/12 w-full flex justify-start items-center flex-wrap bg-white md:p-4 p-2 md:rounded-md sm:rounded-sm rounded">
+
+                        <!-- Institute-Type -->
+                        <% if(user.institute_type !=='' && user.institute_type!==undefined && user.institute_type !==null) { %>
+                        <h2 class="sm:w-1/2 w-full flex jutify-start items-center text-left text-black md:text-sm text-xs my-1 sm:px-1">
+                          Institute-Type: <span class="text-blue-700 pl-1 institute_type_preview">
+
+                            <%= user.institute_type %>
+
+                          </span>
+                        </h2>
+                        <% } %>
+
+                        <!-- Approvals -->
+                        <% if(user.approvals !=='' && user.approvals !==undefined && user.approvals !==null) { %>
+                        <h2 class="sm:w-1/2 w-full flex jutify-start items-center text-left text-black md:text-sm text-xs my-1 sm:px-1">
+                          Approvals: <span class="text-blue-700 pl-1 courses_offered_preview">
+
+                            <%= user.approvals %>
+
+                          </span>
+                        </h2>
+                        <% } %>
+
+                        <!-- Courses Offered -->
+                        <% if(user.courses_offered !=='' && user.courses_offered !==undefined && user.courses_offered !==null) { %>
+                        <h2 class="sm:w-1/2 w-full flex jutify-start items-center text-left text-black md:text-sm text-xs my-1 sm:px-1">
+                          Courses:
+
+                          <span class="w-auto flex flex-row text-blue-700 pl-1 courses_offered_preview">
+
+
+                            <%= user.courses_offered.split(',', 3) %>
+
+
+                            <% user.courses_offered.split(',').map((item, index)=> { %>
+                            <% if(index===3) { %>
+                            <span class="cursor-pointer" id="many_more_courses_offered"><u class="pl-1">
+                                + many
+                                more</u></span>
+                            <% } %>
+                            <% }) %>
+
+
+                            <span class="w-40 hidden justify-center items-center flex-wrap md:mt-6 mt-5 sm:ml-14 mr-8 md:p-2 p-1 bg-gray-100 rounded cursor-pointer font-semibold courses_offered_hidden border border-gray-300" style="font-size: 0.6rem;">
+                              <% user.courses_offered.split(',').map((item, index)=> { %>
+                              <% if(index> 1) { %>
+                              <h1 class="w-auto text-purple-700">
+                                <%= item %>
+                                ,
+                              </h1>
+                              <% } %>
+                              <% }) %>
+                            </span>
+
+                          </span>
+                        </h2>
+                        <% } %>
+
+                        <!-- College Campus -->
+                        <% if(user.college_campus !=='' &&  user.college_campus !==undefined && user.college_campus !==null) { %>
+                        <h2 class="sm:w-1/2 w-full flex jutify-start items-center text-left text-black md:text-sm text-xs my-1 sm:px-1">
+                          Campus
+                          : <span class="text-blue-700 pl-1 college_campus_preview">
+
+                            <%= user.college_campus %>
+
+                          </span>
+                        </h2>
+                        <% } %>
+
+                        <!-- Ownership -->
+                        <% if(user.ownership !=='' && user.ownership !==undefined && user.ownership !==null) { %>
+                        <h2 class="sm:w-1/2 w-full flex jutify-start items-center text-left text-black md:text-sm text-xs my-1 sm:px-1">
+                          Ownership:
+                          <span class="text-blue-700 pl-1 institute_type_preview">
+
+                            <%= user.ownership %>
+
+                          </span>
+                        </h2>
+                        <% } %>
+
+                        <!-- University Name -->
+                        <% if(user.university_name !=='' && user.university_name !==undefined && user.university_name !==null) { %>
+                        <h2 class="sm:w-1/2 w-full flex jutify-start items-center text-left text-black md:text-sm text-xs my-1 sm:px-1">
+                          University
+                          Name:
+                          <span class="text-blue-700 pl-1 university_name_preview">
+
+                            <%= user.university_name %>
+
+                          </span>
+                        </h2>
+                        <% } %>
+
+                        <!-- Admission -->
+                        <% if(user.college_admission !=='' && user.college_admission !==undefined && user.college_admission !==null) { %>
+                        <h2 class="sm:w-1/2 w-full flex jutify-start items-center text-left text-black md:text-sm text-xs my-1 sm:px-1">
+                          Admission:
+                          <span class="text-blue-700 pl-1 admission_preview">
+
+                            <%= user.college_admission %>
+
+                          </span>
+                        </h2>
+                        <% } %>
+
+                        <!-- Entrance-Exams -->
+                        <% if(user.entrance_exam !=='' && user.entrance_exam !==undefined && user.entrance_exam !==null) { %>
+                        <h2 class="sm:w-1/2 w-full flex jutify-start items-center text-left text-black md:text-sm text-xs my-1 sm:px-1">
+                          <span class="w-auto">Entrance-Exams:</span>
+                          <span class="w-auto flex flex-row text-blue-700 pl-1 courses_offered_preview">
+
+
+                            <%= user.entrance_exam.split(',',2) %>
+
+
+                            <% user.entrance_exam.split(',').map((item, index)=> { %>
+                            <% if(index===2) { %>
+                            <span class="cursor-pointer" id="many_more_entrance_exam"><u class="pl-1">
+                                +
+                                many
+                                more</u></span>
+                            <% } %>
+                            <% }) %>
+
+
+                            <span class="w-40 hidden justify-center items-center flex-wrap md:mt-6 mt-5 sm:ml-14 mr-8 p-2 bg-gray-100 rounded cursor-pointer font-semibold entrance_exams_hidden border border-gray-300" style="font-size: 0.6rem;">
+                              <% user.entrance_exam.split(',').map((item, index)=> { %>
+                              <%  if(index> 1) { %>
+                              <h1 class="w-auto text-purple-700">
+                                <%= item %>
+                                ,
+                              </h1>
+                              <% } %>
+                              <% }) %>
+                            </span>
+
+                          </span>
+                        </h2>
+                        <% } %>
+
+                        <!-- Contact -->
+                        <% if(user.tel !=='' && user.tel !==undefined && user.tel !==null) { %>
+                        <h2 class="sm:w-1/2 w-full flex jutify-start items-center text-left text-black md:text-sm text-xs my-1 sm:px-1">
+                          Contact:
+                          <span class="text-blue-700 pl-1 contact_preview">
+
+                            <%= user.tel %>
+
+                          </span>
+                        </h2>
+                        <% } %>
+
+                        <!-- Email -->
+                        <% if(user.email !=='' && user.email !==undefined && user.email !==null) { %>
+                        <h2 class="sm:w-1/2 w-full flex jutify-start items-center text-left text-black md:text-sm text-xs my-1 sm:px-1">
+                          Email:
+                          <span class="text-blue-700 pl-1 email_preview">
+
+                            <%= user.email %>
+
+                          </span>
+                        </h2>
+                        <% } %>
+
+                        <!-- City -->
+                        <% if(user.city !=='' && user.city !==undefined && user.city !==null) { %>
+                        <h2 class="sm:w-1/2 w-full flex jutify-start items-center text-left text-black md:text-sm text-xs my-1 sm:px-1">
+                          City:
+                          <span class="text-blue-700 pl-1 city_preview">
+
+                            <%= user.city %>
+
+                          </span>
+                        </h2>
+                        <% } %>
+
+                        <!-- District -->
+                        <% if(user.district_name !==''  && user.district_name !==undefined && user.district_name !==null) { %>
+                        <h2 class="sm:w-1/2 w-full flex jutify-start items-center text-left text-black md:text-sm text-xs my-1 sm:px-1">
+                          District:
+                          <span class="text-blue-700 pl-1 district_name_preview">
+
+                            <%= user.district_name %>
+
+                          </span>
+                        </h2>
+                        <% } %>
+
+                        <!-- State/UT -->
+                        <% if(user.state_or_ut_name !=='' && user.state_or_ut_name !==undefined &&  user.state_or_ut_name !==null) { %>
+                        <h2 class="sm:w-1/2 w-full flex jutify-start items-center text-left text-black md:text-sm text-xs my-1 sm:px-1">
+                          State/UT
+                          Name:
+                          <span class="text-blue-700 pl-1 state_or_ut_name_preview">
+
+                            <%= user.state_or_ut_name %>
+
+                          </span>
+                        </h2>
+                        <% } %>
+
+                        <!-- Website -->
+                        <% if(user.college_website !=='' && user.college_website !==undefined && user.college_website !==null) { %>
+                        <h2 class="sm:w-1/2 w-full flex jutify-start items-center text-left text-black md:text-sm text-xs my-1 sm:px-1">
+                          Website:
+                          <span class="text-blue-700 pl-1 website_preview">
+
+                            <%= user.college_website %>
+
+                          </span>
+                        </h2>
+                        <% } %>
+
+                        <!-- College Rating -->
+                        <% if(user.college_rating !=='' && user.college_rating !==undefined && user.college_rating !==null) { %>
+                        <h2 class="sm:w-1/2 w-full flex jutify-start items-center text-left text-black md:text-sm text-xs my-1 sm:px-1">
+                          College
+                          Rating:
+                          <span class="text-blue-700 pl-1 college_rating_preview">
+
+                            <%= user.college_rating %>
+
+                          </span>
+                        </h2>
+                        <% } %>
+
+                        <!-- Brochure -->
+                        <% if(user.college_details_brochure!=='' &&user.college_details_brochure!==undefined&&user.college_details_brochure!==null){ %>
+                        <h2 class="sm:w-1/2 w-full flex jutify-start items-center text-left text-black md:text-sm text-xs my-1 sm:px-1">
+                          Brochure:
+                          <span class="bg-white hover:bg-red-600 text-red-600 hover:text-white ml-1 website_preview border border-red-600 rounded-sm">
+
+                            <a href="<%= user.college_details_brochure ? user.college_details_brochure : 'N/A' %>" class="p-1" download>Download
+                              Brochure</a>
+
+
+                          </span>
+                        </h2>
+                        <% } %>
+                      </div>
+                    </div>
+                    <% } %>
+
+
+                    <!-- College Fees -->
+                    <% if((user.engineering_fees !=='' && user.engineering_fees !==undefined && user.engineering_fees !==null) ||
+                     (user.medical_fees !=='' && user.medical_fees !==undefined &&  user.medical_fees !==null) || 
+                     (user.law_fees !=='' && user.law_fees !==undefined && user.law_fees !==null) || 
+                     (user.management_fees !=='' && user.management_fees !==undefined && user.management_fees !==null) ||
+                     (user.fashion_design_fees !=='' && user.fashion_design_fees !==undefined && user.fashion_design_fees !==null) ||
+                     (user.pharmacy_fees !=='' && user.pharmacy_fees !==undefined && user.pharmacy_fees !==null) ) { %>
+                    <div class="w-full flex justify-start items-center flex-col md:mb-4 mb-2">
+                      <h2 class="md:w-11/12 w-full sm:text-sm text-xs md:font-semibold font-medium text-left my-1">
+                        College Fees
+                      </h2>
+
+                      <div class="md:w-11/12 w-full flex justify-between items-center flex-wrap bg-white md:p-4 p-2 text-black md:rounded-md sm:rounded-sm rounded">
+
+                        <% if(user.engineering_fees !=='' && user.engineering_fees !==undefined && user.engineering_fees !==null) { %>
+                        <div class="sm:w-1/2 w-full flex justify-start items-center flex-row md:text-sm text-xs font-medium text-left my-1 latest_news_and_events">
+
+                          <h2 class="w-full text-black text-left">
+                            Engineering: <span class="text-blue-700 font-normal engineering_fees_preview">
+                              <%= user.engineering_fees ? user.engineering_fees : 'N/A' %>
+                            </span>
+                          </h2>
+                        </div>
+                        <% } %>
+
+                        <% if(user.medical_fees !=='' && user.medical_fees !==undefined && user.medical_fees !==null) { %>
+                        <div class="sm:w-1/2 w-full flex justify-start items-center flex-row md:text-sm text-xs font-medium text-left my-1 latest_news_and_events">
+
+                          <h2 class="w-full text-black text-left">
+                            Medical: <span class="text-blue-700 font-normal engineering_fees_preview">
+                              <%= user.medical_fees ? user.medical_fees : 'N/A' %>
+                            </span>
+                          </h2>
+                        </div>
+                        <% } %>
+
+                        <% if(user.law_fees !=='' && user.law_fees !==undefined && user.law_fees !==null) { %>
+                        <div class="sm:w-1/2 w-full flex justify-start items-center flex- md:text-sm text-xs font-medium text-left my-1 latest_news_and_events">
+                          <h2 class="w-full text-black text-left">
+                            Law: <span class="text-blue-700 font-normal law_fees_preview">
+                              <%= user.law_fees ?  user.law_fees : 'N/A' %>
+                            </span>
+                          </h2>
+                        </div>
+                        <% } %>
+
+                        <% if(user.management_fees !=='' && user.management_fees !==undefined && user.management_fees !==null) { %>
+                        <div class="sm:w-1/2 w-full flex justify-start items-center flex-row md:text-sm text-xs font-medium text-left my-1 latest_news_and_events">
+                          <h2 class="w-full text-black text-left">
+                            Management:
+                            <span class="text-blue-700 font-normal management_fees_preview">
+                              <%= user.management_fees ? user.management_fees : 'N/A' %>
+                            </span>
+                          </h2>
+                        </div>
+                        <% } %>
+
+                        <% if(user.fashion_design_fees !=='' && user.fashion_design_fees !==undefined && user.fashion_design_fees !==null) { %>
+                        <div class="sm:w-1/2 w-full flex justify-start items-center flex-row md:text-sm text-xs font-medium text-left my-1 latest_news_and_events">
+                          <h2 class="w-full text-black text-left">
+                            Fashion
+                            Design:
+                            <span class="text-blue-700 font-normal management_fees_preview">
+                              <%= user.fashion_design_fees ? user.fashion_design_fees : 'N/A' %>
+                            </span>
+                          </h2>
+                        </div>
+                        <% } %>
+
+                        <% if(user.pharmacy_fees !=='' && user.pharmacy_fees !==undefined && user.pharmacy_fees !==null) { %>
+                        <div class="sm:w-1/2 w-full flex justify-start items-center flex-row md:text-sm text-xs font-medium text-left my-1 latest_news_and_events">
+                          <h2 class="w-full text-black text-left">
+                            Pharmacy:
+                            <span class="text-blue-700 font-normal management_fees_preview">
+                              <%= user.pharmacy_fees ? user.pharmacy_fees : 'N/A' %>
+                            </span>
+                          </h2>
+                        </div>
+                        <% } %>
+                        <!-- </div> -->
+                      </div>
+                    </div>
+
+                    <% } %>
+
+                    <!-- Description -->
+                    <% if(user.college_description !=='' && user.college_description !==undefined && user.college_description !==null) { %>
+                    <div class="w-full flex justify-center items-center flex-col md:mb-4 mb-2">
+                      <h2 class="md:w-11/12 w-full sm:text-sm text-xs md:font-semibold font-medium text-left my-1">
+                        Description
+                      </h2>
+
+                      <div class="md:w-11/12 w-full flex justify-start items-center flex-row md:text-sm text-xs bg-white md:p-4 p-2 text-black md:rounded-md sm:rounded-sm rounded latest_news_and_events">
+
+                        <p class="w-full flex text-black text-left my-1 college_description_read_less_preview">
+                          <span>
+                            <%= user.college_description ? user.college_description.slice(0, 400) : 'N/A' %>...<span class="text-purple-700 cursor-pointer" onclick="read_more_btn()">Read
+                              More</span>
+                          </span>
+                        </p>
+
+                        <p class="w-full hidden text-black text-left my-1 college_description_read_more_preview">
+                          <span>
+                            <%= user.college_description ? user.college_description : 'N/A' %>
+                            ...<span class="text-purple-700 cursor-pointer" onclick="read_less_btn()">...Read
+                              Less</span>
+                          </span>
+                        </p>
+
+                      </div>
+
+                    </div>
+                    <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="lg:w-3/12 lg:flex hidden h-full justify-center items-center flex-col md:mt-4 sm:mt-3 mt-2">
+              <div class="w-11/12">
+                <!-- image_resolution_value === '1024px' -->
+                <% advertisement.map((item, index)=> { %>
+                <% if(item.image_resolution_value==='1024px' ){ %>
+                <div class="w-full lg:flex hidden h-full justify-center items-center flex-col">
+                  <span class="w-full h-full flex justify-center items-center">
+                    <img src="<%= item.filename %>" class="min-w-full min-h-full object-fill
+                                             aspect-auto advertisementPhoto" alt="" />
+                  </span>
+                </div>
+                <% } %>
+                <% }) %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</main>
+
+<script>
+  function editFunc() {
+    if (document.querySelector('.editBoard').style.display === 'flex') {
+      document.querySelector('.editBoard').style.display = 'none'
+      document.querySelector('.previewBoard').style.display = 'flex';
+    } else {
+      document.querySelector('.editBoard').style.display = 'flex'
+      document.querySelector('.previewBoard').style.display = 'none';
+    }
+  }
+
+  function previewFunc() {
+    if (document.querySelector('.previewBoard').style.display === 'flex') {
+      document.querySelector('.previewBoard').style.display = 'none';
+      document.querySelector('.editBoard').style.display = 'flex'
+    } else {
+      document.querySelector('.editBoard').style.display = 'none'
+      document.querySelector('.previewBoard').style.display = 'flex';
+    }
+
+  }
+
+  const college_description_read_more_preview = document.querySelector('.college_description_read_more_preview');
+  const college_description_read_less_preview = document.querySelector('.college_description_read_less_preview');
+
+  function read_more_btn() {
+    if (college_description_read_less_preview.style.display === 'none') {
+      college_description_read_less_preview.style.display = 'flex';
+      college_description_read_more_preview.style.display = 'none'
+    } else {
+      college_description_read_more_preview.style.display = 'flex';
+      college_description_read_less_preview.style.display = 'none';
+    }
+  }
+
+  function read_less_btn() {
+    if (college_description_read_more_preview.style.display === 'flex') {
+      college_description_read_more_preview.style.display = 'none';
+      college_description_read_less_preview.style.display = 'flex'
+    } else {
+      college_description_read_more_preview.style.display = 'flex'
+      college_description_read_less_preview.style.display = 'none';
+    }
+  }
+
+  const many_more_entrance_exam = document.querySelector('#many_more_entrance_exam');
+
+  if (many_more_entrance_exam !== '' && many_more_entrance_exam !== undefined && many_more_entrance_exam !== null) {
+    const entrance_exams_hidden = document.querySelector('.entrance_exams_hidden');
+    many_more_entrance_exam.addEventListener("mouseover", function() {
+      if (entrance_exams_hidden.style.display === 'flex') {
+        entrance_exams_hidden.style.display = 'none';
+        entrance_exams_hidden.style.position = "absolute";
+      } else {
+        entrance_exams_hidden.style.display = 'flex';
+        entrance_exams_hidden.style.position = "absolute";
+      }
+      // }
+    });
+
+    many_more_entrance_exam.addEventListener("mouseout", function() {
+      if (entrance_exams_hidden.style.display === 'none') {
+        entrance_exams_hidden.style.display = 'flex';
+        entrance_exams_hidden.style.position = "absolute";
+      } else {
+        entrance_exams_hidden.style.display = 'none';
+        entrance_exams_hidden.style.position = "absolute";
+      }
+    });
+  }
+
+  const many_more_courses_offered = document.querySelector('#many_more_courses_offered');
+
+  if (many_more_courses_offered !== '' && many_more_courses_offered !== undefined && many_more_courses_offered !== null) {
+    const courses_offered_hidden = document.querySelector('.courses_offered_hidden');
+    many_more_courses_offered.addEventListener("mouseover", function() {
+      if (courses_offered_hidden.style.display === 'flex') {
+        courses_offered_hidden.style.display = 'none';
+        courses_offered_hidden.style.position = "absolute";
+      } else {
+        courses_offered_hidden.style.display = 'flex';
+        courses_offered_hidden.style.position = "absolute";
+      }
+      // }
+    });
+
+    many_more_courses_offered.addEventListener("mouseout", function() {
+      if (courses_offered_hidden.style.display === 'none') {
+        courses_offered_hidden.style.display = 'flex';
+        courses_offered_hidden.style.position = "absolute";
+      } else {
+        courses_offered_hidden.style.display = 'none';
+        courses_offered_hidden.style.position = "absolute";
+      }
+    });
+  }
+</script>
+
+<!-- Footer  -->
+<%- include('partials/footer') %>

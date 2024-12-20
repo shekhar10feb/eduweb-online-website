@@ -1,0 +1,1260 @@
+<!-- ================ -->
+<!--   ProfileForAdmin Page -->
+<!-- ================ -->
+
+<!-- Header -->
+<%- include ('partials/headerForProfileAndSettingsForAdmin') %>
+    <main class="w-full h-full flex justify-end items-start flex-row lg:mt-16 mt-8">
+
+        <!-- Sidebar for Desktop Version -->
+        <div
+            class="xl:w-1/5 lg:w-1/4 h-full lg:flex hidden justify-start items-center flex-col bg-white fixed left-0 top-12 border border-l-gray-400">
+            <!-- Admin -->
+            <div class="w-4/5 flex justify-center items-center flex-col xl:my-4 lg:my-3">
+                <div class="w-3/5 bg-yellow-300 rounded-md shadow-xl">
+                    <img src="<%= user.profile_image %>" class="w-full object-contain aspect-square rounded-md"
+                        alt="" />
+                </div>
+                <div class="w-3/5 flex justify-center items-center flex-col xl:mt-2 lg:mt-1">
+                    <h1 class="text-base font-semibold">
+                        <%= user.name %>
+                    </h1>
+                    <p class="text-sm text-gray-600 ml-1 italic">(<%= user.designation %>)</p>
+                </div>
+            </div>
+            <ul class="w-full flex justify-start items-center flex-col text-sm font-semibold">
+                <li class="w-full flex justify-center items-center">
+                    <button
+                        class="w-4/5 text-left bg-green-700 text-white xl:p-2 lg:py-0.5 lg:px-2 md:rounded-md rounded-sm shadow border border-gray-300 list_of_students_button featuredBtn"
+                        id="0" onclick="click_button(event)">
+                        List of Students
+                    </button>
+                </li>
+                <li class="w-full flex justify-center items-center mt-1">
+                    <button
+                        class="w-4/5 text-left bg-gray-100 xl:p-2 lg:py-0.5 lg:px-2 md:rounded-md rounded-sm shadow-md border border-gray-300 list_of_conselling_of_users_button featuredBtn"
+                        id="1" onclick="click_button(event)">
+                        List of Conselling of Users
+                    </button>
+                </li>
+                <li class="w-full flex justify-center items-center mt-1">
+                    <button
+                        class="w-4/5 text-left bg-gray-100 xl:p-2 lg:py-0.5 lg:px-2 md:rounded-md rounded-sm shadow-md border border-gray-300 list_of_authors_button featuredBtn"
+                        id="2" onclick="click_button(event)">
+                        List of Authors
+                    </button>
+                </li>
+                <li class="w-full flex justify-center items-center mt-1">
+                    <button
+                        class="w-4/5 text-left bg-gray-100 xl:p-2 lg:py-0.5 lg:px-2 md:rounded-md rounded-sm shadow-md border border-gray-300 list_of_members_button featuredBtn"
+                        id="3" onclick="click_button(event)">
+                        List of Members
+                    </button>
+                </li>
+                <li class="w-full flex justify-center items-center mt-1">
+                    <button
+                        class="w-4/5 text-left bg-gray-100 xl:p-1 lg:py-0.5 lg:px-2 md:rounded-md rounded-sm shadow-md border border-gray-300 uploading_question_papers_button featuredBtn"
+                        id="4" onclick="click_button(event)">
+                        List of Colleges
+                    </button>
+                </li>
+                <li class="w-full flex justify-center items-center mt-1">
+                    <button
+                        class="w-4/5 text-left bg-gray-100 xl:p-1 lg:py-0.5 lg:px-2 md:rounded-md rounded-sm shadow-md border border-gray-300 uploading_question_papers_button featuredBtn"
+                        id="5" onclick="click_button(event)">
+                        Uploading Question Papers
+                    </button>
+                </li>
+                <li class="w-full flex justify-center items-center mt-1">
+                    <button
+                        class="w-4/5 text-left bg-gray-100 xl:p-1 lg:py-0.5 lg:px-2 md:rounded-md rounded-sm shadow-md border border-gray-300 list_of_question_papers_button featuredBtn"
+                        id="6" onclick="click_button(event)">
+                        List Question Papers
+                    </button>
+                </li>
+                <li class="w-full flex justify-center items-center mt-1">
+                    <button
+                        class="w-4/5 text-left bg-gray-100 xl:p-1 lg:py-0.5 lg:px-2 md:rounded-md rounded-sm shadow-md border border-gray-300 uploading_ads_button featuredBtn"
+                        id="7" onclick="click_button(event)">
+                        Uploading Ads
+                    </button>
+                </li>
+                <li class="w-full flex justify-center items-center mt-1">
+                    <button
+                        class="w-4/5 text-left bg-gray-100 xl:p-1 lg:py-0.5 lg:px-2 md:rounded-md rounded-sm shadow-md border border-gray-300 add_member_button featuredBtn"
+                        id="8" onclick="click_button(event)">
+                        Add Member
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div class="xl:w-4/5 lg:w-3/4 w-full h-full flex justify-center items-center flex-col">
+            <!-- Menubar for Mobile Version -->
+            <div
+                class="w-full h-full lg:hidden flex justify-center items-center flex-col bg-white md:mt-6 sm:mt-8 mt-4">
+                <div class="w-11/12 flex justify-center items-center flex-row bg-blue-800 hover:bg-blue-700 text-white md:p-1 rounded-md select-none cursor-pointer"
+                    onclick="showMenu1()">
+                    <button type="button" class="md:text-base sm:text-sm text-xs text-center sm:mr-2 mr-1">Menu</button>
+                    <span class="flex md:text-xl sm:text-lg text-base arrowDown">&darr;</span>
+                    <span class="hidden md:text-xl sm:text-lg text-base arrowUp">&uarr;</span>
+                </div>
+                <ul class="w-11/12 hidden justify-around items-center flex-wrap sm:gap-2 gap-1 md:text-base sm:text-sm text-xs bg-white absolute md:top-11 top-7 sm:p-4 p-1 mt-2 menuCard md:shadow-md sm:shadow-sm shadow">
+                    <li class="w-full sm:w-5/12 flex justify-center items-center">
+                        <button
+                            class="w-full text-left bg-green-700 text-white sm:p-1 sm:px-3 px-2 md:rounded-md rounded-sm shadow border border-gray-300 list_of_students_button featuredBtn"
+                            id="0" onclick="click_button(event)">
+                            List of Students
+                        </button>
+                    </li>
+                    <li class="w-full sm:w-5/12 flex justify-center items-center">
+                        <button
+                            class="w-full text-left bg-gray-100 sm:p-1 sm:px-3 px-2 md:rounded-md rounded-sm shadow-md border border-gray-300 list_of_conselling_of_users_button featuredBtn"
+                            id="1" onclick="click_button(event)">
+                            List of Conselling of Users
+                        </button>
+                    </li>
+                    <li class="w-full sm:w-5/12 flex justify-center items-center">
+                        <button
+                            class="w-full text-left bg-gray-100 sm:p-1 sm:px-3 px-2 md:rounded-md rounded-sm shadow-md border border-gray-300 list_of_authors_button featuredBtn"
+                            id="2" onclick="click_button(event)">
+                            List of Authors
+                        </button>
+                    </li>
+                    <li class="w-full sm:w-5/12 flex justify-center items-center">
+                        <button
+                            class="w-full text-left bg-gray-100 sm:p-1 sm:px-3 px-2 md:rounded-md rounded-sm shadow-md border border-gray-300 list_of_members_button featuredBtn"
+                            id="3" onclick="click_button(event)">
+                            List of Members
+                        </button>
+                    </li>
+                    <li class="w-full sm:w-5/12 flex justify-center items-center">
+                        <button
+                            class="w-full text-left bg-gray-100 sm:p-1 sm:px-3 px-2 md:rounded-md rounded-sm shadow-md border border-gray-300 list_of_members_button featuredBtn"
+                            id="4" onclick="click_button(event)">
+                            List of Colleges
+                        </button>
+                    </li>
+                    <li class="w-full sm:w-5/12 flex justify-center items-center">
+                        <button
+                            class="w-full text-left bg-gray-100 sm:p-1 sm:px-3 px-2 md:rounded-md rounded-sm shadow-md border border-gray-300 uploading_question_papers_button featuredBtn"
+                            id="5" onclick="click_button(event)">
+                            Uploading Question Papers
+                        </button>
+                    </li>
+                    <li class="w-full sm:w-5/12 flex justify-center items-center">
+                        <button
+                            class="w-full text-left bg-gray-100 sm:p-1 sm:px-3 px-2 md:rounded-md rounded-sm shadow-md border border-gray-300 list_of_question_papers_button featuredBtn"
+                            id="6" onclick="click_button(event)">
+                            List Question Papers
+                        </button>
+                    </li>
+                    <li class="w-full sm:w-5/12 flex justify-center items-center">
+                        <button
+                            class="w-full text-left bg-gray-100 sm:p-1 sm:px-3 px-2 md:rounded-md rounded-sm shadow-md border border-gray-300 uploading_ads_button featuredBtn"
+                            id="7" onclick="click_button(event)">
+                            Uploading Ads
+                        </button>
+                    </li>
+                    <li class="w-full sm:w-5/12 flex justify-center items-center">
+                        <button
+                            class="w-full text-left bg-gray-100 sm:p-1 sm:px-3 px-2 md:rounded-md rounded-sm shadow-md border border-gray-300 add_member_button featuredBtn"
+                            id="8" onclick="click_button(event)">
+                            Add Member
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="w-full h-full flex justify-center items-center flex-col lg:p-4 md:3 sm:p-2 p-1">
+
+                <!-- Admin -->
+                <div class="w-full lg:hidden flex justify-start items-center flex-row bg-gray-200 my-2 sm:p-2 p-1">
+                    <div
+                        class="md:w-20 sm:w-16 w-12 h-full bg-yellow-300 md:rounded-md sm:rounded rounded md:mx-5 sm:mx-2 mx-1">
+                        <img src="<%= user.profile_image %>" class="w-full object-contain aspect-square" alt="" />
+                    </div>
+                    <div class="md:w-3/4 w-3/4 flex justify-start items-center flex-row lg:mt-2">
+                        <h1 class="lg:text-lg md:text-base text-sm lg:font-bold font-semibold">
+                            <%= user.name %>
+                        </h1>
+                        <p class="md:text-sm text-xs mx-2 text-gray-600 italic">(<%= user.designation %>)</p>
+                    </div>
+                </div>
+
+                <!-- id="0" List of Students -->
+                <div class="w-full h-full flex justify-start items-start flex-col bg-white lg:py-0 lg:px-2 md:px-4 md:py-2 sm:p-2 p-1 md:m-2 sm:m-1 overflow-auto featuredDiv"
+                    id="0">
+                    <h1
+                        class="text-gray-700 lg:text-lg md:text-base text-sm font-bold lg:mt-0 md:my-2 my-1 text_size_of_title">
+                        List of Students</h1>
+
+                    <table class="w-full border border-gray-700">
+                        <tr>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                SNo.</th>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                Name of the student</th>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                Email-id</th>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                Mobile Number</th>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                Interest</th>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                Action</th>
+                        </tr>
+
+                        <% dataTableOfUser.map((item, index)=> { %>
+                            <tr class="userInfo">
+                                <td
+                                    class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                    <%= index + 1 %>.
+                                </td>
+                                <td
+                                    class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                    <%= item.name %>
+                                </td>
+                                <td
+                                    class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                    <%= item.email %>
+                                </td>
+                                <td
+                                    class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                    <%= item.tel %>
+                                </td>
+                                <td
+                                    class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                    <%= item.interest %>
+                                </td>
+                                <td
+                                    class="text-center lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                    <div>
+                                        <button type="submit"
+                                            class="text-purple-700 underline cursor-pointer deleteUserBtn">Delete</button>
+                                    </div>
+                                    <div class="w-full h-screen hidden justify-center items-center flex-col bg-black-200 fixed lg:top-10 top-8 left-0 bg-transparent userDeleteAsker"
+                                        style="background-color: #00000085;">
+                                        <div
+                                            class="flex justify-center items-center flex-col bg-purple-500 p-6 border border-white">
+                                            <div class="text-white mb-2">
+                                                <h2>Do you surely want to delete the User Information?</h2>
+                                            </div>
+                                            <div>
+                                                <button type="submit"
+                                                    class="bg-white mx-2 p-1 px-3 rounded-sm answer_is_yes_for_user_btn">Yes</button>
+                                                <button type="submit"
+                                                    class="bg-white mx-2 p-1 px-3 rounded-sm answer_is_no_for_user_btn">No</button>
+                                            </div>
+                                            <p class="hidden userId">
+                                                <%= item._id %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <% }) %>
+
+
+                    </table>
+                </div>
+
+                <!-- id="1" List of Conselling Of Users -->
+                <div class="w-full h-full hidden justify-start items-start flex-col bg-white lg:py-0 lg:px-2 md:px-4 md:py-2 sm:p-2 p-1 md:m-2 sm:m-1 overflow-auto featuredDiv"
+                    id="1">
+                    <h1
+                        class="text-gray-700 lg:text-lg md:text-base text-sm font-bold lg:mt-0 md:my-2 my-1 text_size_of_title">
+                        List of Conselling of Users</h1>
+
+                    <table class="w-full border border-gray-700">
+                        <tr>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                SNo.</th>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                Name of the student</th>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                Mobile Number</th>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                Interest</th>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                Status</th>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                Action</th>
+                        </tr>
+
+
+                        <% dataTableOfConsellingOfUser.map((item, index)=> { %>
+                            <tr class="Conselling_of_user_Info">
+                                <td
+                                    class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                    <%= index + 1 %>.
+                                        <p class="hidden id_of_conselling_of_user">
+                                            <%= item._id %>
+                                        </p>
+                                </td>
+                                <td
+                                    class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                    <%= item.name %>
+                                </td>
+                                <td
+                                    class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                    <%= item.tel %>
+                                </td>
+                                <td
+                                    class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                    <%= item.selectedOption %>
+                                </td>
+                                <td
+                                    class="text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                    <div class="flex justify-around items-center">
+                                        <p class="w-16 flex justify-start statusStoredHere valueFromDatabase">
+                                            <%= item.status %>
+                                        </p>
+                                        <p class="w-16 hidden justify-start statusStoredFromSelectedOption">
+
+                                        </p>
+                                        <select name="selectedOption" id="interest"
+                                            class="bg-white rounded-sm p-0.5 cursor-pointer status_of_conselling_of_user">
+                                            <option value="">Please select</option>
+                                            <option value="New" class="newStatus"></option>
+                                            <option value="Current" class="currentStatus"></option>
+                                            <option value="Worked" class="workedStatus"></option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td
+                                    class="text-center lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+
+                                    <div>
+                                        <button type="submit"
+                                            class="text-purple-700 underline cursor-pointer delete_Conselling_Of_User_Btn">Delete</button>
+                                    </div>
+                                    <div class="w-full h-screen hidden justify-center items-center flex-col bg-black-200 fixed lg:top-10 top-8 left-0 bg-transparent rounded-sm Conselling_Of_User_Delete_Asker"
+                                        style="background-color: #00000085;">
+                                        <div
+                                            class="flex justify-center items-center flex-col bg-purple-500 p-6 border border-white">
+                                            <div class="text-white mb-2">
+                                                <h2>Do you surely want to delete the Conselling of User Information?
+                                                </h2>
+                                            </div>
+                                            <div>
+                                                <button type="submit"
+                                                    class="bg-white mx-2 p-1 px-3 rounded-sm answer_is_yes_for_Conselling_Of_User_btn">Yes</button>
+                                                <button type="submit"
+                                                    class="bg-white mx-2 p-1 px-3 rounded-sm answer_is_no_for_Conselling_Of_User_btn">No</button>
+                                            </div>
+                                            <p class="hidden Conselling_Of_User_Id">
+                                                <%= item._id %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <% }) %>
+
+                    </table>
+                </div>
+
+                <!-- id="2" List of Authors -->
+                <div class="w-full h-full hidden justify-start items-start flex-col bg-white lg:py-0 lg:px-2 md:px-4 md:py-2 sm:p-2 p-1 md:m-2 sm:m-1 overflow-auto featuredDiv"
+                    id="2">
+                    <h1
+                        class="text-gray-700 lg:text-lg md:text-base text-sm font-bold lg:mt-0 md:my-2 my-1 text_size_of_title">
+                        List of Authors</h1>
+
+                    <table class="w-full border border-gray-700">
+                        <tr>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                SNo.</th>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                Name of the student</th>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                Email-id</th>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                Mobile Number</th>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                Action</th>
+                        </tr>
+
+                        <% dataTableOfAuthor.map((item, index)=> { %>
+                            <tr class="Author_Info">
+                                <td
+                                    class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                    <%= index + 1 %>.
+                                </td>
+                                <td
+                                    class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                    <%= item.name %>
+                                </td>
+                                <td
+                                    class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                    <%= item.email %>
+                                </td>
+                                <td
+                                    class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                    <%= item.tel %>
+                                </td>
+                                <td
+                                    class="text-center lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+
+                                    <div>
+                                        <button type="submit"
+                                            class="text-purple-700 underline cursor-pointer delete_Author_Btn">Delete</button>
+                                    </div>
+                                    <div class="w-full h-screen hidden justify-center items-center flex-col bg-black-200 fixed lg:top-10 top-8 left-0 bg-transparent Author_Delete_Asker"
+                                        style="background-color: #00000085;">
+                                        <div
+                                            class="flex justify-center items-center flex-col bg-purple-500 p-6 border border-white">
+                                            <div class="text-white mb-2">
+                                                <h2>Do you surely want to delete the Author Information?</h2>
+                                            </div>
+                                            <div>
+                                                <button type="submit"
+                                                    class="bg-white mx-2 p-1 px-3 rounded-sm answer_is_yes_for_Author_btn">Yes</button>
+                                                <button type="submit"
+                                                    class="bg-white mx-2 p-1 px-3 rounded-sm answer_is_no_for_Author_btn">No</button>
+                                            </div>
+                                            <p class="hidden Author_Id">
+                                                <%= item._id %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <% }) %>
+
+                    </table>
+                </div>
+
+                <!-- id="3" List of Members -->
+                <div class="w-full h-full hidden justify-start items-start flex-col bg-white lg:py-0 lg:px-2 md:px-4 md:py-2 sm:p-2 p-1 md:m-2 sm:m-1 overflow-auto featuredDiv"
+                    id="3">
+                    <h1
+                        class="text-gray-700 lg:text-lg md:text-base text-sm font-bold lg:mt-0 md:my-2 my-1 text_size_of_title">
+                        List of Members</h1>
+
+                    <table class="w-full border border-gray-700">
+                        <tr>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                SNo.</th>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                Name of the student</th>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                Email-id</th>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                Mobile Number</th>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                Designation</th>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                Action</th>
+                        </tr>
+
+                        <% dataTableOfMember.map((item, index)=> { %>
+                            <%if (item.designation !=='admin' ) { %>
+                                <tr class="Member_Info">
+                                    <td
+                                        class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                        <%= index + 1 %>.
+                                    </td>
+                                    <td
+                                        class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                        <%= item.name %>
+                                    </td>
+                                    <td
+                                        class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                        <%= item.email %>
+                                    </td>
+                                    <td
+                                        class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                        <%= item.tel %>
+                                    </td>
+                                    <td
+                                        class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                        <%= item.designation %>
+                                    </td>
+                                    <td
+                                        class="text-center lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+
+                                        <div>
+                                            <button type="submit"
+                                                class="text-purple-700 underline cursor-pointer delete_Member_Btn">Delete</button>
+                                        </div>
+                                        <div class="w-full h-screen hidden justify-center items-center flex-col bg-black-200 fixed lg:top-10 top-8 left-0 bg-transparent Member_Delete_Asker"
+                                            style="background-color: #00000085;">
+                                            <div
+                                                class="flex justify-center items-center flex-col bg-purple-500 p-6 border border-white">
+                                                <div class="text-white mb-2">
+                                                    <h2>Do you surely want to delete the Member Information?</h2>
+                                                </div>
+                                                <div>
+                                                    <button type="submit"
+                                                        class="bg-white mx-2 p-1 px-3 rounded-sm answer_is_yes_for_Member_btn">Yes</button>
+                                                    <button type="submit"
+                                                        class="bg-white mx-2 p-1 px-3 rounded-sm answer_is_no_for_Member_btn">No</button>
+                                                </div>
+                                                <p class="hidden Member_Id">
+                                                    <%= item._id %>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <% } %>
+                                    <% }) %>
+
+                    </table>
+                </div>
+
+                <!-- id="4" List of Colleges -->
+                <div class="w-full h-full hidden justify-start items-start flex-col bg-white lg:py-0 lg:px-2 md:px-4 md:py-2 sm:p-2 p-1 md:m-2 sm:m-1 overflow-auto featuredDiv"
+                    id="4">
+                    <h1
+                        class="text-gray-700 lg:text-lg md:text-base text-sm font-bold lg:mt-0 md:my-2 my-1 text_size_of_title">
+                        List of Colleges</h1>
+
+                    <table class="w-full border border-gray-700">
+                        <tr>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                SNo.</th>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                Name of the College</th>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                Email-id</th>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                Mobile Number</th>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                Verification</th>
+                            <th
+                                class="text-gray-700 sm:font-semibold font-bold border border-gray-700 text_size_of_subtitle">
+                                Action</th>
+                        </tr>
+
+                        <% college_list.map((item, index)=> { %>
+                            <%if (item.designation !=='admin' ) { %>
+                                <tr class="College_Info">
+                                    <td
+                                        class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                        <%= index + 1 %>.
+                                            <p class="hidden id_of_college">
+                                                <%= item._id %>
+                                            </p>
+                                    </td>
+                                    <td
+                                        class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                        <%= item.name %>
+                                    </td>
+                                    <td
+                                        class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                        <%= item.email %>
+                                    </td>
+                                    <td
+                                        class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                        <%= item.tel %>
+                                    </td>
+                                    <!-- <td
+                                        class="text-center text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                        <%= item.preference %>
+                                    </td> -->
+                                    <td
+                                        class="text-gray-600 lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+                                        <div class="flex justify-around items-center">
+                                            <p
+                                                class="w-16 flex justify-start verification_processStoredHere value_Of_verification_process_FromDatabase">
+                                                <%= item.verification_process %>
+                                            </p>
+                                            <p
+                                                class="w-16 hidden justify-start verification_processStoredFromSelectedOption">
+
+                                            </p>
+                                            <select name="selectedOption" id="interest"
+                                                class="bg-white rounded-sm p-0.5 border border-black cursor-pointer verification_process_of_college">
+                                                <option value="">Please select</option>
+                                                <option value="false" class="false_verification_process"></option>
+                                                <option value="true" class="true_verification_process"></option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td
+                                        class="text-center lg:text-base md:text-sm sm:font-medium font-semibold border border-gray-500 text_size_of_content">
+
+                                        <div>
+                                            <button type="submit"
+                                                class="text-purple-700 underline cursor-pointer delete_College_Btn">Delete</button>
+                                        </div>
+                                        <div class="w-full h-screen hidden justify-center items-center flex-col bg-black-200 fixed lg:top-10 top-8 left-0 bg-transparent College_Delete_Asker"
+                                            style="background-color: #00000085;">
+                                            <div
+                                                class="flex justify-center items-center flex-col bg-purple-500 p-6 border border-white">
+                                                <div class="text-white mb-2">
+                                                    <h2>Do you surely want to delete the College Information?</h2>
+                                                </div>
+                                                <div>
+                                                    <button type="submit"
+                                                        class="bg-white mx-2 p-1 px-3 rounded-sm answer_is_yes_for_College_btn">Yes</button>
+                                                    <button type="submit"
+                                                        class="bg-white mx-2 p-1 px-3 rounded-sm answer_is_no_for_College_btn">No</button>
+                                                </div>
+                                                <p class="hidden College_Id">
+                                                    <%= item._id %>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <% } %>
+                                    <% }) %>
+                    </table>
+                </div>
+
+                <!-- id="5" Uploading Question Papers -->
+                <div class="w-full h-full hidden justify-around items-center bg-white lg:py-24 md:py-16 px-1 py-10 md:p-1 md:m-2 uploading_question_paper_div featuredDiv"
+                    id="5">
+
+                    <div class="sm:w-3/5 w-full flex justify-center items-center">
+                        <%- include ('uploadingQuestionPaper') %>
+                    </div>
+                </div>
+
+                <!-- id="6" List of Question Papers -->
+                <div class="w-full h-full hidden justify-start items-start flex-col bg-white lg:py-0 lg:px-2 md:px-4 md:py-2 sm:p-2 p-1 md:m-2 sm:m-1 overflow-auto featuredDiv"
+                    id="6">
+                    <%- include ('displayQuestionPaper') %>
+                </div>
+
+                <!-- id="7" Uploading Ads -->
+                <div class="w-full h-full hidden justify-around lg:items-start items-center lg:flex-row flex-col bg-white lg:p-24 md:p-6 sm:p-4 p-2 md:py-12 sm:py-10 py-5 m-1 featuredDiv"
+                    id="7">
+                    <div class="lg:w-2/5 md:w-3/5 sm:w-4/5 w-full flex justify-center items-center">
+                        <%- include ('uploadingAds') %>
+                    </div>
+                    <div class="lg:w-2/5 md:w-3/5 sm:w-4/5 w-full flex justify-center items-center lg:mt-0 mt-4">
+                        <%- include ('displayAds') %>
+                    </div>
+                </div>
+
+                <!-- id="8" Add Member -->
+                <div class="w-full h-full hidden justify-center items-center px-2 py-2 bg-white featuredDiv" id="8">
+                    <%- include ('registerForMemberFromAdmin') %>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Script Tag -->
+    <script>
+        // Show Menu 
+        function showMenu1() {
+            if (document.querySelector(".menuCard").style.display === 'flex' && document.querySelector(".arrowDown").style.display === 'none') {
+                document.querySelector(".menuCard").style.display = 'none';
+                document.querySelector(".arrowDown").style.display = 'flex';
+                document.querySelector(".arrowUp").style.display = 'none';
+            } else {
+                document.querySelector(".menuCard").style.display = 'flex';
+                document.querySelector(".arrowDown").style.display = 'none';
+                document.querySelector(".arrowUp").style.display = 'flex';
+            }
+        }
+
+        function click_button(event) {
+            event.preventDefault();
+
+            // Get all the buttons into a nodelist 
+            let featuredBtns = document.querySelectorAll(".featuredBtn");
+
+            for (let i = 0; i < featuredBtns.length; i++) {
+                if (event.target.id === featuredBtns[i].id) {
+                    featuredBtns[i].style.backgroundColor = '#059669';
+                    featuredBtns[i].style.color = 'white';
+                } else {
+                    featuredBtns[i].style.backgroundColor = 'white';
+                    featuredBtns[i].style.color = 'black';
+                }
+            }
+
+            let featuredDivs = document.querySelectorAll(".featuredDiv");
+
+            for (let i = 0; i < featuredDivs.length; i++) {
+                if (event.target.id === featuredDivs[i].id) {
+                    featuredDivs[i].style.display = 'flex';
+                    showMenu1();
+                } else {
+                    featuredDivs[i].style.display = 'none';
+                }
+            }
+        }
+
+        // <---------- Deleting a User process start ----------> 
+        const deleteUserBtns = document.querySelectorAll('.deleteUserBtn');
+
+        for (let i = 0; i < deleteUserBtns.length; i++) {
+            const userDeleteAskers = document.querySelectorAll('.userDeleteAsker');
+            deleteUserBtns[i].addEventListener("click", () => {
+
+                if (userDeleteAskers[i].style.display === 'flex') {
+                    userDeleteAskers[i].style.display = 'none';
+                } else {
+                    userDeleteAskers[i].style.display = 'flex';
+                }
+            });
+
+        }
+
+        const answer_is_no_for_user_btns = document.querySelectorAll('.answer_is_no_for_user_btn');
+
+        for (let i = 0; i < answer_is_no_for_user_btns.length; i++) {
+
+            const userDeleteAskers = document.querySelectorAll('.userDeleteAsker');
+            answer_is_no_for_user_btns[i].addEventListener("click", () => {
+
+                if (userDeleteAskers[i].style.display === 'none') {
+                    userDeleteAskers[i].style.display = 'flex';
+                } else {
+                    userDeleteAskers[i].style.display = 'none';
+                }
+            });
+
+        }
+
+        const answer_is_yes_for_user_btns = document.querySelectorAll('.answer_is_yes_for_user_btn');
+
+        for (let i = 0; i < answer_is_yes_for_user_btns.length; i++) {
+
+            const userDeleteAskers = document.querySelectorAll('.userDeleteAsker');
+            const userInfos = document.querySelectorAll('.userInfo');
+            const userIds = document.querySelectorAll('.userId');
+
+            answer_is_yes_for_user_btns[i].addEventListener("click", () => {
+
+                const user_id = userIds[i].textContent;
+
+                if (userDeleteAskers[i].style.display === 'none') {
+                    userDeleteAskers[i].style.display = 'flex';
+                } else {
+                    userDeleteAskers[i].style.display = 'none';
+                }
+
+                const formData = new FormData();
+                formData.append("user_id", user_id.trim());
+
+                if (formData !== undefined || formData !== null || formData !== '') {
+                    // console.log(formData);
+                    async function delete_User_By_Admin_Func(formData) {
+                        try {
+                            const options = {
+                                method: 'POST',
+                                mode: "no-cors",
+                                body: formData,
+                            };
+                            await fetch("/api/delete_User_By_Admin", options)
+                                .then((response) => response.json())
+                                .then((obj) => obj)
+                        } catch (error) {
+                            console.log("This is the error in profileForMember.ejs > answer_is_yes_for_user_btns[i] > delete_User_By_Admin_Func", error)
+                        }
+                    }
+                    delete_User_By_Admin_Func(formData);
+                }
+
+                userInfos[i].remove();
+            });
+
+        }
+        // <---------- Deleting a User process end ---------->
+
+        // <---------- Deleting a Conselling_of_User process start ----------> 
+        const delete_Conselling_Of_User_Btns = document.querySelectorAll('.delete_Conselling_Of_User_Btn');
+
+        for (let i = 0; i < delete_Conselling_Of_User_Btns.length; i++) {
+            const Conselling_Of_User_Delete_Askers = document.querySelectorAll('.Conselling_Of_User_Delete_Asker');
+            delete_Conselling_Of_User_Btns[i].addEventListener("click", () => {
+
+                if (Conselling_Of_User_Delete_Askers[i].style.display === 'flex') {
+                    Conselling_Of_User_Delete_Askers[i].style.display = 'none';
+                } else {
+                    Conselling_Of_User_Delete_Askers[i].style.display = 'flex';
+                }
+            });
+
+        }
+
+        const answer_is_no_for_Conselling_Of_User_btns = document.querySelectorAll('.answer_is_no_for_Conselling_Of_User_btn');
+
+        for (let i = 0; i < answer_is_no_for_Conselling_Of_User_btns.length; i++) {
+
+            const Conselling_Of_User_Delete_Askers = document.querySelectorAll('.Conselling_Of_User_Delete_Asker');
+            answer_is_no_for_Conselling_Of_User_btns[i].addEventListener("click", () => {
+
+                if (Conselling_Of_User_Delete_Askers[i].style.display === 'none') {
+                    Conselling_Of_User_Delete_Askers[i].style.display = 'flex';
+                } else {
+                    Conselling_Of_User_Delete_Askers[i].style.display = 'none';
+                }
+            });
+
+        }
+
+        const answer_is_yes_for_Conselling_Of_User_btns = document.querySelectorAll('.answer_is_yes_for_Conselling_Of_User_btn');
+
+        for (let i = 0; i < answer_is_yes_for_Conselling_Of_User_btns.length; i++) {
+
+            const Conselling_Of_User_Delete_Askers = document.querySelectorAll('.Conselling_Of_User_Delete_Asker');
+            const Conselling_of_user_Infos = document.querySelectorAll('.Conselling_of_user_Info');
+            const Conselling_Of_User_Ids = document.querySelectorAll('.Conselling_Of_User_Id');
+
+            answer_is_yes_for_Conselling_Of_User_btns[i].addEventListener("click", () => {
+
+                const Conselling_Of_User_Id = Conselling_Of_User_Ids[i].textContent;
+
+                if (Conselling_Of_User_Delete_Askers[i].style.display === 'none') {
+                    Conselling_Of_User_Delete_Askers[i].style.display = 'flex';
+                } else {
+                    Conselling_Of_User_Delete_Askers[i].style.display = 'none';
+                }
+
+                const formData = new FormData();
+                formData.append("Conselling_Of_User_Id", Conselling_Of_User_Id.trim());
+
+                if (formData !== undefined || formData !== null || formData !== '') {
+                    async function delete_Conselling_of_User_By_Admin_Func(formData) {
+                        try {
+                            const options = {
+                                method: 'POST',
+                                mode: "no-cors",
+                                body: formData,
+                            };
+                            await fetch("/api/delete_Conselling_of_User_By_Admin", options)
+                                .then((response) => response.json())
+                                .then((obj) => obj)
+                        } catch (error) {
+                            console.log("This is the error in profileForMember.ejs > answer_is_yes_for_user_btns[i] > delete_Conselling_of_User_By_Admin_Func", error)
+                        }
+                    }
+                    delete_Conselling_of_User_By_Admin_Func(formData);
+                }
+
+                Conselling_of_user_Infos[i].remove();
+            });
+
+        }
+        // <---------- Deleting a Conselling_of_User process end ---------->
+
+        // <---------- Deleting an Author process start ----------> 
+        const delete_Author_Btns = document.querySelectorAll('.delete_Author_Btn');
+
+        for (let i = 0; i < delete_Author_Btns.length; i++) {
+            const Author_Delete_Askers = document.querySelectorAll('.Author_Delete_Asker');
+            delete_Author_Btns[i].addEventListener("click", () => {
+
+                if (Author_Delete_Askers[i].style.display === 'flex') {
+                    Author_Delete_Askers[i].style.display = 'none';
+                } else {
+                    Author_Delete_Askers[i].style.display = 'flex';
+                }
+            });
+
+        }
+
+        const answer_is_no_for_Author_btns = document.querySelectorAll('.answer_is_no_for_Author_btn');
+
+        for (let i = 0; i < answer_is_no_for_Author_btns.length; i++) {
+
+            const Author_Delete_Askers = document.querySelectorAll('.Author_Delete_Asker');
+            answer_is_no_for_Author_btns[i].addEventListener("click", () => {
+
+                if (Author_Delete_Askers[i].style.display === 'none') {
+                    Author_Delete_Askers[i].style.display = 'flex';
+                } else {
+                    Author_Delete_Askers[i].style.display = 'none';
+                }
+            });
+
+        }
+
+        const answer_is_yes_for_Author_btns = document.querySelectorAll('.answer_is_yes_for_Author_btn');
+
+        for (let i = 0; i < answer_is_yes_for_Author_btns.length; i++) {
+
+            const Author_Delete_Askers = document.querySelectorAll('.Author_Delete_Asker');
+            const Author_Infos = document.querySelectorAll('.Author_Info');
+            const Author_Ids = document.querySelectorAll('.Author_Id');
+
+            answer_is_yes_for_Author_btns[i].addEventListener("click", () => {
+
+                const Author_Id = Author_Ids[i].textContent;
+
+                if (Author_Delete_Askers[i].style.display === 'none') {
+                    Author_Delete_Askers[i].style.display = 'flex';
+                } else {
+                    Author_Delete_Askers[i].style.display = 'none';
+                }
+
+                const formData = new FormData();
+                formData.append("Author_Id", Author_Id.trim());
+
+                if (formData !== undefined || formData !== null || formData !== '') {
+                    async function delete_Author_By_Admin_Func(formData) {
+                        try {
+                            const options = {
+                                method: 'POST',
+                                mode: "no-cors",
+                                body: formData,
+                            };
+                            await fetch("/api/delete_Author_By_Admin", options)
+                                .then((response) => response.json())
+                                .then((obj) => obj)
+                        } catch (error) {
+                            console.log("This is the error in profileForMember.ejs > answer_is_yes_for_user_btns[i] > delete_Author_By_Admin_Func", error)
+                        }
+                    }
+                    delete_Author_By_Admin_Func(formData);
+                }
+
+                Author_Infos[i].remove();
+            });
+
+        }
+        // <---------- Deleting an Author process end ---------->
+
+        // <---------- Deleting an Member process start ----------> 
+        const delete_Member_Btns = document.querySelectorAll('.delete_Member_Btn');
+
+        for (let i = 0; i < delete_Member_Btns.length; i++) {
+            const Member_Delete_Askers = document.querySelectorAll('.Member_Delete_Asker');
+            delete_Member_Btns[i].addEventListener("click", () => {
+
+                if (Member_Delete_Askers[i].style.display === 'flex') {
+                    Member_Delete_Askers[i].style.display = 'none';
+                } else {
+                    Member_Delete_Askers[i].style.display = 'flex';
+                }
+            });
+
+        }
+
+        const answer_is_no_for_Member_btns = document.querySelectorAll('.answer_is_no_for_Member_btn');
+
+        for (let i = 0; i < answer_is_no_for_Member_btns.length; i++) {
+
+            const Member_Delete_Askers = document.querySelectorAll('.Member_Delete_Asker');
+            answer_is_no_for_Member_btns[i].addEventListener("click", () => {
+
+                if (Member_Delete_Askers[i].style.display === 'none') {
+                    Member_Delete_Askers[i].style.display = 'flex';
+                } else {
+                    Member_Delete_Askers[i].style.display = 'none';
+                }
+            });
+
+        }
+
+        const answer_is_yes_for_Member_btns = document.querySelectorAll('.answer_is_yes_for_Member_btn');
+
+        for (let i = 0; i < answer_is_yes_for_Member_btns.length; i++) {
+
+            const Member_Delete_Askers = document.querySelectorAll('.Member_Delete_Asker');
+            const Member_Infos = document.querySelectorAll('.Member_Info');
+            const Member_Ids = document.querySelectorAll('.Member_Id');
+
+            answer_is_yes_for_Member_btns[i].addEventListener("click", () => {
+
+                const Member_Id = Member_Ids[i].textContent;
+
+                if (Member_Delete_Askers[i].style.display === 'none') {
+                    Member_Delete_Askers[i].style.display = 'flex';
+                } else {
+                    Member_Delete_Askers[i].style.display = 'none';
+                }
+
+                const formData = new FormData();
+                formData.append("Member_Id", Member_Id.trim());
+
+                if (formData !== undefined || formData !== null || formData !== '') {
+                    async function delete_Member_By_Admin_Func(formData) {
+                        try {
+                            const options = {
+                                method: 'POST',
+                                mode: "no-cors",
+                                body: formData,
+                            };
+                            await fetch("/api/delete_Member_By_Admin", options)
+                                .then((response) => response.json())
+                                .then((obj) => obj)
+                        } catch (error) {
+                            console.log("This is the error in profileForMember.ejs > answer_is_yes_for_user_btns[i] > delete_Member_By_Admin_Func", error)
+                        }
+                    }
+                    delete_Member_By_Admin_Func(formData);
+                }
+
+                Member_Infos[i].remove();
+            });
+
+        }
+        // <---------- Deleting a Member process end ---------->
+
+
+
+
+        // Getting or setting the status of Conselling of User 
+        setTimeout(() => {
+            const all_Conselling_of_user_Info = document.querySelectorAll(".Conselling_of_user_Info");
+            const status_of_conselling_of_users = document.querySelectorAll('.status_of_conselling_of_user');
+            const all_id_of_conselling_of_user = document.querySelectorAll('.id_of_conselling_of_user');
+
+            const all_statusStoredHere = document.querySelectorAll(".statusStoredHere");
+            const all_newStatus = document.querySelectorAll('.newStatus');
+            const all_currentStatus = document.querySelectorAll(".currentStatus");
+            const all_workedStatus = document.querySelectorAll(".workedStatus");
+            const all_statusStoredFromSelectedOption = document.querySelectorAll(".statusStoredFromSelectedOption");
+            const all_valueFromDatabase = document.querySelectorAll(".valueFromDatabase");
+
+            for (let i = 0; i < status_of_conselling_of_users.length; i++) {
+
+                let storedValue = all_statusStoredHere[i].innerHTML.trim();
+
+                if (storedValue === 'New') {
+                    all_newStatus[i].innerHTML = storedValue;
+                    all_currentStatus[i].innerHTML = 'Current';
+                    all_workedStatus[i].innerHTML = 'Worked';
+                    all_Conselling_of_user_Info[i].style.backgroundColor = "#d1d2d1";
+                } else if (storedValue === 'Current') {
+                    all_newStatus[i].innerHTML = 'New';
+                    all_currentStatus[i].innerHTML = storedValue;
+                    all_workedStatus[i].innerHTML = 'Worked';
+                    all_Conselling_of_user_Info[i].style.backgroundColor = "Yellow";
+                } else {
+                    all_newStatus[i].innerHTML = 'New';
+                    all_currentStatus[i].innerHTML = 'Current';
+                    all_workedStatus[i].innerHTML = storedValue;
+                    all_Conselling_of_user_Info[i].style.backgroundColor = "#83f783";
+                }
+
+                status_of_conselling_of_users[i].addEventListener("change", () => {
+                    if (status_of_conselling_of_users[i].value === "New") {
+                        all_statusStoredHere[i].style.display = 'none';
+                        all_statusStoredFromSelectedOption[i].style.display = 'flex';
+                        all_statusStoredFromSelectedOption[i].innerHTML = 'New';
+                        all_Conselling_of_user_Info[i].style.backgroundColor = "#d1d2d1";
+
+                    } else if (status_of_conselling_of_users[i].value === "Current") {
+                        // console.log("all_statusStoredHere[i]: ", all_statusStoredHere[i].innerHTML.trim());
+                        all_statusStoredHere[i].style.display = 'none';
+                        all_statusStoredFromSelectedOption[i].style.display = 'flex';
+                        all_statusStoredFromSelectedOption[i].innerHTML = 'Current';
+                        all_Conselling_of_user_Info[i].style.backgroundColor = "Yellow";
+
+                    } else if (status_of_conselling_of_users[i].value === "Worked") {
+                        // console.log("all_statusStoredHere[i]: ", all_statusStoredHere[i].innerHTML.trim());
+                        all_statusStoredHere[i].style.display = 'none';
+                        all_statusStoredFromSelectedOption[i].style.display = 'flex';
+                        all_statusStoredFromSelectedOption[i].innerHTML = 'Worked';
+                        all_Conselling_of_user_Info[i].style.backgroundColor = "#83f783";
+                    }
+
+                    const id_of_user = all_id_of_conselling_of_user[i].innerHTML;
+                    const status = status_of_conselling_of_users[i].value;
+
+                    const formData = new FormData();
+                    formData.append("id_of_user", id_of_user.trim());
+                    formData.append("status", status.trim());
+
+                    // console.log(formData);
+
+                    if (formData !== undefined && formData !== null && formData !== '') {
+                        async function conselling_of_user_status_Func(formData) {
+                            try {
+                                const options = {
+                                    method: 'POST',
+                                    mode: "no-cors",
+                                    body: formData,
+                                };
+                                await fetch("/api/conselling_of_user_status", options)
+                                    .then((response) => response.json())
+                                    .then((obj) => obj)
+                            } catch (error) {
+                                console.log("This is the error in profileForMember.ejs > answer_is_yes_for_user_btns[i] > conselling_of_user_status_Func", error)
+                            }
+                        }
+                        conselling_of_user_status_Func(formData);
+                    }
+                });
+            }
+        }, 500);
+
+        // Getting or setting verification of Colleges 
+        setTimeout(() => {
+            const all_College_Info = document.querySelectorAll(".College_Info");
+            const verification_process_of_college = document.querySelectorAll('.verification_process_of_college');
+            const all_id_of_college = document.querySelectorAll('.id_of_college');
+            const all_verification_processStoredHere = document.querySelectorAll(".verification_processStoredHere");
+            const all_false_verification_process = document.querySelectorAll('.false_verification_process');
+            const true_verification_process = document.querySelectorAll(".true_verification_process");
+            const all_verification_processStoredFromSelectedOption = document.querySelectorAll(".verification_processStoredFromSelectedOption");
+            // const all_value_Of_preference_FromDatabase = document.querySelectorAll(".value_Of_verification_process_FromDatabase");
+
+            for (let i = 0; i < verification_process_of_college.length; i++) {
+
+                let storedValue = all_verification_processStoredHere[i].innerHTML.trim();
+
+                // if (storedValue === 'New') {
+                if (storedValue === 'false') {
+                    all_false_verification_process[i].innerHTML = storedValue;
+                    true_verification_process[i].innerHTML = 'true';
+                    // all_College_Info[i].style.backgroundColor = "#d1d2d1";
+                } else if (storedValue === 'true') {
+                    all_false_verification_process[i].innerHTML = 'false';
+                    true_verification_process[i].innerHTML = storedValue;
+                    // all_College_Info[i].style.backgroundColor = "Yellow";
+                }
+
+
+                verification_process_of_college[i].addEventListener("change", () => {
+                    if (verification_process_of_college[i].value === "false") {
+                        all_verification_processStoredHere[i].style.display = 'none';
+                        all_verification_processStoredFromSelectedOption[i].style.display = 'flex';
+                        all_verification_processStoredFromSelectedOption[i].innerHTML = 'false';
+                        all_College_Info[i].style.backgroundColor = "#d1d2d1";
+
+                    } else if (verification_process_of_college[i].value === "true") {
+                        // console.log("all_verification_processStoredHere[i]: ", all_verification_processStoredHere[i].innerHTML.trim());
+                        all_verification_processStoredHere[i].style.display = 'none';
+                        all_verification_processStoredFromSelectedOption[i].style.display = 'flex';
+                        all_verification_processStoredFromSelectedOption[i].innerHTML = 'true';
+                        all_College_Info[i].style.backgroundColor = "Yellow";
+
+                    }
+
+                    const id_of_user = all_id_of_college[i].innerHTML.trim();
+                    const verification = verification_process_of_college[i].value;
+
+                    const formData = new FormData();
+                    formData.append("id_of_user", id_of_user);
+                    formData.append("verification", verification);
+
+                    if (formData !== undefined || formData !== null || formData !== '') {
+                        async function college_verification_Func(formData) {
+                            try {
+                                const options = {
+                                    method: 'POST',
+                                    mode: "no-cors",
+                                    body: formData,
+                                };
+                                await fetch("/api/college_verification_process", options)
+                                    .then((response) => response.json())
+                                    .then((obj) => obj)
+                            } catch (error) {
+                                console.log("Error: ", error);
+                            }
+                        }
+                        college_verification_Func(formData);
+                    }
+                });
+            }
+        }, 500);
+
+        // <---------- Deleting a College process start ----------> 
+        const delete_College_Btns = document.querySelectorAll('.delete_College_Btn');
+
+        for (let i = 0; i < delete_College_Btns.length; i++) {
+            const College_Delete_Askers = document.querySelectorAll('.College_Delete_Asker');
+            delete_College_Btns[i].addEventListener("click", () => {
+
+                if (College_Delete_Askers[i].style.display === 'flex') {
+                    College_Delete_Askers[i].style.display = 'none';
+                } else {
+                    College_Delete_Askers[i].style.display = 'flex';
+                }
+            });
+
+        }
+
+        const answer_is_no_for_College_btns = document.querySelectorAll('.answer_is_no_for_College_btn');
+
+        for (let i = 0; i < answer_is_no_for_College_btns.length; i++) {
+
+            const College_Delete_Askers = document.querySelectorAll('.College_Delete_Asker');
+            answer_is_no_for_College_btns[i].addEventListener("click", () => {
+
+                if (College_Delete_Askers[i].style.display === 'none') {
+                    College_Delete_Askers[i].style.display = 'flex';
+                } else {
+                    College_Delete_Askers[i].style.display = 'none';
+                }
+            });
+
+        }
+
+        const answer_is_yes_for_College_btns = document.querySelectorAll('.answer_is_yes_for_College_btn');
+
+        for (let i = 0; i < answer_is_yes_for_College_btns.length; i++) {
+
+            const College_Delete_Askers = document.querySelectorAll('.College_Delete_Asker');
+            const College_Infos = document.querySelectorAll('.College_Info');
+            const College_Ids = document.querySelectorAll('.College_Id');
+
+            answer_is_yes_for_College_btns[i].addEventListener("click", () => {
+
+                const College_Id = College_Ids[i].textContent;
+
+                if (College_Delete_Askers[i].style.display === 'none') {
+                    College_Delete_Askers[i].style.display = 'flex';
+                } else {
+                    College_Delete_Askers[i].style.display = 'none';
+                }
+
+                const formData = new FormData();
+                formData.append("College_Id", College_Id.trim());
+
+                console.log("College_Id: ", formData);
+
+                if (formData !== undefined || formData !== null || formData !== '') {
+                    async function delete_College_By_Admin_Func(formData) {
+                        try {
+                            const options = {
+                                method: 'POST',
+                                mode: "no-cors",
+                                body: formData,
+                            };
+                            await fetch("/api/delete_College_By_Admin", options)
+                                .then((response) => response.json())
+                                .then((obj) => obj)
+                        } catch (error) {
+                            console.log("This is the error in profileForMember.ejs > answer_is_yes_for_user_btns[i] > delete_College_By_Admin", error)
+                        }
+                    }
+                    delete_College_By_Admin_Func(formData);
+                }
+
+                College_Infos[i].remove();
+            });
+
+        }
+        // <---------- Deleting a College process end ---------->
+    </script>
+    <%- include('partials/footer') %>

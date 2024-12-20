@@ -1,0 +1,94 @@
+<!-- ============= -->
+<!-- All Blogs Page For Author -->
+<!-- ============= -->
+
+<!-- Header -->
+<%- include ('partials/headerForHomeProfileAndSettingsForAuthor') %>
+
+    <!-- Main -->
+    <main class="w-full flex justify-center items-start flex-row lg:mt-12 mt-10">
+        <div class="lg:w-9/12 w-full justify-center items-center flex-col md:my-3 md:px-4 sm:px-2 px-1 sm:mt-2 mt-1">
+            <%- include ('partials/advertisementForSmallScreens') %>
+                <h1
+                    class="xl:text-xl lg:text-lg md:text-base text-sm md:font-bold font-semibold text-blue-800 md:my-4 my-2">
+                    We have many blogs, which you would like to read...</h1>
+                <% for(let i=0; i < dataTable.length; i++) { %>
+                    <% for(let j=0; j < dataTable[i].writtenBlogsByAuthor.length; j++) { %>
+                        <form
+                            class="w-full flex justify-center items-start flex-col bg-white md:my-4 sm:my-2 my-1 rounded-md md:px-4 px-2 md:py-3 py-2 shadow-md form">
+                            <div class="w-full flex justify-start items-center flex-row bg-gray-200 md:p-2 p-1">
+                                <div>
+                                    <img src="authorImages/<%= dataTable[i].filename %>"
+                                        class="md:w-14 sm:w-10 w-8 object-fill aspect-square rounded" alt="" />
+                                </div>
+                                <div class="ml-2">
+                                    <h2 class="lg:text-sm text-xs font-medium select-none">
+                                        <%= dataTable[i].name %>
+                                    </h2>
+                                    <p class="text-gray-600 italic select-none" style="font-size: 0.6rem;">
+                                        &#60;Email-id: <%= dataTable[i].email %>&#62;
+                                    </p>
+                                </div>
+                            </div>
+                            <p
+                                class="w-full lg:text-base md:text-sm text-xs text-gray-800 md:font-bold font-semibold my-1 underline select-none">
+                                <%= dataTable[i].writtenBlogsByAuthor[j].blogTitle %>
+                            </p>
+                            <p
+                                class="w-full lg:text-base md:text-sm text-xs text-justify text-gray-700 md:font-semibold font-medium select-none">
+                                Category: <%= dataTable[i].writtenBlogsByAuthor[j].blogCategory %>
+                            </p>
+                            <p
+                                class="w-full md:text-sm text-xs text-justify text-gray-600 md:font-medium font-medium my-1 select-none">
+                                Sub-Category: <%= dataTable[i].writtenBlogsByAuthor[j].blogSubCategory%>
+                            </p>
+                            <div
+                                class="w-full flex lg:text-base md:text-sm text-xs text-justify text-gray-600 select-none continueReadingDiv">
+                                <span>
+                                    <%= dataTable[i].writtenBlogsByAuthor[j].blogContent.slice(0, 400) %>...<span
+                                            class="text-purple-600 cursor-pointer continueReadingBtn">Continue
+                                            Reading</span>
+                                </span>
+                            </div>
+                            <div
+                                class="w-full hidden lg:text-base md:text-sm text-xs text-justify text-gray-600 select-none lessReadingDiv">
+                                <span>
+                                    <%= dataTable[i].writtenBlogsByAuthor[j].blogContent %>...<span
+                                            class="text-purple-600 cursor-pointer select-none lessReadingBtn">Less Reading</span>
+                                </span>
+                            </div>
+                            <p class="w-full md:text-sm text-xs text-gray-600 select-none text-right mt-1">
+                                <%= dataTable[i].writtenBlogsByAuthor[j].publishedDate %>
+                            </p>
+                        </form>
+                        <% } %>
+
+                            <% } %>
+        </div>
+        <%- include ('partials/advertisementForLargeScreen') %>
+    </main>
+
+    <Script>
+        // Continue Reading or Less Reading functionality 
+        const continueReadingDiv = document.querySelectorAll('.continueReadingDiv');
+        const lessReadingDiv = document.querySelectorAll('.lessReadingDiv');
+        const continueReadingBtn = document.querySelectorAll('.continueReadingBtn');
+        const lessReadingBtn = document.querySelectorAll('.lessReadingBtn');
+
+        for (let i = 0; i < continueReadingDiv.length; i++) {
+            continueReadingBtn[i].addEventListener('click', () => {
+                continueReadingDiv[i].style.display = 'none';
+                lessReadingDiv[i].style.display = 'flex';
+            });
+        }
+
+        for (let j = 0; j < lessReadingDiv.length; j++) {
+            lessReadingDiv[j].addEventListener('click', () => {
+                lessReadingDiv[j].style.display = 'none';
+                continueReadingDiv[j].style.display = 'flex';
+            })
+        }
+    </Script>
+
+    <!-- Footer  -->
+    <%- include('partials/footer') %>

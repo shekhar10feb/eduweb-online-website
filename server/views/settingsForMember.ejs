@@ -1,0 +1,291 @@
+<!-- ============= -->
+<!--  Settings Page For Member -->
+<!-- ============= -->
+
+<!-- Header -->
+<%- include ('partials/headerForProfileAndSettingsForMember') %>
+
+    <!-- Main Branch -->
+    <main
+        class="sm:w-2/3 bg-gray-100 my-5 mx-auto lg:rounded-xl md:rounded-lg sm:rounded-md border border-none lg:p-4 p-2 lg:mt-16 md:mt-10 mt-8">
+        <div class="w-full lg:mt-5 md:mt-3 mt-2 lg:py-4 md:py-3 py-2 md:px-2 px-1">
+            <h1 class="xl:text-xl lg:text-lg md:text-base text-sm md:font-bold font-semibold">Settings</h1>
+            <hr />
+            <h2 class="md:text-base text-sm md:font-semibold font-base md:my-4 my-2">You can change your details here:
+            </h2>
+            <div
+                class="w-full flex justify-center items-start flex-col bg-gray-200 lg:rounded-xl md:rounded-lg sm:rounded-md border-2 border-gray-400 md:p-2 p-1 reloadForm">
+
+                <form onsubmit="event.preventDefault();"
+                    class="w-full flex justify-between lg:my-2 my-1 items-center flex-row form">
+                    <input type="text"
+                        class="lg:text-base md:text-sm text-xs p-1 md:px-2 px-1 lg:rounded-md md:rounded rounded-sm border border-gray-500"
+                        value="<%= user.name %>" placeholder="Update name..." />
+                    <button type="submit"
+                        class="bg-white lg:text-base md:text-sm text-xs hover:bg-purple-500 text-purple-500 md:font-semibold font-medium border border-purple-500 hover:text-white lg:px-2 px-1 py-1 lg:rounded-md md:rounded rounded-sm">Update</button>
+                </form>
+
+                <form onsubmit="event.preventDefault();"
+                    class="w-full flex justify-between lg:my-2 my-1 items-center flex-row form">
+                    <input type="text"
+                        class="lg:text-base md:text-sm text-xs p-1 md:px-2 px-1 lg:rounded-md md:rounded rounded-sm border border-gray-500"
+                        value="<%= user.email %>" placeholder="Update email..." />
+                    <button type="submit"
+                        class="bg-white lg:text-base md:text-sm text-xs hover:bg-purple-500 text-purple-500  md:font-semibold font-medium border border-purple-500 hover:text-white lg:px-2 px-1 py-1 lg:rounded-md md:rounded rounded-sm">Update</button>
+                </form>
+
+                <form onsubmit="event.preventDefault();"
+                    class="w-full flex justify-between lg:my-2 my-1 items-center flex-row form">
+                    <input type="text"
+                        class="lg:text-base md:text-sm text-xs p-1 md:px-2 px-1 lg:rounded-md md:rounded rounded-sm border border-gray-500"
+                        value="<%= user.username %>" placeholder="Update username..." />
+                    <button type="submit"
+                        class="bg-white lg:text-base md:text-sm text-xs hover:bg-purple-500 text-purple-500  md:font-semibold font-medium border border-purple-500 hover:text-white lg:px-2 px-1 py-1 lg:rounded-md md:rounded rounded-sm">Update</button>
+                </form>
+
+                <form onsubmit="event.preventDefault();"
+                    class="w-full flex justify-between lg:my-2 my-1 items-center flex-row form">
+                    <input type="text"
+                        class="lg:text-base md:text-sm text-xs p-1 md:px-2 px-1 lg:rounded-md md:rounded rounded-sm border border-gray-500"
+                        value="<%= user.tel %>" placeholder="Update mobile..." />
+                    <button type="submit"
+                        class="bg-white lg:text-base md:text-sm text-xs hover:bg-purple-500 text-purple-500  md:font-semibold font-medium border border-purple-500 hover:text-white lg:px-2 px-1 py-1 lg:rounded-md md:rounded rounded-sm">Update</button>
+                </form>
+            </div>
+
+            <div class="lg:mt-4 md:mt-3 sm:mt-2 mt-1">
+                <button type="submit"
+                    class="lg:text-base md:text-sm text-xs text-red-500 lg:px-2 px-1 py-1 font-semibold border border-red-500 lg:rounded-md md:rounded rounded-sm hover:bg-red-500 hover:text-white"
+                    onclick="show_me_yes_or_no_dialogue_box()">Deactivate
+                    Account</button>
+            </div>
+            <div class="w-full h-screen hidden justify-center items-center flex-col bg-black-200 fixed lg:top-10 top-8 left-0 bg-transparent userDeleteAsker"
+                style="background-color: #00000085;">
+                <div
+                    class="flex justify-center items-center flex-col bg-red-500 p-6 border border-white md:rounded-sm rounded">
+                    <div class="text-white mb-2">
+                        <h2>Do you surely want to delete your account?</h2>
+                    </div>
+                    <div class="flex justify-center items-center flex-row">
+                        <form action="/api/deleteMemberAccount/:id" method="POST">
+                            <button type="submit"
+                                class="bg-white mx-2 p-1 px-3 rounded-sm answer_is_yes_for_user_btn">Yes</button>
+                        </form>
+                        <button type="submit"
+                            class="bg-white mx-2 p-1 px-3 rounded-sm answer_is_no_for_user_btn">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let forms = document.querySelectorAll('.form');
+
+        // Update the name of member 
+        forms[0].addEventListener('submit', (e) => {
+
+            const name = forms[0].children[0].value;
+            const btn = forms[0].children[1];
+
+            const updatedFunc = (message) => {
+                if (btn.innerHTML === "Update") {
+                    btn.innerHTML = message;
+
+                    setTimeout(() => {
+                        btn.innerHTML = "Update";
+                    }, 2000);
+                }
+            }
+
+            let fetchFunc = async (name) => {
+                try {
+                    let fetchItem = await fetch("/api/updateNameForMember", {
+                        method: 'POST',
+                        mode: 'cors',
+                        cache: 'no-cache',
+                        credentials: 'same-origin',
+                        redirect: 'follow',
+                        referrerPolicy: 'no-referrer',
+                        headers: new Headers({ "Content-Type": "application/json" }),
+                        body: JSON.stringify({ name: name }),
+                    })
+                        .then((response) => response.json())
+                        .then((obj) => {
+                            if (obj.message === "Name updated!") {
+                                updatedFunc("<i>Updated!</i>");
+                            } else {
+                                updatedFunc("<i>Failed!</i>");
+                            }
+                        })
+                        .then(console.log("received!"));
+                } catch (error) {
+                    console.log("This is the error in settingsForMember.ejs >  updateNameForMember > fetchFunc > fetchItem", error)
+                }
+            }
+            fetchFunc(name);
+        })
+
+        // Update the email of member 
+        forms[1].addEventListener('submit', (e) => {
+
+            const email = forms[1].children[0].value;
+            const btn = forms[1].children[1];
+
+            const updatedFunc = (message) => {
+                if (btn.innerHTML === "Update") {
+                    btn.innerHTML = message;
+
+                    setTimeout(() => {
+                        btn.innerHTML = "Update";
+                    }, 2000);
+                }
+            }
+
+            let fetchFunc = async (email) => {
+                try {
+                    let fetchItem = await fetch("/api/updateEmailForMember", {
+                        method: 'POST',
+                        mode: 'cors',
+                        cache: 'no-cache',
+                        credentials: 'same-origin',
+                        redirect: 'follow',
+                        referrerPolicy: 'no-referrer',
+                        headers: new Headers({ "Content-Type": "application/json" }),
+                        body: JSON.stringify({ email: email }),
+                    })
+                        .then((response) => response.json())
+                        .then((obj) => {
+                            if (obj.message === "Email-id updated!") {
+                                updatedFunc("<i>Updated!</i>");
+                            } else if (obj.message === "This email is already registered!") {
+                                updatedFunc("<i>Choose different email-id!</i>");
+                            } else {
+                                updatedFunc("<i>Failed!</i>");
+                            }
+                        })
+                        .then(console.log("received!"));
+                } catch (error) {
+                    console.log("This is the error in settingsForMember.ejs > updateEmailForMember > fetchFunc > fetchItem", error)
+                }
+            }
+            fetchFunc(email);
+        })
+
+        // Update the username of member 
+        forms[2].addEventListener('submit', (e) => {
+
+            const username = forms[2].children[0].value;
+            const btn = forms[2].children[1];
+
+            const updatedFunc = (message) => {
+                if (btn.innerHTML === "Update") {
+                    btn.innerHTML = message;
+
+                    setTimeout(() => {
+                        btn.innerHTML = "Update";
+                    }, 2000);
+                }
+            }
+
+            let fetchFunc = async (username) => {
+                try {
+                    let fetchItem = await fetch("/api/updateUsernameForMember", {
+                        method: 'POST',
+                        mode: 'cors',
+                        cache: 'no-cache',
+                        credentials: 'same-origin',
+                        redirect: 'follow',
+                        referrerPolicy: 'no-referrer',
+                        headers: new Headers({ "Content-Type": "application/json" }),
+                        body: JSON.stringify({ username: username }),
+                    })
+                        .then((response) => response.json())
+                        .then((obj) => {
+                            if (obj.message === "Username updated!") {
+                                updatedFunc("<i>Updated!</i>");
+                            } else if (obj.message === "This username is already registered!") {
+                                updatedFunc("<i>Choose different username!</i>");
+                            } else {
+                                updatedFunc("<i>Failed!</i>");
+                            }
+                        })
+                        .then(console.log("received!"));
+                } catch (error) {
+                    console.log("This is the error in settingsForMember.ejs >  updateNameForMember > fetchFunc > fetchItem", error)
+                }
+            }
+            fetchFunc(username);
+        })
+
+        // Update the mobile number of member
+        forms[3].addEventListener('submit', (e) => {
+
+            const mobile = forms[3].children[0].value;
+            const btn = forms[3].children[1];
+
+            // console.log("mobile: ", mobile);
+
+            const updatedFunc = (message) => {
+                if (btn.innerHTML === "Update") {
+                    btn.innerHTML = message;
+
+                    setTimeout(() => {
+                        btn.innerHTML = "Update";
+                    }, 2000);
+                }
+            }
+
+            let fetchFunc = async (mobile) => {
+                try {
+                    let fetchItem = await fetch("/api/updateMobileForMember", {
+                        method: 'POST',
+                        mode: 'cors',
+                        cache: 'no-cache',
+                        credentials: 'same-origin',
+                        redirect: 'follow',
+                        referrerPolicy: 'no-referrer',
+                        headers: new Headers({ "Content-Type": "application/json" }),
+                        body: JSON.stringify({ mobile: mobile }),
+                    })
+                        .then((response) => response.json())
+                        .then((obj) => {
+                            if (obj.message === "Mobile number updated!") {
+                                updatedFunc("<i>Updated!</i>");
+                            } else {
+                                updatedFunc("<i>Failed!</i>");
+                            }
+                        })
+                        .then(console.log("received!"));
+                } catch (error) {
+                    console.log("This is the error in settingsForMember.ejs > updateMobileForMember > fetchFunc > fetchItem", error)
+                }
+            }
+            fetchFunc(mobile);
+        })
+
+        function show_me_yes_or_no_dialogue_box() {
+            const userDeleteAsker = document.querySelector('.userDeleteAsker');
+            if (userDeleteAsker.style.display === 'flex') {
+                userDeleteAsker.style.display = 'none';
+            } else {
+                userDeleteAsker.style.display = 'flex';
+            }
+        }
+
+        const answer_is_no_for_user_btn = document.querySelector('.answer_is_no_for_user_btn');
+
+
+
+        const userDeleteAsker = document.querySelector('.userDeleteAsker');
+        answer_is_no_for_user_btn.addEventListener("click", () => {
+            if (userDeleteAsker.style.display === 'none') {
+                userDeleteAsker.style.display = 'flex';
+            } else {
+                userDeleteAsker.style.display = 'none';
+            }
+        });
+    </script>
+
+    <!-- Footer  -->
+    <%- include('partials/footer') %>

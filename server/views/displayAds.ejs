@@ -1,0 +1,61 @@
+<div
+    class="w-full h-full flex justify-center items-center flex-col bg-gray-200 text-white p-2 lg:rounded-lg md:rounded-md sm:rounded-sm rounded lg:shadow-xl md:shadow-lg shadow-md border border-gray-300">
+    <h1 class="w-full text-left p-1 lg:font-extrabold md:font-bold font-semibold md:text-base text-sm text-blue-800">
+        Ads List</h1>
+    <% if(dataTableOfAdvertisement.length > 0){ %>
+        <% dataTableOfAdvertisement.map((item, index)=> { %>
+            <form
+                class="w-auto flex justify-start items-start flex-col bg-white text-gray-600 md:text-sm text-xs p-1 px-2 my-1 md:rounded-sm rounded lg:shadow-lg border border-gray-300 form_display_Ad"
+                id="<%= item._id %>">
+                <img src="<%= item.filename %>"
+                    class="lg:w-40 md:w-32 sm:w-24 w-16 aspect-square object-fill bg-gray-400" />
+                <h2>
+                    Image resolution: <%= item.image_resolution_value %>
+                </h2>
+
+                <input type="text" value="<%= item._id %>" class="hidden item_id">
+
+                <button type="submit"
+                    class="bg-blue-800 hover:bg-green-600 text-white p-1 my-1 text-xs md:rounded-sm rounded cursor-pointer delete_ads_btn">Delete</button>
+            </form>
+            <% }) %>
+                <% } else{ %>
+                    <p class=" text-gray-600 md:text-sm text-xs">No Ads List data!</p>
+                    <% } %>
+</div>
+
+<!-- Script Tag -->
+<script>
+    const form_display_Ads = document.querySelectorAll('.form_display_Ad');
+
+    for (let i = 0; i < form_display_Ads.length; i++) {
+        form_display_Ads[i].addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const item_id = form_display_Ads[i].children[2].value;
+
+            const formData = new FormData();
+            formData.append("item_id", item_id.trim());
+
+            if (formData !== undefined && formData !== null && formData !== '') {
+
+                async function delete_Ads_Func(formData) {
+                    try {
+                        const options = {
+                            method: 'POST',
+                            mode: "no-cors",
+                            body: formData,
+                        };
+                        await fetch("/api/delete_Ads_By_Admin", options)
+                            .then((response) => response.json())
+                            .then((obj) => obj)
+                    } catch (error) {
+                        console.log("Error: ", error);
+                    }
+                }
+                delete_Ads_Func(formData);
+            }
+            form_display_Ads[i].remove();
+        })
+    }
+</script>

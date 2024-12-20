@@ -1,0 +1,119 @@
+<h2 class="sm:w-4/12 lg:flex hidden w-full text-left">State/UT Name:
+</h2>
+<h2 class="sm:w-4/12 w-full lg:hidden flex text-left">
+    State/UT
+</h2>
+<form
+    class="sm:w-8/12 w-full flex justify-start items-center flex-row sm:text-sm text-xs sm:font-medium font-light state_or_ut_name">
+    <select name="cars" class="w-10/12 border border-gray-500 rounded-sm pl-1 mr-1 cursor-pointer" id="cars"
+        value="<%= user.state_or_ut_name %>">
+        <option value="">Please choose State or UT</option>
+        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+        <option value="Andhra Pradesh">Andhra Pradesh</option>
+        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+        <option value="Assam">Assam</option>
+        <option value="Bihar">Bihar</option>
+        <option value="Chandigarh">Chandigarh</option>
+        <option value="Chhattisgarh">Chhattisgarh</option>
+        <option value="Dadra and Nagar Haveli and Daman & Diu">Dadra and Nagar Haveli and Daman & Diu</option>
+        <option value="Delhi">Delhi </option>
+        <option value="Goa">Goa</option>
+        <option value="Gujarat">Gujarat</option>
+        <option value="Haryana">Haryana</option>
+        <option value="Himachal Pradesh">Himachal Pradesh</option>
+        <option value="Jammu & Kashmir">Jammu & Kashmir</option>
+        <option value="Jharkhand">Jharkhand</option>
+        <option value="Karnataka">Karnataka</option>
+        <option value="Kerala">Kerala</option>
+        <option value="Ladakh">Ladakh</option>
+        <option value="Lakshadweep">Lakshadweep</option>
+        <option value="Madhya Pradesh">Madhya Pradesh</option>
+        <option value="Maharashtra">Maharashtra</option>
+        <option value="Manipur">Manipur</option>
+        <option value="Meghalaya">Meghalaya</option>
+        <option value="Mizoram">Mizoram</option>
+        <option value="Nagaland">Nagaland</option>
+        <option value="Odisha">Odisha</option>
+        <option value="Puducherry">Puducherry</option>
+        <option value="Punjab">Punjab</option>
+        <option value="Rajasthan">Rajasthan</option>
+        <option value="Sikkim">Sikkim</option>
+        <option value="Tamil Nadu">Tamil Nadu</option>
+        <option value="Telangana">Telangana</option>
+        <option value="Tripura">Tripura</option>
+        <option value="Uttarakhand">Uttarakhand</option>
+        <option value="Uttar Pradesh">Uttar Pradesh</option>
+        <option value="West Bengal">West Bengal</option>
+    </select>
+    <button type="submit"
+        class="w-2/12 bg-blue-800 text-white hover:bg-green-600 border border-blue-800 rounded-sm state_or_ut_name_btn">OK</button>
+</form>
+
+<script>
+    const state_or_ut_name = document.querySelector('.state_or_ut_name');
+
+    state_or_ut_name.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // console.log("state_or_ut_name: ", state_or_ut_name.children[0].value);
+
+        const formData = new FormData();
+        formData.append("state_or_ut_name", state_or_ut_name.children[0].value);
+        // console.log("Formdata: ", formData);
+
+        const updatedFunc = (message) => {
+            if (message === 'State Name Info updated!') {
+                document.querySelector('.state_or_ut_name_btn').innerHTML = '&#10004;';
+                document.querySelector('.state_or_ut_name_btn').style.backgroundColor = '#059669';
+
+                // Refresh the page after a delay of 1 seconds
+                setTimeout(function () {
+                    document.querySelector('.state_or_ut_name_btn').innerHTML = 'OK';
+                }, 1000); 
+                // 3000 milliseconds = 1 seconds
+
+            } else {
+                document.querySelector('.state_or_ut_name_btn').innerHTML = '&#10006;';
+                document.querySelector('.state_or_ut_name_btn').style.backgroundColor = 'red';
+
+                // Refresh the page after a delay of 1 seconds
+                setTimeout(function () {
+                    document.querySelector('.state_or_ut_name_btn').innerHTML = 'OK';
+                }, 1000); 
+                // 3000 milliseconds = 1 seconds
+
+            }
+        }
+
+        if (formData !== null && formData !== undefined && formData !== '') {
+            // console.log(formData);
+            let fetchFunc = async (formData) => {
+                try {
+                    const options = {
+                        method: 'POST',
+                        mode: "no-cors",
+                        body: formData,
+                    };
+                    let fetchItem = await fetch("/api/post_state_or_ut_name_college_info", options)
+                        .then((response) => response.json())
+                        .then(obj => {
+                            if (obj.message === "State Name Info updated!") {
+                                updatedFunc('State Name Info updated!');
+                            } else {
+                                updatedFunc('State Name Info updation failed!');
+                            }
+                        })
+                        .then(console.log("received!"));
+                } catch (error) {
+                    console.log("This is the error in profileForCollege.ejs > state_name_profileForCollege.ejs", error)
+                }
+            }
+            fetchFunc(formData);
+        }
+
+        // Refresh the page after a delay of 1 seconds
+        setTimeout(function () {
+            location.reload();
+        }, 1000); 
+        // 3000 milliseconds = 1 seconds
+    });
+</script>
