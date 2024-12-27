@@ -20,15 +20,20 @@ EduWeb is an online platform where users can discover colleges, courses, and exa
    ```sh
    git clone https://github.com/your-username/eduweb-online-website.git
    cd eduweb-online-website
+   ```
 
 2. Install dependencies for both client and server:
+   ```sh
    npm install
    npm install --prefix client
+   ```
 
-3. Create a .env file in the root directory and add your environment variables.
+4. Create a .env file in the root directory and add your environment variables.
 
-4. Start the development server:
+5. Start the development server:
+   ```sh
    npm run dev
+   ```
 
 Scripts
 dev: Start the development server with nodemon.
