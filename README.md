@@ -42,7 +42,7 @@ EduWeb is an online platform where users can discover colleges, courses, and exa
 `tailwind:dev`: Watch and compile Tailwind CSS for development.\
 `tailwind:build`: Compile Tailwind CSS for production.\
 `generate-sitemap`: Generate the sitemap for the website.\
-`postbuild`: Run the generate-sitemap script after building the client.\
+`postbuild`: Run the generate-sitemap script after building the client.
 
 ## Contributing
 Contributions are welcome! Please fork the repository and create a pull request with your changes.
