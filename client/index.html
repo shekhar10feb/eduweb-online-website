@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      EduWeb | Discover Colleges, Courses and Exams for higher education in
+      India
+    </title>
+
+    <!-- Favicon and Manifest -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./public/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./public/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./public/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./public/favicon_io/site.webmanifest" />
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="EduWeb is your go-to platform for discovering colleges, courses, and exams for higher education in India. Explore now!"
+    />
+    <meta
+      name="keywords"
+      content="EduWeb, colleges, courses, exams, higher education, India, education platform"
+    />
+    <meta name="author" content="EduWeb Team" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta
+      property="og:title"
+      content="EduWeb | Discover Colleges, Courses and Exams for Higher Education in India"
+    />
+    <meta
+      property="og:description"
+      content="EduWeb is your go-to platform for discovering colleges, courses, and exams for higher education in India. Explore now!"
+    />
+    <meta
+      property="og:image"
+      content="https://eduweb-online-website.onrender.com/public/logo.png"
+    />
+    <meta
+      property="og:url"
+      content="https://eduweb-online-website.onrender.com"
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="EduWeb | Discover Colleges, Courses and Exams for Higher Education in India"
+    />
+    <meta
+      name="twitter:description"
+      content="EduWeb is your go-to platform for discovering colleges, courses, and exams for higher education in India. Explore now!"
+    />
+    <meta
+      name="twitter:image"
+      content="https://eduweb-online-website.onrender.com/public/twitter-image.png"
+    />
+    <meta name="twitter:site" content="@EduWeb" />
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://eduweb-online-website.onrender.com" />
+
+    <!-- Additional SEO Improvements -->
+    <link
+      rel="alternate"
+      href="https://eduweb-online-website.onrender.com"
+      hreflang="en-in"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker.register("/service-worker.js").then(
+            function (registration) {
+              console.log(
+                "ServiceWorker registration successful with scope: ",
+                registration.scope
+              );
+            },
+            function (err) {
+              console.log("ServiceWorker registration failed: ", err);
+            }
+          );
+        });
+      }
+    </script>
+  </body>
+</html>

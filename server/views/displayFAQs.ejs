@@ -1,0 +1,66 @@
+<div class="w-full h-full flex justify-center items-center flex-col bg-gray-200 text-white p-2 lg:rounded-lg md:rounded-md sm:rounded-sm rounded lg:shadow-xl md:shadow-lg shadow-md border border-gray-300">
+  <h1 class="w-full text-left p-1 lg:font-extrabold md:font-bold font-semibold md:text-base text-sm text-blue-800">
+    FAQs List</h1>
+  <% if(FrequentlyAskedQuestions.length > 0){ %>
+  <% FrequentlyAskedQuestions.map((item, index)=> { %>
+  <form class="w-full flex justify-start items-start flex-col bg-white text-gray-600 md:text-sm text-xs p-1 px-2 my-1 md:rounded-sm rounded lg:shadow-lg border border-gray-300 form_display_faq" id="<%= item._id %>">
+    <h2>
+      Question:- <%= item.question %>
+    </h2>
+    <p>Answer:- <%= item.answer %></p>
+
+    <input type="text" value="<%= item._id %>" class="hidden item_id">
+
+    <button type="submit" class="bg-blue-800 hover:bg-green-600 text-white p-1 my-1 text-xs md:rounded-sm rounded cursor-pointer">Delete</button>
+  </form>
+  <% }) %>
+  <% } else{ %>
+  <p class=" text-gray-600 md:text-sm text-xs">No Ads List data!</p>
+  <% } %>
+</div>
+
+<!-- Script Tag -->
+<script>
+  const form_display_faqs = document.querySelectorAll('.form_display_faq');
+
+  for (let i = 0; i < form_display_faqs.length; i++) {
+    function myFunc(e) {
+      e.preventDefault();
+
+      const item_id = form_display_faqs[i].children[2].value;
+
+      const formData = new FormData();
+      formData.append("item_id", item_id.trim());
+      // console.log('item_id: ', item_id);
+
+      if (formData !== undefined && formData !== null && formData !== '') {
+
+        async function delete_faqs_Func(formData) {
+          try {
+            const options = {
+              method: 'POST',
+              mode: "no-cors",
+              body: formData,
+            };
+            await fetch("/api/delete_FAQ_by_member", options)
+              .then((response) => response.json())
+              .then((obj) => obj)
+          } catch (error) {
+            console.log("Error: ", error);
+          }
+        }
+        delete_faqs_Func(formData);
+      }
+      form_display_faqs[i].remove();
+
+      removeHandler();
+    }
+    form_display_faqs[i].addEventListener("submit", (e) => {
+      myFunc(e);
+    });
+
+    function removeHandler() {
+      form_display_faqs[i].removeEventListener("submit", myFunc);
+    }
+  }
+</script>

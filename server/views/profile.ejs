@@ -1,0 +1,105 @@
+<!-- ================ -->
+<!--   Profile Page -->
+<!-- ================ -->
+
+<!-- Header -->
+<%- include ('partials/headerForHomeProfileAndSettings') %>
+
+    <!-- Main -->
+    <main class="w-full h-full flex justify-center items-center flex-col lg:mt-16 mt-8">
+        <div class="md:w-3/4 w-full h-full flex justify-center items-center flex-col bg-white lg:mt-10 md:mt-6 md:rounded-t-xl p-0.5">
+
+            <!-- Wallpaer  -->
+            <img class="w-full flex justify-center items-center md:rounded-t-xl"
+                src="https://t4.ftcdn.net/jpg/02/18/18/55/360_F_218185587_P4zituDtWJOfClUKL6merI0BgLMIxoeC.jpg" class="w-full object-cover aspect-square" alt="">
+            <div class="w-full flex justify-center md:items-start items-start flex-row md:px-14 px-0 mt-3">
+                <div class="lg:w-36 md:w-28 w-16 bg-yellow-300 md:relative md:-top-6 rounded-md lg:mx-5 mr-3 p-1">
+                    <img src="<%= user.profile_image %>" class="w-full object-cover aspect-square" />
+                </div>
+
+                <!-- User Name -->
+                <div class="w-full">
+                    <h1 class="xl:text-2xl lg:text-xl md:text-base text-sm font-bold">
+                        <%= user.name %>
+                    </h1>
+                </div>
+            </div>
+
+            <!-- Saved Articles  -->
+            <div class="w-full flex justify-center items-center flex-col bg-white lg:my-5 md:my-3 my-2 py-1 md:p-2 p-1 z-20 md:rounded-md sm:rounded-sm rounded lg:shadow-lg md:shadow-md shadow">
+                <h1 class="w-full text-left md:text-base sm:text-sm text-xs font-semibold md:pl-5 pl-1">Saved Articles</h1>
+                <hr class="w-full text-gray-600" />
+                <div class="w-full flex justify-center items-center flex-col my-3 articleDiv">
+
+                    <% for(let i=0; i < user.articles.length; i++) { %>
+                        <form
+                            class="w-full flex justify-center items-start flex-col bg-gray-200 lg:my-6 md:my-4 sm:my-2 my-1 md:rounded-md sm:rounded-sm rounded md:p-4 p-2 shadow-md articleForm">
+                            <h1 class="w-full md:text-base sm:text-sm text-xs font-semibold mb-1 underline">
+                                <%= user.articles[i].articleTitle %>
+                            </h1>
+
+                            <p class="w-full lg:text-base md:text-sm text-xs font-normal text-justify text-gray-600">
+                                <%= user.articles[i].articleContent %> ...<a href="<%= user.articles[i].articleLink %>"
+                                        target="_blank" referrerpolicy="no-referrer" class="lg:text-base md:text-sm text-xs text-bold text-purple-600">Continue
+                                        Reading</a>
+                            </p>
+                            <p class="w-full md:text-sm text-xs text-gray-600 text-right mt-1">
+                                <%= user.articles[i].articlePublishedDate %>
+                            </p>
+                            <div class="w-full flex justify-start items-center">
+                                <button type="submit"
+                                    class="lg:text-base md:text-sm text-xs bg-blue-600 text-white p-1 px-2 my-1 rounded-sm cursor-pointer hover:bg-green-600 deleteBtn">Delete</button>
+                            </div>
+                        </form>
+                        <% } %>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Script Tag -->
+    <script>
+        let articleForms = document.querySelectorAll('.articleForm');
+        let articleForm = document.querySelector('.articleForm');
+        let articleDiv = document.querySelector('.articleDiv');
+
+        if (articleDiv.children.length === 0) {
+            articleDiv.innerHTML = `<h1 class=" md:text-base sm:text-sm text-xs font-normal text-gray-600">You don't any saved articles.</h1>`;
+        }
+
+        for (let i = 0; i < articleForms.length; i++) {
+            articleForms[i].addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                let articleTitle = articleForms[i].children[0].textContent;
+
+                if (articleTitle !== undefined || articleTitle !== null || articleTitle !== '') {
+                    let fetchFunc = async (articleTitle) => {
+                        try {
+                            let fetchItem = await fetch("https://eduweb-online-website.onrender.com/api/gettingArticleTitle", {
+                                method: 'POST',
+                                mode: 'cors',
+                                cache: 'no-cache',
+                                credentials: 'same-origin',
+                                redirect: 'follow',
+                                referrerPolicy: 'no-referrer',
+                                headers: new Headers({ "Content-Type": "application/json" }),
+                                body: JSON.stringify({ articleTitle: articleTitle }),
+                            })
+                                .then((response) => response.json())
+                                .then((obj) => obj)
+                                .then(console.log("received!"));
+                        } catch (error) {
+                            console.log("This is the error in profile.ejs > fetchFunc", error)
+                        }
+                    }
+                    fetchFunc(articleTitle);
+                }
+
+                articleForms[i].remove();
+            });
+        }
+    </script>
+
+    <!-- Footer -->
+    <%- include('partials/footer') %>

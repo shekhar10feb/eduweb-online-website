@@ -1,0 +1,157 @@
+<!-- ============= -->
+<!-- All Blogs Page For Author -->
+<!-- ============= -->
+
+<!-- Header -->
+<%- include ('partials/headerForHomeProfileAndSettings') %>
+
+<!-- Main -->
+<main class="w-full flex justify-center items-center flex-row overflow-hidden border border-none lg:mt-12 mt-8">
+  <div class="w-full flex justify-center items-center flex-col">
+    <div class="w-full lg:hidden flex justify-center items-center flex-col">
+      <% advertisement.map((item, index)=> { %>
+      <% if(item.image_resolution_value==='768px' || item.image_resolution_value==='640px' ||
+                                                        item.image_resolution_value==='300px' ){ %>
+      <!-- image_resolution_value === '768px' -->
+      <% if(item.image_resolution_value==='768px' ){ %>
+      <div class="w-full lg:hidden md:flex hidden h-full justify-center items-center flex-col">
+        <span class="w-full h-full flex justify-center items-center">
+          <img src="<%= item.filename %>" class="min-w-full min-h-full object-fill
+                                                     aspect-auto advertisementPhoto" alt="" />
+        </span>
+      </div>
+      <% } %>
+
+      <!-- image_resolution_value === '640px' -->
+      <% if(item.image_resolution_value==='640px' ){ %>
+      <div class="w-full md:hidden sm:flex hidden h-full justify-center items-center flex-col">
+        <span class="w-full h-full flex justify-center items-center">
+          <img src="<%= item.filename %>" class="min-w-full min-h-full object-fill
+                                                     aspect-auto advertisementPhoto" alt="" />
+        </span>
+      </div>
+      <% } %>
+
+      <!-- image_resolution_value === '300px' -->
+      <% if(item.image_resolution_value==='300px' ){ %>
+      <div class="w-full sm:hidden flex h-full justify-center items-center flex-col">
+        <span class="w-full h-full flex justify-center items-center">
+          <img src="<%= item.filename %>" class="min-w-full min-h-full object-fill
+                                                     aspect-auto advertisementPhoto" alt="" />
+        </span>
+      </div>
+      <% } %>
+      <% } %>
+      <% }) %>
+    </div>
+
+    <div class="w-full lg:hidden flex justify-center items-center text-sm bg-white font-bold sm:p-2 p-1 px-1 cursor-pointer">
+      <a href="/api/previous_years_question_papers" class="w-full flex justify-center items-center bg-blue-800 rounded hover:bg-blue-700 text-white sm:p-2 p-1 px-1">
+        <h1>Previous Years Question Papers</h1>
+      </a>
+    </div>
+
+    <div class="w-full flex justify-center items-start flex-row mt-1">
+      <div class="lg:w-4/5 w-full h-full flex justify-center items-center flex-col px-1">
+        <div class="w-full flex justify-start items-center md:flex-row flex-col bg-white p-1 md:border-b md:border-gray-200 lg:mb-2 mb-1">
+          <div class="w-full md:flex hidden justify-between items-center text-xl font-bold my-2">
+            <h1 class="w-auto lg:text-lg md:text-base underline text-wrap ml-4">
+              Blogs, which you would like to read
+            </h1>
+          </div>
+          <div class="w-full md:hidden flex justify-center items-center flex-col text-xl font-bold my-2">
+            <h1 class="w-full text-center sm:text-base text-sm underline text-wrap">
+              Blogs, which you would like to read
+            </h1>
+          </div>
+        </div>
+
+        <div class="w-full flex justify-center items-start flex-col all_blogs">
+          <% for(let i=0; i < dataTable.length; i++) { %>
+          <% for(let j=0; j < dataTable[i].writtenBlogsByAuthor.length; j++) { %>
+          <form class="w-full flex justify-center items-start flex-col bg-white sm:mb-2 mb-1 rounded-md px-4 py-3 shadow-md form">
+            <div class="w-full flex justify-start items-center flex-row bg-gray-200 py-1">
+              <div>
+                <img src="<%= dataTable[i].profile_image %>" class="md:w-14 sm:w-10 w-8 object-fill aspect-square topHeadPhoto" alt="">
+              </div>
+              <div class="ml-2">
+                <h2 class="lg:text-sm text-xs font-medium">
+                  <%= dataTable[i].name %>
+                </h2>
+                <p class="text-gray-600 italic" style="font-size: 0.6rem;">
+                  &#60;Email-id: <%= dataTable[i].email %>&#62;
+                </p>
+              </div>
+            </div>
+            <p class="w-full lg:text-base md:text-sm text-xs text-gray-800 md:font-bold font-semibold my-1 underline">
+              <%= dataTable[i].writtenBlogsByAuthor[j].blogTitle %>
+            </p>
+            <p class="w-full lg:text-base md:text-sm text-xs text-justify text-gray-700 md:font-semibold font-medium">
+              Category: <%= dataTable[i].writtenBlogsByAuthor[j].blogCategory %>
+            </p>
+            <div class="w-full flex lg:text-base md:text-sm text-xs text-justify text-gray-600 continueReadingDiv">
+              <span>
+                <%= dataTable[i].writtenBlogsByAuthor[j].blogContent.slice(0, 400) %>...<span class="text-purple-600 cursor-pointer continueReadingBtn">Continue
+                  Reading</span>
+              </span>
+            </div>
+            <div class="w-full hidden lg:text-base md:text-sm text-xs text-justify text-gray-600 lessReadingDiv">
+              <span>
+                <%= dataTable[i].writtenBlogsByAuthor[j].blogContent %>...<span class="text-purple-600 cursor-pointer lessReadingBtn">Less Reading</span>
+              </span>
+            </div>
+            <p class="w-full md:text-sm text-xs text-gray-600 text-right mt-1">
+              <%= dataTable[i].writtenBlogsByAuthor[j].publishedDate %>
+            </p>
+          </form>
+          <% } %>
+          <% } %>
+        </div>
+      </div>
+
+      <div class="lg:w-1/5 lg:flex hidden h-full justify-center items-center flex-col px-1">
+        <div class="w-full flex justify-center items-center text-sm bg-white font-bold sm:p-2 px-1 cursor-pointer">
+          <a href="/api/previous_years_question_papers" class="w-full flex justify-center items-center bg-blue-800 hover:bg-blue-700 text-white rounded sm:p-2 px-1">
+            <h1>Previous Years Question Papers</h1>
+          </a>
+        </div>
+        <!-- image_resolution_value === '1024px' -->
+        <% advertisement.map((item, index)=> { %>
+        <% if(item.image_resolution_value==='1024px' ){ %>
+        <div class="w-full lg:flex hidden h-full justify-center items-center flex-col lg:mt-2">
+          <span class="w-full h-full flex justify-center items-center">
+            <img src="<%= item.filename %>" class="min-w-full min-h-full object-fill
+                           aspect-auto advertisementPhoto" alt="" />
+          </span>
+        </div>
+        <% } %>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</main>
+
+<Script>
+  // Continue Reading or Less Reading functionality 
+  const continueReadingDiv = document.querySelectorAll('.continueReadingDiv');
+  const lessReadingDiv = document.querySelectorAll('.lessReadingDiv');
+  const continueReadingBtn = document.querySelectorAll('.continueReadingBtn');
+  const lessReadingBtn = document.querySelectorAll('.lessReadingBtn');
+
+  for (let i = 0; i < continueReadingDiv.length; i++) {
+    continueReadingBtn[i].addEventListener('click', () => {
+      continueReadingDiv[i].style.display = 'none';
+      lessReadingDiv[i].style.display = 'flex';
+    });
+  }
+
+  for (let j = 0; j < lessReadingDiv.length; j++) {
+    lessReadingDiv[j].addEventListener('click', () => {
+      lessReadingDiv[j].style.display = 'none';
+      continueReadingDiv[j].style.display = 'flex';
+    })
+  }
+</Script>
+
+<!-- Footer  -->
+<%- include('partials/footer') %>

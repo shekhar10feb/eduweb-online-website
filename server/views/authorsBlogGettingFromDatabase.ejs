@@ -1,0 +1,93 @@
+<% for(let i=0; i < user.writtenBlogsByAuthor.length; i++) { %>
+
+    <form
+        class="w-full flex justify-center items-start flex-col bg-gray-200 md:my-4 sm:my-2 my-1  md:rounded-md sm:rounded-sm rounded md:p-4 p-2 shadow-md yourWrittenBlogForm">
+        <h1 class="w-full md:text-base sm:text-sm text-xs font-semibold mb-1 underline">
+            <%= user.writtenBlogsByAuthor[i].blogTitle %>
+        </h1>
+        <p class="w-full md:text-sm text-xs text-justify text-gray-700 font-semibold">
+            Category: <%= user.writtenBlogsByAuthor[i].blogCategory %>
+        </p>
+        <div
+            class="w-full flex lg:text-base md:text-sm text-xs font-normal text-justify text-gray-600 continueReadingDiv">
+            <span>
+                <%= user.writtenBlogsByAuthor[i].blogContent.slice(0, 300) %>...<span
+                        class="text-purple-600 cursor-pointer continueReadingBtn">Continue
+                        Reading</span>
+            </span>
+        </div>
+        <div class="w-full hidden lg:text-base md:text-sm text-xs text-justify text-gray-600 lessReadingDiv">
+            <span>
+                <%= user.writtenBlogsByAuthor[i].blogContent %>...<span
+                        class="text-purple-600 cursor-pointer lessReadingBtn">Less
+                        Reading</span>
+            </span>
+        </div>
+        <p class="w-full md:text-sm text-xs text-gray-600 text-right mt-1">
+            Published on: <%= user.writtenBlogsByAuthor[i].blogPublishedDate %>
+        </p>
+        <div class="w-full flex justify-start items-center flex-row">
+            <button
+                class="lg:text-base md:text-sm text-xs bg-blue-600 text-white p-1 px-2 my-1 rounded-sm cursor-pointer hover:bg-green-600 editBtn">Edit</button>
+            <button type="submit"
+                class="lg:text-base md:text-sm text-xs bg-blue-600 text-white p-1 px-2 my-1 mx-4 rounded-sm cursor-pointer hover:bg-green-600 deleteBtn">Delete</button>
+        </div>
+    </form>
+    <% } %>
+
+        <script>
+            let continueReadingDiv = document.querySelectorAll('.continueReadingDiv');
+            let lessReadingDiv = document.querySelectorAll('.lessReadingDiv');
+            let continueReadingBtn = document.querySelectorAll('.continueReadingBtn');
+            let lessReadingBtn = document.querySelectorAll('.lessReadingBtn');
+
+            for (let i = 0; i < continueReadingDiv.length; i++) {
+                continueReadingBtn[i].addEventListener('click', () => {
+                    continueReadingDiv[i].style.display = 'none';
+                    lessReadingDiv[i].style.display = 'flex';
+                });
+            }
+
+            for (let j = 0; j < lessReadingDiv.length; j++) {
+                lessReadingDiv[j].addEventListener('click', () => {
+                    lessReadingDiv[j].style.display = 'none';
+                    continueReadingDiv[j].style.display = 'flex';
+                })
+            }
+
+            let yourWrittenBlogForms = document.querySelectorAll('.yourWrittenBlogForm');
+
+            for (let i = 0; i < yourWrittenBlogForms.length; i++) {
+                yourWrittenBlogForms[i].addEventListener('submit', (event) => {
+                    event.preventDefault();
+
+                    let blogTitle = yourWrittenBlogForms[i].children[0].textContent.trim();
+
+                    if (blogTitle !== undefined || blogTitle !== null || blogTitle !== '') {
+                        let fetchFunc = async (blogTitle) => {
+                            try {
+                                let fetchItem = await fetch("/api/gettingBlogTitle", {
+                                    method: 'POST',
+                                    mode: 'cors',
+                                    cache: 'no-cache',
+                                    credentials: 'same-origin',
+                                    redirect: 'follow',
+                                    referrerPolicy: 'no-referrer',
+                                    headers: new Headers({ "Content-Type": "application/json" }),
+                                    body: JSON.stringify({ blogTitle: blogTitle }),
+                                })
+                                    .then((response) => response.json())
+                                    .then((obj) => obj)
+                                    .then(console.log("received!"));
+                            } catch (error) {
+                                console.log("This is the error in profile.ejs > fetchFunc", error)
+                            }
+                        }
+                        fetchFunc(blogTitle);
+                    }
+
+                    yourWrittenBlogForms[i].remove();
+
+                })
+            }
+        </script>

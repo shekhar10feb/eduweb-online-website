@@ -1,0 +1,106 @@
+<!-- ============= -->
+<!--   Profile Page For Author -->
+<!-- ============= -->
+
+<!-- Header -->
+<%- include ('partials/headerForHomeProfileAndSettingsForAuthor') %>
+
+    <!-- Main -->
+    <main class="w-full h-full flex justify-center items-center flex-col lg:mt-16 mt-8">
+        <div
+            class="md:w-3/4 w-full h-full flex justify-center items-center flex-col bg-white lg:mt-10 md:mt-6 md:rounded-t-xl p-0.5">
+
+            <!-- Wallpaer  -->
+            <img class="w-full flex justify-center items-center md:rounded-t-xl"
+                src="https://t4.ftcdn.net/jpg/02/18/18/55/360_F_218185587_P4zituDtWJOfClUKL6merI0BgLMIxoeC.jpg"
+                class="w-full object-cover aspect-square" alt="" />
+            <div class="w-full flex justify-center md:items-start items-center flex-row md:px-14 px-0 mt-3">
+                <div class="lg:w-36 md:w-28 w-16 bg-yellow-300 md:relative md:-top-6 rounded-md lg:mx-5 mr-3 p-1">
+                    <img src="<%= user.profile_image %>" class="w-full object-cover aspect-square" />
+                </div>
+
+                <!-- User Name -->
+                <div class="w-full">
+                    <h1 class="xl:text-2xl lg:text-xl md:text-base text-sm font-bold">
+                        <%= user.name %><span class="text-gray-600 md:text-sm text-xs ml-1 italic">(Author)</span>
+                    </h1>
+                </div>
+            </div>
+
+            <!-- Write Blog -->
+            <div
+                class="w-full flex justify-center items-center bg-gray-400 my-5 py-1 border-2 border-gray-400 md:rounded-md sm:rounded-sm rounded lg:shadow-lg md:shadow-md shadow z-auto showMeBlog">
+                <div class="w-full flex justify-center items-center flex-col md:p-3 sm:p-2 p-1">
+
+                    <!-- Buttons -->
+                    <div
+                        class="w-full flex justify-start items-center flex-row text-gray-600 lg:text-base md:text-sm md:font-bold font-semibold my-2">
+                        <button
+                            class="lg:w-36 md:w-32 w-24 lg:text-base md:text-sm text-xs md:font-semibold font-medium text-center mr-3 p-1 lg:rounded-md sm:rounded-sm rounded lg:shadow-lg md:shadow-md shadow cursor-pointer"
+                            id="createNewBlogBtn" onclick="createNewBlogFunc()">Write Blog</button>
+                        <button
+                            class="lg:w-36 md:w-32 w-24 lg:text-base md:text-sm text-xs md:font-semibold font-medium text-center p-1 lg:rounded-md sm:rounded-sm rounded lg:shadow-lg md:shadow-md shadow cursor-pointer"
+                            id="yourBlogsBtn" onclick="yourBlogsFunc()">Your Blogs</button>
+                    </div>
+
+                    <!-- Create Blog by Author -->
+                    <div class="w-full">
+                        <div class="w-full createBlog">
+
+                            <!-- Create Blog By Author ejs page -->
+                            <%- include ('createBlogByAuthor') %>
+                        </div>
+
+                        <!-- Author's Blog getting from database -->
+                        <div class="w-full hidden justify-center items-center flex-col md:my-3 md:px-2 yourBlog">
+
+                            <!-- Author's Blog Getting From Database ejs page -->
+                            <%- include('authorsBlogGettingFromDatabase') %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Script Tag -->
+    <script>
+        function createNewBlogFunc() {
+            if (document.getElementById("createNewBlogBtn").style.backgroundColor === "rgb(254, 183, 183)" && document.querySelector('.createBlog').style.display === 'none') {
+                document.getElementById("createNewBlogBtn").style.backgroundColor = "rgb(173, 245, 173)";
+                document.getElementById("yourBlogsBtn").style.backgroundColor = "rgb(254, 183, 183)";
+                document.querySelector('.createBlog').style.display = 'flex';
+                document.querySelector('.yourBlog').style.display = 'none';
+            } else {
+                document.getElementById("createNewBlogBtn").style.backgroundColor = "rgb(254, 183, 183)";
+                document.getElementById("yourBlogsBtn").style.backgroundColor = "rgb(173, 245, 173)";
+                document.querySelector('.createBlog').style.display = 'none';
+                document.querySelector('.yourBlog').style.display = 'flex';
+            }
+
+        }
+
+        function yourBlogsFunc() {
+            if (document.getElementById("yourBlogsBtn").style.backgroundColor === "rgb(173, 245, 173)" && document.querySelector('.yourBlog').style.display === 'flex') {
+                document.getElementById("yourBlogsBtn").style.backgroundColor = "rgb(254, 183, 183)";
+                document.getElementById("createNewBlogBtn").style.backgroundColor = "rgb(173, 245, 173)";
+                document.querySelector('.yourBlog').style.display = 'none';
+                document.querySelector('.createBlog').style.display = 'flex';
+            } else {
+                document.getElementById("yourBlogsBtn").style.backgroundColor = "rgb(173, 245, 173)";
+                document.getElementById("createNewBlogBtn").style.backgroundColor = "rgb(254, 183, 183)";
+                document.querySelector('.yourBlog').style.display = 'flex';
+                document.querySelector('.createBlog').style.display = 'none';
+            }
+
+        }
+
+        let yourBlog = document.querySelector('.yourBlog');
+
+        if (yourBlog.children.length === 0) {
+            yourBlog.innerHTML = `<h1 class="text-gray-600">You don't any saved articles.</h1>`;
+        }
+    </script>
+
+    <!-- Footer  -->
+    <%- include('partials/footer') %>

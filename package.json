@@ -1,0 +1,53 @@
+{
+  "name": "eduweb-online-website",
+  "version": "1.0.0",
+  "description": "EduWeb is your go-to platform for discovering colleges, courses, and exams for higher education in India",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server/index.js",
+    "build": "npm install && npm install --prefix client && npm run build --prefix client",
+    "start": "nodemon server/index.js",
+    "tailwind:dev": "tailwindcss -i ./server/public/styles/tailwind.css -o ./server/public/styles/style.css --watch",
+    "tailwind:build": "tailwindcss -i ./server/public/styles/tailwind.css -o ./server/public/styles/style.css",
+    "generate-sitemap": "node server/utils/sitemapGenerator.js",
+    "postbuild": "npm run generate-sitemap"
+  },
+  "keywords": [],
+  "author": "Shekhar Ranjan",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "cloudinary": "^2.0.1",
+    "concurrently": "^8.2.1",
+    "connect-ensure-login": "^0.1.1",
+    "connect-flash": "^0.1.1",
+    "connect-roles": "^3.1.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-flash": "^0.0.2",
+    "express-flash-message": "^3.0.2",
+    "express-session": "^1.18.1",
+    "file-system": "^1.2.2",
+    "fs-extra": "^11.1.1",
+    "mongodb": "3.6",
+    "mongoose": "^7.5.2",
+    "multer": "^1.4.5-lts.1",
+    "nanoid": "^3.3.4",
+    "nodemailer": "^6.9.7",
+    "serve-favicon": "^2.5.0",
+    "sitemap": "^8.0.0",
+    "twilio": "^5.2.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "nodemon": "^3.0.1",
+    "postcss": "^8.4.49",
+    "postcss-cli": "^11.0.0",
+    "tailwindcss": "^3.4.17"
+  }
+}

@@ -1,0 +1,49 @@
+<!-- ========================= -->
+<!-- Account Verification for College Page -->
+<!-- ========================= -->
+
+<%- include ('partials/headerForLoginAndRegisterForCollege') %>
+
+<!-- Main Tag -->
+<main class="w-full h-full flex justify-center items-center flex-col bg-gray-300">
+
+  <% if(typeof message !=='undefined' ) { %>
+  <div class="md:w-6/12 w-8/12 flex justify-between items center flex-row text-gray-600 md:text-base sm:text-sm text-xs bg-white absolute top-20 md:p-2 p-1 md:px-4 px-2 rounded-md shadow-md message_to_user_div">
+    <h1 class="w-auto italic font-medium message_to_user">
+      <%= message %>
+    </h1>
+  </div>
+  <% } %>
+
+  <div class="lg:w-80 md:w-72 w-64 flex justify-center items-center flex-col bg-white relative p-3 rounded-md shadow-md">
+    <h2 class="font-semibold md:text-base text-sm text-gray-700 mb-5">OTP has been send to your Mobile Number, write your One-Time Password below:
+    </h2>
+    <form action="/api/accountVerificationForCollege" method="POST" class="w-full flex justify-center items-center flex-col form_otp_generator">
+      <div class="w-full flex justify-start items-center flex-row my-2 form_otp_generatorFirstDiv">
+        <input type="text" name="codeOne" maxlength="1" class="w-10 text-center bg-white md:rounded-md rounded-sm md:p-2 md:mx-3 mx-1 border border-gray-400 shadow-md form_input" />
+        <input type="text" name="codeTwo" maxlength="1" class="w-10 text-center bg-white md:rounded-md rounded-sm md:p-2 md:mx-3 mx-1 border border-gray-400 shadow-md form_input" />
+        <input type="text" name="codeThree" maxlength="1" class="w-10 text-center bg-white md:rounded-md rounded-sm md:p-2 md:mx-3 mx-1 border border-gray-400 shadow-md form_input" />
+        <input type="text" name="codeFour" maxlength="1" class="w-10 text-center bg-white md:rounded-md rounded-sm md:p-2 md:mx-3 mx-1 border border-gray-400 shadow-md form_input" />
+      </div>
+      <div class="w-full flex justify-between items-center flex-row p-2 my-1">
+        <button type="submit" class="md:font-bold font-semibold md:text-base text-sm bg-green-700 text-white rounded-md p-1 px-2 mt-1 md:px-3 outline-none cursor-pointer shadow-md hover:bg-blue-600 btn">Send</button>
+      </div>
+    </form>
+    <div class="w-3/5 flex justify-end items-center absolute bottom-7 right-5">
+      <form action="/api/resendPasswordForCollege" method="POST" class="w-auto">
+        <input type="text" name="resendPassaword" class="w-auto hidden" value="yes" />
+        <button type="submit" class="w-full md:text-base text-sm font-semibold text-purple-700 cursor-pointer">resend password?</button>
+      </form>
+    </div>
+  </div>
+</main>
+
+<script>
+  let message_to_user_div = document.querySelector('.message_to_user_div');
+
+  setTimeout(function() {
+    message_to_user_div.style.display = 'none';
+  }, 3000);
+</script>
+
+<%- include('partials/footer') %>

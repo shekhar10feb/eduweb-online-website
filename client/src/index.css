@@ -1,0 +1,881 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @import "@mui/icons-material/PrivacyTip";
+  *,
+  *::after,
+  *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  @media screen and (min-width: 640px) {
+    .website_background_image {
+      width: 100%;
+      background: url("./assets/headerPhoto.png") no-repeat center;
+      background-blend-mode: darken;
+      background-origin: content-box;
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+  }
+
+  /* Header */
+  .header_div {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 639px) {
+    .header_div {
+      background: rgb(11, 85, 208);
+    }
+  }
+
+  .header_sub-div input,
+  .header_sub-div button {
+    outline: none;
+    border: none;
+  }
+
+  /* @keyframes test {
+    0% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(80%);
+    }
+  } */
+
+  /* Pre_Loader starts */
+  @keyframes spinner {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .loading {
+    width: 2rem;
+    height: 2rem;
+    border: 5px solid gray;
+    border-radius: 50%;
+    margin: 0 auto;
+    border-top-color: blue;
+    animation: spinner 0.8s linear infinite;
+  }
+  /* Pre_Loader ends */
+
+  /* Home */
+  @keyframes animate_in_show1_HeaderForDesktopVersion {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  /* Navigation Lists for Mobile Version */
+
+  #navForMobileVersion1,
+  #navForMobileVersion2,
+  #navForMobileVersion3,
+  #navForMobileVersion4,
+  #navForMobileVersion5,
+  #navForMobileVersion6,
+  #navForMobileVersion7 {
+    display: none;
+  }
+
+  #navForMobileVersion1.close,
+  #navForMobileVersion2.close,
+  #navForMobileVersion3.close,
+  #navForMobileVersion4.close,
+  #navForMobileVersion5.close,
+  #navForMobileVersion6.close,
+  #navForMobileVersion7.close {
+    display: none;
+  }
+
+  #navForMobileVersion1.open,
+  #navForMobileVersion2.open,
+  #navForMobileVersion3.open,
+  #navForMobileVersion4.open,
+  #navForMobileVersion5.open,
+  #navForMobileVersion6.open,
+  #navForMobileVersion7.open {
+    width: 100%;
+    height: auto;
+    display: flex;
+    font-size: 0.6rem;
+    background-color: #fff;
+    padding: 0.2rem;
+    background-color: #fbfbfb;
+    border-top: 1px solid #d9d7d7;
+    z-index: 40;
+  }
+
+  @media screen and (min-width: 300px) and (max-width: 639px) {
+    #navForMobileVersion1.open,
+    #navForMobileVersion2.open,
+    #navForMobileVersion3.open,
+    #navForMobileVersion4.open,
+    #navForMobileVersion5.open,
+    #navForMobileVersion6.open,
+    #navForMobileVersion7.open {
+      width: 100%;
+      height: auto;
+      display: flex;
+      font-size: 0.6rem;
+      background-color: #fff;
+      padding: 0.2rem;
+      background-color: #fbfbfb;
+      border-top: 1px solid #d9d7d7;
+      z-index: 40;
+    }
+  }
+
+  @media screen and (min-width: 640px) and (max-width: 767px) {
+    #navForMobileVersion1.open,
+    #navForMobileVersion2.open,
+    #navForMobileVersion3.open,
+    #navForMobileVersion4.open,
+    #navForMobileVersion5.open,
+    #navForMobileVersion6.open,
+    #navForMobileVersion7.open {
+      width: 100%;
+      height: auto;
+      display: flex;
+      font-size: 0.7rem;
+      background-color: #fff;
+      padding: 0.3rem;
+      background-color: #fbfbfb;
+      border-top: 1px solid #d9d7d7;
+      z-index: 40;
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    #navForMobileVersion1.open,
+    #navForMobileVersion2.open,
+    #navForMobileVersion3.open,
+    #navForMobileVersion4.open,
+    #navForMobileVersion5.open,
+    #navForMobileVersion6.open,
+    #navForMobileVersion7.open {
+      width: 100%;
+      height: auto;
+      display: flex;
+      font-size: 0.9rem;
+      background-color: #fff;
+      padding: 0.5rem;
+      background-color: #fbfbfb;
+      border-top: 1px solid #d9d7d7;
+      z-index: 40;
+    }
+  }
+  /* Navigation Lists for Mobile Version ends here */
+
+  /* courses */
+  .activescreen {
+    color: #16a34a;
+    text-decoration: underline;
+    text-decoration-color: #16a34a;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-thickness: 5px;
+    text-underline-offset: 1rem;
+    padding: 1rem 0;
+  }
+
+  .courses-btns button {
+    margin: 0 2rem;
+  }
+
+  @media screen and (max-width: 767px) {
+    .courses-btns button {
+      margin: 0.4rem;
+    }
+
+    .activescreen {
+      text-underline-offset: 0.7rem;
+      padding: 0.7rem 0;
+    }
+  }
+
+  @media screen and (min-width: 300px) {
+    .courses-btns button {
+      margin: 0.1rem 0.4rem;
+    }
+
+    .activescreen {
+      text-underline-offset: 0.4rem;
+      padding: 0.3rem 0;
+    }
+  }
+
+  .courses-btns button:hover {
+    color: #16a34a;
+  }
+
+  .courses-divs,
+  #carousel-container {
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  #courses-divs_ul1,
+  #courses-divs_ul2,
+  #courses-divs_ul3,
+  #courses-divs_ul4 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 700;
+    padding: 1rem;
+  }
+
+  @media screen and (max-width: 767px) {
+    #courses-divs_ul1,
+    #courses-divs_ul2,
+    #courses-divs_ul3,
+    #courses-divs_ul4 {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      font-size: 0.3rem;
+      line-height: 1rem;
+      font-weight: 700;
+      padding: 1rem 0.4rem;
+    }
+
+    #courses-divs_ul1 li,
+    #courses-divs_ul2 li,
+    #courses-divs_ul3 li,
+    #courses-divs_ul4 li,
+    .carousel-container_more-ul li {
+      border-bottom: 1px solid #8080804f;
+    }
+  }
+
+  .courses-divs #courses-divs_ul1.details,
+  .courses-divs #courses-divs_ul2.details,
+  .courses-divs #courses-divs_ul3.details,
+  .courses-divs #courses-divs_ul4.details {
+    width: 100%;
+    height: auto;
+    display: flex;
+    background-color: #fff;
+    padding: 1rem 0.4rem;
+    z-index: 10;
+  }
+
+  @media screen and (max-width: 767px) {
+    .courses-divs #courses-divs_ul1.details,
+    .courses-divs #courses-divs_ul2.details,
+    .courses-divs #courses-divs_ul3.details,
+    .courses-divs #courses-divs_ul4.details {
+      width: 100%;
+      height: auto;
+      display: flex;
+      background-color: #fff;
+      padding: 0.2rem 0;
+      z-index: 10;
+    }
+  }
+
+  .courses-divs #courses-divs_ul1.close,
+  .courses-divs #courses-divs_ul2.close,
+  .courses-divs #courses-divs_ul3.close,
+  .courses-divs #courses-divs_ul4.close {
+    display: none;
+  }
+
+  #carousel-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+    overflow-x: hidden;
+  }
+
+  #carousel-container .arrows {
+    width: 3%;
+    height: 25em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #carousel-container.details {
+    width: 100%;
+    height: 26em;
+    display: flex;
+    background-color: #fff;
+    z-index: 10;
+  }
+
+  #carousel-container.close {
+    display: none;
+  }
+
+  #carousel-container > ul {
+    transition: 1s cubic-bezier(0.39, 0.575, 0.565, 1);
+  }
+
+  @keyframes testKeyword {
+    0% {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes testKeyword1 {
+    0% {
+      opacity: 0;
+      transform: translateX(200%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Login Page */
+  .isButtonActive {
+    background-color: blue;
+  }
+
+  .login_signup-title {
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Trending Courses & Exams Pages */
+  .boxShadow {
+    box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Profile */
+  #userHeaderPersonDropDown.open {
+    width: 13%;
+    height: auto;
+    display: inline-block;
+    position: absolute;
+    top: 4.75rem;
+    right: 1rem;
+    background-color: #fff;
+    color: gray;
+    padding: 0.5rem;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    z-index: 100;
+  }
+
+  #userHeaderPersonDropDown.close {
+    display: none;
+  }
+
+  /* UserProfile */
+  #userProfileUserProfileWriteBlogs.open,
+  #userProfileUserProfileReadOwnBlogs.open,
+  #userProfileUserProfileSettings.open {
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    position: absolute;
+    top: 4.75rem;
+    right: 1rem;
+    background-color: #fff;
+    color: gray;
+    padding: 0.5rem;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    z-index: 100;
+  }
+
+  #userProfileUserProfileWriteBlogs.close,
+  #userProfileUserProfileReadOwnBlogs.close,
+  #userProfileUserProfileSettings.close {
+    display: none;
+  }
+}
+
+/* Breadcrumb for big screen in Link Pages  */
+.activeInBreadcrumbForBigScreen {
+  width: 100%;
+  height: 100%;
+  color: #16a34a;
+  text-decoration: underline;
+  text-decoration-color: #16a34a;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 4px;
+  text-underline-offset: 0.8rem;
+  font-weight: 500;
+  padding: 0.8rem 0.1rem;
+}
+
+.inactiveInBreadcrumbForBigScreen {
+  width: 100%;
+  height: 100%;
+  color: black;
+  padding: 0.8rem 0.1rem;
+}
+
+#OverviewForBigScreenInBreadcrumb_ul1,
+#CoursesForBigScreenInBreadcrumb_ul2,
+#CareerForBigScreenInBreadcrumb_ul3,
+#AdmissionForBigScreenInBreadcrumb_ul4,
+#Top_Ranked_CollegesForBigScreenInBreadcrumb_ul5,
+#ExamsForBigScreenInBreadcrumb_ul6,
+#Colleges_By_LocationForBigScreenInBreadcrumb_ul7,
+#College_ReviewsForBigScreenInBreadcrumb_ul8 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 700;
+  padding: 1rem;
+}
+
+.Li_PagesInBreadCrumbForBigScreenInLinkPages {
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.Li_PagesInBreadCrumbForBigScreenInLinkPages
+  #OverviewForBigScreenInBreadcrumb_ul1.detailsInBreadcrumbForBigScreen,
+.Li_PagesInBreadCrumbForBigScreenInLinkPages
+  #CoursesForBigScreenInBreadcrumb_ul2.detailsInBreadcrumbForBigScreen,
+.Li_PagesInBreadCrumbForBigScreenInLinkPages
+  #CareerForBigScreenInBreadcrumb_ul3.detailsInBreadcrumbForBigScreen,
+.Li_PagesInBreadCrumbForBigScreenInLinkPages
+  #AdmissionForBigScreenInBreadcrumb_ul4.detailsInBreadcrumbForBigScreen,
+.Li_PagesInBreadCrumbForBigScreenInLinkPages
+  #Top_Ranked_CollegesForBigScreenInBreadcrumb_ul5.detailsInBreadcrumbForBigScreen,
+.Li_PagesInBreadCrumbForBigScreenInLinkPages
+  #ExamsForBigScreenInBreadcrumb_ul6.detailsInBreadcrumbForBigScreen,
+.Li_PagesInBreadCrumbForBigScreenInLinkPages
+  #Colleges_By_LocationForBigScreenInBreadcrumb_ul7.detailsInBreadcrumbForBigScreen,
+.Li_PagesInBreadCrumbForBigScreenInLinkPages
+  #College_ReviewsForBigScreenInBreadcrumb_ul8.detailsInBreadcrumbForBigScreen {
+  width: 100%;
+  height: auto;
+  display: flex;
+  background-color: #fff;
+  padding: 1rem 0.4rem;
+}
+
+.Li_PagesInBreadCrumbForBigScreenInLinkPages
+  #OverviewForBigScreenInBreadcrumb_ul1.closeInBreadcrumbForBigScreen,
+.Li_PagesInBreadCrumbForBigScreenInLinkPages
+  #CoursesForBigScreenInBreadcrumb_ul2.closeInBreadcrumbForBigScreen,
+.Li_PagesInBreadCrumbForBigScreenInLinkPages
+  #CareerForBigScreenInBreadcrumb_ul3.closeInBreadcrumbForBigScreen,
+.Li_PagesInBreadCrumbForBigScreenInLinkPages
+  #AdmissionForBigScreenInBreadcrumb_ul4.closeInBreadcrumbForBigScreen,
+.Li_PagesInBreadCrumbForBigScreenInLinkPages
+  #Top_Ranked_CollegesForBigScreenInBreadcrumb_ul5.closeInBreadcrumbForBigScreen,
+.Li_PagesInBreadCrumbForBigScreenInLinkPages
+  #ExamsForBigScreenInBreadcrumb_ul6.closeInBreadcrumbForBigScreen,
+.Li_PagesInBreadCrumbForBigScreenInLinkPages
+  #Colleges_By_LocationForBigScreenInBreadcrumb_ul7.closeInBreadcrumbForBigScreen,
+.Li_PagesInBreadCrumbForBigScreenInLinkPages
+  #College_ReviewsForBigScreenInBreadcrumb_ul8.closeInBreadcrumbForBigScreen {
+  display: none;
+}
+
+/* Breadcrumb for small screen in Link Pages */
+#breadCrumbInSmallScreen {
+  display: none;
+}
+
+#breadCrumbInSmallScreen.open {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #fff;
+  border-bottom: 2px solid #c8c7c7;
+  padding: 0.5rem;
+}
+
+@media screen and (min-width: 300px) and (max-width: 639px) {
+  #breadCrumbInSmallScreen.open {
+    flex-direction: column;
+    top: 0;
+    border-width: 0 1px 1px 1px;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+
+  #breadCrumbInSmallScreen > li {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 640px) and (max-width: 767px) {
+  #breadCrumbInSmallScreen.open {
+    flex-direction: column;
+    top: 0;
+    border-width: 0 2px 2px 2px;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  }
+
+  #breadCrumbInSmallScreen > li {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1023px) and (max-width: 1280px) {
+  #breadCrumbInSmallScreen.open {
+    flex-direction: row;
+    flex-wrap: wrap;
+    top: 0;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+
+  #breadCrumbInSmallScreen > li {
+    width: 45%;
+    margin: 0.2rem auto;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  #breadCrumbInSmallScreen.open {
+    flex-direction: row;
+    flex-wrap: wrap;
+    top: 0;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+
+  #breadCrumbInSmallScreen > li {
+    width: 45%;
+    margin: 0.2rem auto;
+  }
+}
+
+.activeInBreadcrumbForSmallScreen {
+  width: 100%;
+  height: 100%;
+  background-color: #22c55e;
+  font-weight: 500;
+  padding: 0.2rem 0.4rem;
+}
+
+.inactiveInBreadcrumbForSmallScreen {
+  width: 100%;
+  height: 100%;
+  background-color: #1e40af;
+  padding: 0.2rem 0.4rem;
+}
+
+#OverviewForSmallScreenInBreadcrumb_ul1,
+#CoursesForSmallScreenInBreadcrumb_ul2,
+#CareerForSmallScreenInBreadcrumb_ul3,
+#AdmissionForSmallScreenInBreadcrumb_ul4,
+#Top_Ranked_CollegesForSmallScreenInBreadcrumb_ul5,
+#ExamsForSmallScreenInBreadcrumb_ul6,
+#Colleges_By_LocationForSmallScreenInBreadcrumb_ul7,
+#College_ReviewsForSmallScreenInBreadcrumb_ul8 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 700;
+  padding: 1rem;
+}
+
+.Li_PagesInBreadCrumbForSmallScreenInLinkPages {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-center;
+  flex-direction: column;
+}
+
+.Li_PagesInBreadCrumbForSmallScreenInLinkPages
+  #OverviewForSmallScreenInBreadcrumb_ul1.detailsInBreadcrumbForSmallScreen,
+.Li_PagesInBreadCrumbForSmallScreenInLinkPages
+  #CoursesForSmallScreenInBreadcrumb_ul2.detailsInBreadcrumbForSmallScreen,
+.Li_PagesInBreadCrumbForSmallScreenInLinkPages
+  #CareerForSmallScreenInBreadcrumb_ul3.detailsInBreadcrumbForSmallScreen,
+.Li_PagesInBreadCrumbForSmallScreenInLinkPages
+  #AdmissionForSmallScreenInBreadcrumb_ul4.detailsInBreadcrumbForSmallScreen,
+.Li_PagesInBreadCrumbForSmallScreenInLinkPages
+  #Top_Ranked_CollegesForSmallScreenInBreadcrumb_ul5.detailsInBreadcrumbForSmallScreen,
+.Li_PagesInBreadCrumbForSmallScreenInLinkPages
+  #ExamsForSmallScreenInBreadcrumb_ul6.detailsInBreadcrumbForSmallScreen,
+.Li_PagesInBreadCrumbForSmallScreenInLinkPages
+  #Colleges_By_LocationForSmallScreenInBreadcrumb_ul7.detailsInBreadcrumbForSmallScreen,
+.Li_PagesInBreadCrumbForSmallScreenInLinkPages
+  #College_ReviewsForSmallScreenInBreadcrumb_ul8.detailsInBreadcrumbForSmallScreen {
+  width: 100%;
+  height: auto;
+  display: flex;
+  background-color: #fff;
+  padding: 0.4rem;
+}
+
+.Li_PagesInBreadCrumbForSmallScreenInLinkPages
+  #OverviewForSmallScreenInBreadcrumb_ul1.closeInBreadcrumbForSmallScreen,
+.Li_PagesInBreadCrumbForSmallScreenInLinkPages
+  #CoursesForSmallScreenInBreadcrumb_ul2.closeInBreadcrumbForSmallScreen,
+.Li_PagesInBreadCrumbForSmallScreenInLinkPages
+  #CareerForSmallScreenInBreadcrumb_ul3.closeInBreadcrumbForSmallScreen,
+.Li_PagesInBreadCrumbForSmallScreenInLinkPages
+  #AdmissionForSmallScreenInBreadcrumb_ul4.closeInBreadcrumbForSmallScreen,
+.Li_PagesInBreadCrumbForSmallScreenInLinkPages
+  #Top_Ranked_CollegesForSmallScreenInBreadcrumb_ul5.closeInBreadcrumbForSmallScreen,
+.Li_PagesInBreadCrumbForSmallScreenInLinkPages
+  #ExamsForSmallScreenInBreadcrumb_ul6.closeInBreadcrumbForSmallScreen,
+.Li_PagesInBreadCrumbForSmallScreenInLinkPages
+  #Colleges_By_LocationForSmallScreenInBreadcrumb_ul7.closeInBreadcrumbForSmallScreen,
+.Li_PagesInBreadCrumbForSmallScreenInLinkPages
+  #College_ReviewsForSmallScreenInBreadcrumb_ul8.closeInBreadcrumbForSmallScreen {
+  display: none;
+}
+
+/* Breadcrumb For Big Screen For Study_Abroad in Link Pages */
+.active_Breadcrumb_For_Big_Screen_For_Study_Abroad {
+  width: 100%;
+  height: 100%;
+  color: #16a34a;
+  text-decoration: underline;
+  text-decoration-color: #16a34a;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 4px;
+  text-underline-offset: 0.8rem;
+  font-weight: 500;
+  padding: 0.8rem 0.1rem;
+}
+
+.inactive_Breadcrumb_For_Big_Screen_For_Study_Abroad {
+  width: 100%;
+  height: 100%;
+  color: black;
+  padding: 0.8rem 0.1rem;
+}
+
+#Overview_For_Breadcrumb_For_Big_Screen_For_Study_Abroad_ul1,
+#Colleges_For_Breadcrumb_For_Big_Screen_For_Study_Abroad_ul2,
+#Countries_For_Breadcrumb_For_Big_Screen_For_Study_Abroad_ul3,
+#Application_Process_For_Breadcrumb_For_Big_Screen_For_Study_Abroad_ul4,
+#Scholarships_For_Breadcrumb_For_Big_Screen_For_Study_Abroad_ul5 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 700;
+  padding: 1rem;
+}
+
+.Li_Pages_In_Breadcrumb_For_Big_Screen_For_Study_Abroad_Link_Pages {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-center;
+  flex-direction: column;
+}
+.Li_Pages_In_Breadcrumb_For_Big_Screen_For_Study_Abroad_Link_Pages
+  #Overview_For_Breadcrumb_For_Big_Screen_For_Study_Abroad_ul1.details_In_Breadcrumb_For_Big_Screen_For_Study_Abroad,
+.Li_Pages_In_Breadcrumb_For_Big_Screen_For_Study_Abroad_Link_Pages
+  #Colleges_For_Breadcrumb_For_Big_Screen_For_Study_Abroad_ul2.details_In_Breadcrumb_For_Big_Screen_For_Study_Abroad,
+.Li_Pages_In_Breadcrumb_For_Big_Screen_For_Study_Abroad_Link_Pages
+  #Countries_For_Breadcrumb_For_Big_Screen_For_Study_Abroad_ul3.details_In_Breadcrumb_For_Big_Screen_For_Study_Abroad,
+.Li_Pages_In_Breadcrumb_For_Big_Screen_For_Study_Abroad_Link_Pages
+  #Application_Process_For_Breadcrumb_For_Big_Screen_For_Study_Abroad_ul4.details_In_Breadcrumb_For_Big_Screen_For_Study_Abroad,
+.Li_Pages_In_Breadcrumb_For_Big_Screen_For_Study_Abroad_Link_Pages
+  #Scholarships_For_Breadcrumb_For_Big_Screen_For_Study_Abroad_ul5.details_In_Breadcrumb_For_Big_Screen_For_Study_Abroad {
+  width: 100%;
+  height: auto;
+  display: flex;
+  background-color: #fff;
+  padding: 1rem 0.4rem;
+  /* z-index: 10; */
+}
+
+.Li_Pages_In_Breadcrumb_For_Big_Screen_For_Study_Abroad_Link_Pages
+  #Overview_For_Breadcrumb_For_Big_Screen_For_Study_Abroad_ul1.close_In_Breadcrumb_For_Big_Screen_For_Study_Abroad,
+.Li_Pages_In_Breadcrumb_For_Big_Screen_For_Study_Abroad_Link_Pages
+  #Colleges_For_Breadcrumb_For_Big_Screen_For_Study_Abroad_ul2.close_In_Breadcrumb_For_Big_Screen_For_Study_Abroad,
+.Li_Pages_In_Breadcrumb_For_Big_Screen_For_Study_Abroad_Link_Pages
+  #Countries_For_Breadcrumb_For_Big_Screen_For_Study_Abroad_ul3.close_In_Breadcrumb_For_Big_Screen_For_Study_Abroad,
+.Li_Pages_In_Breadcrumb_For_Big_Screen_For_Study_Abroad_Link_Pages
+  #Application_Process_For_Breadcrumb_For_Big_Screen_For_Study_Abroad_ul4.close_In_Breadcrumb_For_Big_Screen_For_Study_Abroad,
+.Li_Pages_In_Breadcrumb_For_Big_Screen_For_Study_Abroad_Link_Pages
+  #Scholarships_For_Breadcrumb_For_Big_Screen_For_Study_Abroad_ul5.close_In_Breadcrumb_For_Big_Screen_For_Study_Abroad {
+  display: none;
+}
+
+/* Breadcrumb for small screen in Study Abroad in Link Pages */
+#breadCrumb_In_Small_Screen_For_Study_Abroad {
+  display: none;
+}
+
+#breadCrumb_In_Small_Screen_For_Study_Abroad.open {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #fff;
+  padding: 0.5rem;
+  border-width: 0 2px 2px 2px;
+  border-color: #c8c7c7;
+  border-style: solid;
+}
+
+@media screen and (min-width: 300px) and (max-width: 639px) {
+  #breadCrumb_In_Small_Screen_For_Study_Abroad.open {
+    flex-direction: column;
+    top: 0;
+    border-width: 0 1px 1px 1px;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+
+  #breadCrumb_In_Small_Screen_For_Study_Abroad > li {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 640px) and (max-width: 767px) {
+  #breadCrumb_In_Small_Screen_For_Study_Abroad.open {
+    flex-direction: column;
+    top: 0;
+    border-width: 0 1px 1px 1px;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  }
+
+  #breadCrumb_In_Small_Screen_For_Study_Abroad > li {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  #breadCrumb_In_Small_Screen_For_Study_Abroad.open {
+    flex-direction: row;
+    flex-wrap: wrap;
+    top: 0;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+
+  #breadCrumb_In_Small_Screen_For_Study_Abroad > li {
+    width: 45%;
+    margin: 0.2rem auto;
+  }
+}
+
+@media screen and (min-width: 1023px) and (max-width: 1280px) {
+  #breadCrumb_In_Small_Screen_For_Study_Abroad.open {
+    flex-direction: column;
+    top: 0;
+    border-width: 0 2px 2px 2px;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  }
+
+  #breadCrumb_In_Small_Screen_For_Study_Abroad > li {
+    width: 100%;
+  }
+}
+
+.active_Breadcrumb_For_Small_Screen_For_Study_Abroad {
+  width: 100%;
+  height: 100%;
+  background-color: #22c55e;
+  font-weight: 500;
+  padding: 0.2rem 0.4rem;
+}
+
+.inactive_Breadcrumb_For_Small_Screen_For_Study_Abroad {
+  width: 100%;
+  height: 100%;
+  background-color: #1e40af;
+  padding: 0.2rem 0.4rem;
+}
+
+#Overview_For_Breadcrumb_For_Small_Screen_For_Study_Abroad_ul1,
+#Colleges_For_Breadcrumb_For_Small_Screen_For_Study_Abroad_ul2,
+#Countries_For_Breadcrumb_For_Small_Screen_For_Study_Abroad_ul3,
+#Application_Process_For_Breadcrumb_For_Small_Screen_For_Study_Abroad_ul4,
+#Scholarships_For_Breadcrumb_For_Small_Screen_For_Study_Abroad_ul5
+/* #Q_And_A_For_Breadcrumb_For_Small_Screen_For_Study_Abroad_ul6  */ {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 700;
+  padding: 1rem;
+}
+
+.Li_Pages_In_Breadcrumb_For_Small_Screen_For_Study_Abroad_Link_Pages {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-center;
+  flex-direction: column;
+}
+
+.Li_Pages_In_Breadcrumb_For_Small_Screen_For_Study_Abroad_Link_Pages #Overview_For_Breadcrumb_For_Small_Screen_For_Study_Abroad_ul1.details_In_Breadcrumb_For_Small_Screen_For_Study_Abroad,
+.Li_Pages_In_Breadcrumb_For_Small_Screen_For_Study_Abroad_Link_Pages #Colleges_For_Breadcrumb_For_Small_Screen_For_Study_Abroad_ul2.details_In_Breadcrumb_For_Small_Screen_For_Study_Abroad,
+.Li_Pages_In_Breadcrumb_For_Small_Screen_For_Study_Abroad_Link_Pages #Countries_For_Breadcrumb_For_Small_Screen_For_Study_Abroad_ul3.details_In_Breadcrumb_For_Small_Screen_For_Study_Abroad,
+.Li_Pages_In_Breadcrumb_For_Small_Screen_For_Study_Abroad_Link_Pages #Application_Process_For_Breadcrumb_For_Small_Screen_For_Study_Abroad_ul4.details_In_Breadcrumb_For_Small_Screen_For_Study_Abroad,
+.Li_Pages_In_Breadcrumb_For_Small_Screen_For_Study_Abroad_Link_Pages #Scholarships_For_Breadcrumb_For_Small_Screen_For_Study_Abroad_ul5.details_In_Breadcrumb_For_Small_Screen_For_Study_Abroad
+/* .Li_Pages_In_Breadcrumb_For_Small_Screen_For_Study_Abroad_Link_Pages #Q_And_A_For_Breadcrumb_For_Small_Screen_For_Study_Abroad_ul6.details_In_Breadcrumb_For_Small_Screen_For_Study_Abroad  */ {
+  width: 100%;
+  height: auto;
+  display: flex;
+  background-color: #fff;
+  padding: 1rem 0.4rem;
+  /* z-index: 10; */
+}
+
+.Li_Pages_In_Breadcrumb_For_Small_Screen_For_Study_Abroad_Link_Pages #Overview_For_Breadcrumb_For_Small_Screen_For_Study_Abroad_ul1.close_In_Breadcrumb_For_Small_Screen_For_Study_Abroad,
+.Li_Pages_In_Breadcrumb_For_Small_Screen_For_Study_Abroad_Link_Pages #Colleges_For_Breadcrumb_For_Small_Screen_For_Study_Abroad_ul2.close_In_Breadcrumb_For_Small_Screen_For_Study_Abroad,
+.Li_Pages_In_Breadcrumb_For_Small_Screen_For_Study_Abroad_Link_Pages #Countries_For_Breadcrumb_For_Small_Screen_For_Study_Abroad_ul3.close_In_Breadcrumb_For_Small_Screen_For_Study_Abroad,
+.Li_Pages_In_Breadcrumb_For_Small_Screen_For_Study_Abroad_Link_Pages #Application_Process_For_Breadcrumb_For_Small_Screen_For_Study_Abroad_ul4.close_In_Breadcrumb_For_Small_Screen_For_Study_Abroad,
+.Li_Pages_In_Breadcrumb_For_Small_Screen_For_Study_Abroad_Link_Pages #Scholarships_For_Breadcrumb_For_Small_Screen_For_Study_Abroad_ul5.close_In_Breadcrumb_For_Small_Screen_For_Study_Abroad
+/* .Li_Pages_In_Breadcrumb_For_Small_Screen_For_Study_Abroad_Link_Pages #Q_And_A_For_Breadcrumb_For_Small_Screen_For_Study_Abroad_ul6.close_In_Breadcrumb_For_Big_Screen_For_Study_Abroad  */ {
+  display: none;
+}

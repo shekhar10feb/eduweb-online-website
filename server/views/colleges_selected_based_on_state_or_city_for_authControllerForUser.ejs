@@ -1,0 +1,189 @@
+<%- include ('partials/headerForHomeProfileAndSettings') %>
+
+<main class="w-full flex justify-center items-center flex-row overflow-hidden border border-none lg:mt-12 mt-8">
+  <div class="w-full flex justify-center items-center flex-col">
+    <div class="w-full lg:hidden flex justify-center items-center flex-col">
+      <% advertisement.map((item, index)=> { %>
+      <% if(item.image_resolution_value==='768px' || item.image_resolution_value==='640px' ||
+                                                      item.image_resolution_value==='300px' ){ %>
+      <!-- image_resolution_value === '768px' -->
+      <% if(item.image_resolution_value==='768px' ){ %>
+      <div class="w-full lg:hidden md:flex hidden h-full justify-center items-center flex-col">
+        <span class="w-full h-full flex justify-center items-center">
+          <img src="<%= item.filename %>" class="min-w-full min-h-full object-fill
+                                                   aspect-auto advertisementPhoto" alt="" />
+        </span>
+      </div>
+      <% } %>
+
+      <!-- image_resolution_value === '640px' -->
+      <% if(item.image_resolution_value==='640px' ){ %>
+      <div class="w-full md:hidden sm:flex hidden h-full justify-center items-center flex-col">
+        <span class="w-full h-full flex justify-center items-center">
+          <img src="<%= item.filename %>" class="min-w-full min-h-full object-fill
+                                                   aspect-auto advertisementPhoto" alt="" />
+        </span>
+      </div>
+      <% } %>
+
+      <!-- image_resolution_value === '300px' -->
+      <% if(item.image_resolution_value==='300px' ){ %>
+      <div class="w-full sm:hidden flex h-full justify-center items-center flex-col">
+        <span class="w-full h-full flex justify-center items-center">
+          <img src="<%= item.filename %>" class="min-w-full min-h-full object-fill
+                                                   aspect-auto advertisementPhoto" alt="" />
+        </span>
+      </div>
+      <% } %>
+      <% } %>
+      <% }) %>
+    </div>
+
+    <div class="w-full lg:hidden flex justify-center items-center text-sm bg-white font-bold sm:p-2 p-1 px-1 cursor-pointer">
+      <a href="/api/previous_years_question_papers" class="w-full flex justify-center items-center bg-blue-800 rounded hover:bg-blue-700 text-white sm:p-2 p-1 px-1">
+        <h1>Previous Years Question Papers</h1>
+      </a>
+    </div>
+
+    <div class="w-full flex justify-center items-start flex-row mt-1">
+      <div class="lg:w-4/5 w-full h-full flex justify-center items-center flex-col px-1">
+        <div class="w-full flex justify-start items-center md:flex-row flex-col bg-white p-1 md:border-b md:border-gray-200 lg:mb-2">
+          <div class="md:w-4/12 w-full md:flex hidden justify-between items-center text-xl font-bold my-2">
+            <h1 class="w-auto lg:text-lg md:text-base underline text-wrap ml-4 title">
+              List of All Colleges
+            </h1>
+          </div>
+          <div class="md:w-4/12 w-full md:hidden flex justify-center items-center flex-col text-xl font-bold my-2">
+            <h1 class="w-full text-center sm:text-base text-sm underline text-wrap title">
+              List of All Colleges
+            </h1>
+          </div>
+        </div>
+
+        <% all_colleges.map((item, index)=> { %>
+        <% if((item.name !=="" && item.name !==undefined && item.name !==null) ||
+              (item.profile_image !=="" && item.profile_image !==undefined && item.profile_image !==null) || 
+              (item.college_website !=="" && item.college_website !==undefined && item.college_website !==null) || 
+              (item.district_name !=="" && item.district_name !==undefined && item.district_name !==null) || 
+              (item.courses_offered !=="" && item.courses_offered !==undefined && item.courses_offered !==null)) { %>
+        <!-- Open  -->
+        <a href="https://eduweb-online-website.onrender.com/api/search_All_Colleges/<%= item.name %>" class="w-full flex justify-start items-start flex-row bg-white md:mb-2 mb-1 md:p-2 p-2 hover:bg-gray-100 cursor-pointer border border-gray-400 rounded-lg shadow-lg selected_college_by_user" id="<%= item.id %>">
+          <div class="w-full flex justify-start items-start flex-col md:ml-2 ml-1">
+
+            <!-- name -->
+            <div class="w-full flex justify-start items-center md:text-lg text-[0.8rem] text-blue-800 md:font-bold font-semibold">
+              <h1 class="w-auto">
+
+                <%- item.name ? '<span class="college_name">' + item.name + '</span>' : '' %>
+
+                <%- item.college_short_name ? '<span>(' + item.college_short_name + ')</span>' : '' %>
+              </h1>
+            </div>
+            <!-- name ends here -->
+
+            <!-- ownership -->
+            <div class="w-full flex justify-start items-start flex-col md:mt-2 mt-1">
+              <%- item.ownership ? `<div class="w-full flex justify-start items-start flex-row">
+                                                <h2 class="w-auto md:text-sm text-xs md:font-semibold font-medium">
+                                                    Ownership:
+                                                    <span class="text-blue-800">` + item.ownership + `</span>
+                                                </h2>
+                                        </div>` : '' %>
+            </div>
+            <!-- ownership ends here -->
+
+            <!-- Rank  -->
+            <% if(item.engineering_rank) { %>
+            <div class="w-full md:flex hidden justify-start items-center flex-col md:text-sm text-xs md:font-semibold font-medium md:mt-2 mt-1">
+              <h2 class="w-full">Rank by NIRF</h2>
+
+              <div class="w-full flex justify-start items-center flex-wrap text-red-700 md:text-sm text-xs font-medium">
+                <!-- Engineering Rank  -->
+                <%- item.engineering_rank ? `<div class="w-24 flex justify-center items-center flex-col p-1 md:m-2 md:ml-0 m-1 ml-0 border border-red-700 sm:rounded-sm rounded">
+                                                    <h2>Engineering </h2>
+                                                    <p>#` + item.engineering_rank + `</p>
+                                            </div>` : '' %>
+                <!-- Engineering Rank ends here -->
+              </div>
+            </div>
+            <% } %>
+
+            <!-- Fees  -->
+            <% if(item.engineering_fees) { %>
+            <div class="w-full flex justify-start items-center flex-col md:text-sm text-xs md:font-semibold font-medium md:mt-2 mt-1">
+              <h2 class="w-full">Fees</h2>
+
+              <div class="w-full flex justify-start items-center flex-wrap">
+                <!-- Engineering Fees  -->
+                <%- item.engineering_fees ? `<div
+                            class="w-auto flex justify-center items-center flex-row ml-0 mr-3">
+                            <h2 class="text-black">
+                                B.E./B.Tech:
+                            </h2>
+                            <p class="text-blue-800 pl-1">` + item.engineering_fees + `</p> </div>` : '' %>
+                <!-- Engineering Fees ends here -->
+              </div>
+            </div>
+            <% } %>
+
+            <!-- Other Info -->
+            <% if(item.college_website || item.city || item.state_or_ut_name) { %>
+            <div class="w-full flex justify-start items-center flex-row text-xs md:mt-2 mt-1 md:text-sm md:font-semibold font-medium">
+              <!-- College Website  -->
+              <%- item.college_website ? `<h1 class="sm:w-1/2 w-full my-1">
+                                                Website:
+                                                <span class="text-blue-800">` + item.college_website + ` </span>
+                                                </h1>` : '' %>
+              <!-- College Website ends here -->
+
+              <!-- City  -->
+              <%- item.city ? `<h1 class="sm:w-1/2 w-full my-1">
+                                                    City:
+                                                    <span class="text-blue-800">` + item.city + ` </span>
+                                                    </h1>` : '' %>
+              <!-- City ends here -->
+
+              <!-- District  -->
+              <%- item.district_name ? `<h1 class="sm:w-1/2 w-full my-1">
+                                                        District:
+                                                        <span class="text-blue-800">` + item.district_name + ` </span>
+                                                        </h1>` : '' %>
+              <!-- District ends here -->
+
+              <!-- State or UT  -->
+              <%- item.state_or_ut_name ? `<h1 class="sm:w-1/2 w-full my-1">
+                                                            State/UT:
+                                                            <span class="text-blue-800">` + item.state_or_ut_name + `
+                                                            </span>
+                                                            </h1>` : '' %>
+              <!-- State or UT ends here -->
+            </div>
+            <% } %>
+          </div>
+        </a>
+        <!-- Ends -->
+        <% } %>
+        <% }) %>
+      </div>
+
+      <div class="lg:w-1/5 lg:flex hidden h-full justify-center items-center flex-col">
+        <div class="w-full flex justify-center items-center text-sm bg-white font-bold sm:p-2 px-1 cursor-pointer">
+          <a href="/api/previous_years_question_papers" class="w-full flex justify-center items-center bg-blue-800 hover:bg-blue-700 text-white rounded sm:p-2 px-1">
+            <h1>Previous Years Question Papers</h1>
+          </a>
+        </div>
+        <!-- image_resolution_value === '1024px' -->
+        <% advertisement.map((item, index)=> { %>
+        <% if(item.image_resolution_value==='1024px' ){ %>
+        <div class="w-full lg:flex hidden h-full justify-center items-center flex-col lg:mt-2">
+          <span class="w-full h-full flex justify-center items-center">
+            <img src="<%= item.filename %>" class="min-w-full min-h-full object-fill
+                         aspect-auto advertisementPhoto" alt="" />
+          </span>
+        </div>
+        <% } %>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</main>

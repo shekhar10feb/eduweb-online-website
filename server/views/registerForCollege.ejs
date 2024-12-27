@@ -1,0 +1,237 @@
+<!-- ================= -->
+<!--   Register For Author Page -->
+<!-- ================= -->
+
+<%- include ('partials/headerForLoginAndRegisterForCollege') %>
+<main class="max-w-full h-full flex justify-center items-center text-black p-1 mainDiv overflow-hidden">
+  <!-- User message from backend  -->
+  <div class="hidden lg:text-base md:text-sm text-xs lg:font-semibold font-medium text-green-600 bg-white border border-green-600 absolute lg:right-28 lg:top-auto md:top-2 top-5 lg:p-4 sm:p-2 p-1 md:rounded-md sm:rounded-sm rounded error-message">
+    <p class="error-text"></p>
+  </div>
+  <div class="hidden lg:text-base md:text-sm text-xs lg:font-semibold font-medium text-green-600 bg-white border border-green-600 absolute lg:right-28 lg:top-auto md:top-2 top-5 lg:p-4 sm:p-2 p-1 md:rounded-md sm:rounded-sm rounded success-message">
+    <p class="success-text"></p>
+  </div>
+
+  <!-- Register -->
+  <div class="md:w-80 w-72 h-auto bg-white p-1 sm:p-2 md:rounded-md rounded-sm lg:shadow-lg md:shadow-md shadow">
+    <div class="w-full flex justify-center items-center flex-col">
+      <div class="w-full hidden sm:flex justify-start items-center">
+        <img src="/logo.png" class="md:w-24 w-20 rounded-md">
+      </div>
+      <div class="w-full text-center mt-0.5">
+        <h1 class="md:font-bold font-semibold md:text-lg text-black">
+          <i>Let's Signup!</i>
+        </h1>
+      </div>
+      <form class="md:w-80 w-full flex justify-center items-center flex-col form">
+        <div class="w-full flex justify-center items-center flex-col">
+
+          <!-- Name  -->
+          <div class="w-full flex justify-center items-center flex-col mt-0.5">
+            <label for="name" class="lg:w-11/12 md:w-10/12 w-9/12 text-xs">Name:</label>
+            <input type="text" name="name" placeholder="Enter your name..." class="lg:w-11/12 md:w-10/12 w-9/12 flex justify-center items-center md:text-sm text-xs p-0.5 lg:py-0.5 pl-1 border border-gray-500 focus:outline-blue-500 hover:bg-blue-200 rounded-sm" required />
+          </div>
+
+          <!-- Email  -->
+          <div class="w-full flex justify-center items-center flex-col mt-0.5">
+            <label for="email" class="lg:w-11/12 md:w-10/12 w-9/12 text-xs">Email:</label>
+            <input type="email" name="email" placeholder="Enter your email..." class="lg:w-11/12 md:w-10/12 w-9/12 flex justify-center items-center md:text-sm text-xs p-0.5 lg:py-0.5 pl-1 border border-gray-500 focus:outline-blue-500 hover:bg-blue-200 rounded-sm" />
+
+            <!-- Username  -->
+            <div class="w-full flex justify-center items-center flex-col mt-0.5">
+              <label for="username" class="lg:w-11/12 md:w-10/12 w-9/12 text-xs">Username:</label>
+              <input type="text" name="username" placeholder="Enter your username..." class="lg:w-11/12 md:w-10/12 w-9/12 flex justify-center items-center md:text-sm text-xs p-0.5 lg:py-0.5 pl-1 border border-gray-500 focus:outline-blue-500 hover:bg-blue-200 rounded-sm" required />
+            </div>
+
+            <!-- Mobile Number  -->
+            <div class="w-full flex justify-center items-center flex-col mt-0.5">
+              <label for="tel" class="lg:w-11/12 md:w-10/12 w-9/12 text-xs">Mobile Number(with your Country Code):</label>
+              <input type="text" name="tel" placeholder="+91-98XX56XX10" class="lg:w-11/12 md:w-10/12 w-9/12 flex justify-center items-center md:text-sm text-xs p-0.5 lg:py-0.5 pl-1 border border-gray-500 focus:outline-blue-500 hover:bg-blue-200 rounded-sm" />
+            </div>
+
+            <!-- Password  -->
+            <div class="w-full flex justify-center items-center flex-col mt-0.5 signuppage_password">
+              <label for="password" class="lg:w-11/12 md:w-10/12 w-9/12 text-xs">Password:</label>
+              <input type="password" name="password" placeholder="Enter your password..." class="lg:w-11/12 md:w-10/12 w-9/12 flex justify-center items-center md:text-sm text-xs p-0.5 lg:py-0.5 pl-1 border border-gray-500 focus:outline-blue-500 hover:bg-blue-200 rounded-sm" required />
+            </div>
+
+            <!-- Image  -->
+            <div class="w-full flex justify-center items-center flex-col text-xs mt-0.5">
+              <label for="profile_image" class="lg:w-11/12 md:w-10/12 w-9/12 text-xs">Profile
+                Image:</label>
+              <input type="file" name="filename" class="lg:w-11/12 md:w-10/12 w-9/12 flex justify-center items-center md:text-sm text-xs p-0.5 lg:py-0.5 pl-1 border border-gray-500 focus:outline-blue-500 hover:bg-blue-200 rounded-sm cursor-pointer" />
+            </div>
+
+            <div class="w-full text-gray-500 flex justify-center items-start my-1">
+              <div class="lg:w-11/12 md:w-10/12 w-9/12 flex justify-start items-start flex-row border border-black-500">
+                <input type="checkbox" name="checkbox" id="checkbox" class="w-3 mr-1 cursor-pointer" />
+                <p class="w-full text-left text-xs leading-3 p-0">
+                  I agree to the EduWeb's
+                  <a href="/api/TermsAndConditions" target="_blank" rel="noopener noreferrer" class="font-semibold underline text-red-400">
+                    Terms and Conditions
+                  </a>
+                  and
+                  <a href="/api/PrivacyPolicy" target="_blank" rel="noopener noreferrer" class="font-semibold underline text-red-400">
+                    Privacy Policy
+                  </a>
+                  and provide consent to be contacted for promotion via
+                  whatsapp, sms, mail, etc.
+                </p>
+              </div>
+            </div>
+            <div class="w-full flex justify-center items-center font-semibold mt-0.5">
+              <button type="submit" class="lg:w-11/12 md:w-10/12 w-9/12 md:font-bold font-semibold md:text-sm text-xs bg-blue-800 text-white hover:bg-blue-700 p-0.5 rounded-sm outline-none">
+                Signup
+              </button>
+            </div>
+          </div>
+      </form>
+
+      <div class="w-full text-gray-500 flex md:justify-center justify-center items-center px-2">
+        <div class="w-full flex justify-center items-center text-gray-400 md:text-sm text-xs font-bold">
+          <span class="w-20 h-0.5 bg-gray-400"> </span>&nbsp; OR &nbsp; <span class="w-20 h-0.5 bg-gray-400"></span>
+        </div>
+      </div>
+      <div class="md:w-80 w-full flex justify-center items-center flex-col mt-0.5 font-semibold md:text-sm text-xs text-gray-500">
+        <p>
+          Already have an account?
+          <a href="/api/loginForCollege" class="font-semibold underline text-red-400 hover:text-red-500 cursor-pointer" rel="noopener noreferrer">
+            Login
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Script Tag -->
+<script>
+  const form = document.querySelector('.form');
+
+  // console.log("form: ", form);
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = form[0].value;
+    const email = form[1].value;
+    const username = form[2].value;
+    const tel = form[3].value;
+    const password = form[4].value;
+    const profile_image = form[5].files[0];
+    const terms_conditions_and_privacy_policy = form[6].value;
+
+    const formData = new FormData();
+    formData.append("name", name.trim());
+    formData.append("email", email.trim());
+    formData.append("username", username.trim());
+    formData.append("tel", tel.trim());
+    formData.append("password", password.trim());
+    formData.append("terms_conditions_and_privacy_policy", terms_conditions_and_privacy_policy);
+    formData.append("profile_image", profile_image);
+
+    // console.log("formData: ", formData);
+
+    // const messageFunc = (message) => {
+    //   document.querySelector('.message_to_user').style.display = 'flex';
+
+    //   if (message === 'College is registered successfully!') {
+    //     document.querySelector('.message_to_user').innerHTML = message;
+    //     setTimeout(function() {
+    //       document.querySelector('.message_to_user').style.display = 'none';
+    //     }, 3000);
+    //   } else if (message === 'College already exists. Please Login!') {
+    //     document.querySelector('.message_to_user').innerHTML = message;
+    //     setTimeout(function() {
+    //       document.querySelector('.message_to_user').style.display = 'none';
+    //     }, 3000);
+    //   } else if (message === `Please give '-' between Country Code and your mobile number.`) {
+    //     document.querySelector('.message_to_user').innerHTML = message;
+    //     setTimeout(function() {
+    //       document.querySelector('.message_to_user').style.display = 'none';
+    //     }, 3000);
+    //   } else if (message === `Invalid mobile number!`) {
+    //     document.querySelector('.message_to_user').innerHTML = message;
+    //     setTimeout(function() {
+    //       document.querySelector('.message_to_user').style.display = 'none';
+    //     }, 3000);
+    //   } else if (message === `Invalid Country Code!`) {
+    //     document.querySelector('.message_to_user').innerHTML = message;
+    //     setTimeout(function() {
+    //       document.querySelector('.message_to_user').style.display = 'none';
+    //     }, 3000);
+    //   } else if (message === `Name must be greater than 5 letters!`) {
+    //     document.querySelector('.message_to_user').innerHTML = message;
+    //     setTimeout(function() {
+    //       document.querySelector('.message_to_user').style.display = 'none';
+    //     }, 3000);
+    //   } else if (message === `Username must be greater than 5 letters!`) {
+    //     document.querySelector('.message_to_user').innerHTML = message;
+    //     setTimeout(function() {
+    //       document.querySelector('.message_to_user').style.display = 'none';
+    //     }, 3000);
+    //   } else if (message === `Password must be greater than or equal to 8 letters and must have mix of alphanumeric, special characters!`) {
+    //     document.querySelector('.message_to_user').innerHTML = message;
+    //     setTimeout(function() {
+    //       document.querySelector('.message_to_user').style.display = 'none';
+    //     }, 3000);
+    //   } else {
+    //     document.querySelector('.message_to_user').innerHTML = message;
+    //     setTimeout(function() {
+    //       document.querySelector('.message_to_user').style.display = 'none';
+    //     }, 3000);
+    //   }
+    // }
+
+    if (formData) {
+      function register_Member_Func(formData) {
+        // try {
+        const options = {
+          method: "POST",
+          // mode: "no-cors",
+          body: formData,
+        };
+
+        fetch("/api/registerForCollege", options)
+          .then((response) => response.json())
+          .then((result) => {
+            if (result.error) {
+              document.querySelector(".error-text").innerText = result.error;
+              document.querySelector(".error-message").style.display = "block";
+              setTimeout(function() {
+                document.querySelector(".error-message").style.display = "none";
+                location.reload();
+              }, 3000);
+            }
+            if (result.message) {
+              document.querySelector(".success-text").innerText = result.message;
+              document.querySelector(".success-message").style.display = "block";
+              setTimeout(function() {
+                document.querySelector(".success-message").style.display = "none";
+                location.reload();
+              }, 3000);
+            }
+          })
+          .catch(error => {
+            document.querySelector(".error-text").innerText = "An error occurred. Please try again.";
+            document.querySelector(".error-message").style.display = "block";
+            setTimeout(function() {
+              document.querySelector(".error-message").style.display = "none";
+              location.reload();
+            }, 3000);
+          });
+      }
+      register_Member_Func(formData);
+    }
+
+    form[0].value = '';
+    form[1].value = '';
+    form[2].value = '';
+    form[3].value = '';
+    form[4].value = '';
+    form[5].value = '';
+    form[6].value = '';
+    document.getElementById('checkbox').checked = false;
+  });
+</script>
+<%- include('partials/footer') %>
