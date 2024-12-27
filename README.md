@@ -35,21 +35,22 @@ EduWeb is an online platform where users can discover colleges, courses, and exa
    npm run dev
    ```
 
-Scripts
-dev: Start the development server with nodemon.
-build: Install dependencies and build the client.
-start: Start the production server with nodemon.
-tailwind:dev: Watch and compile Tailwind CSS for development.
-tailwind:build: Compile Tailwind CSS for production.
-generate-sitemap: Generate the sitemap for the website.
-postbuild: Run the generate-sitemap script after building the client.
-Contributing
+## Scripts
+`dev`: Start the development server with nodemon.
+`build`: Install dependencies and build the client.
+`start`: Start the production server with nodemon.
+`tailwind:dev`: Watch and compile Tailwind CSS for development.
+`tailwind:build`: Compile Tailwind CSS for production.
+`generate-sitemap`: Generate the sitemap for the website.
+`postbuild`: Run the generate-sitemap script after building the client.
+
+## Contributing
 Contributions are welcome! Please fork the repository and create a pull request with your changes.
 
-License
+## License
 This project is licensed under the MIT License.
 
-Contact
+## Contact
 For any inquiries, please contact Shekhar Ranjan at shekhar@example.com.
 
 EduWeb is your go-to platform for discovering colleges, courses, and exams for higher education in India. Explore now! ```
