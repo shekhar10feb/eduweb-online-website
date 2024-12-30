@@ -1,6 +1,6 @@
 # EduWeb Online Website
 
-EduWeb is an online platform where users can discover colleges, courses, and exams for higher education in India. This repository contains the source code for the EduWeb website, which includes both the frontend and backend components. [EduWeb Online]([www.google.com](https://eduweb-online-website.onrender.com/))
+EduWeb is an online platform where users can discover colleges, courses, and exams for higher education in India. This repository contains the source code for the EduWeb website, which includes both the frontend and backend components. [EduWeb Online](https://eduweb-online-website.onrender.com/)
 
 ## Project Structure
 .gitIgnore
