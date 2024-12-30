@@ -88,9 +88,6 @@ tailwind.config.js
 `generate-sitemap`: Generate the sitemap for the website.\
 `postbuild`: Run the generate-sitemap script after building the client.
 
-## Contributing
-Contributions are welcome! Please fork the repository and create a pull request with your changes.
-
 ## License
 This project is licensed under the MIT License.
 
