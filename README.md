@@ -3,7 +3,51 @@
 EduWeb is an online platform where users can discover colleges, courses, and exams for higher education in India. This repository contains the source code for the EduWeb website, which includes both the frontend and backend components.
 
 ## Project Structure
-.gitIgnore client/ .eslintrc.cjs .gitignore index.html package.json postcss.config.js public/ robots.txt service-worker.js site.webmanifest README.md src/ apis/ App.css App.jsx assets/ config/ index.css main.jsx pages/ tailwind.config.js vite.config.js config.env package.json postcss.config.js server/ config/ config.js controller/ ... db/ ... index.js middleware/ ... models/ ... public/ README.md routes/ src/ utils/ views/ tailwind.config.js
+.gitIgnore
+client/
+    .eslintrc.cjs
+    .gitignore
+    index.html
+    package.json
+    postcss.config.js
+    public/
+        robots.txt
+        service-worker.js
+        site.webmanifest
+    README.md
+    src/
+        apis/
+        App.css
+        App.jsx
+        assets/
+        config/
+        index.css
+        main.jsx
+        pages/
+    tailwind.config.js
+    vite.config.js
+config.env
+package.json
+postcss.config.js
+server/
+    config/
+        config.js
+    controller/
+        ...
+    db/
+        ...
+    index.js
+    middleware/
+        ...
+    models/
+        ...
+    public/
+    README.md
+    routes/
+    src/
+    utils/
+    views/
+tailwind.config.js
 
 
 ## Features
