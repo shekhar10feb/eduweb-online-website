@@ -1,6 +1,13 @@
 {
   "name": "EduWeb Online",
   "short_name": "EduWeb",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "scope": "/",
+  "orientation": "portrait",
+  "lang": "en-US",
   "description": "EduWeb is your go-to platform for discovering colleges, courses, and exams for higher education in India.",
   "icons": [
     {
@@ -13,12 +20,6 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone",
-  "start_url": "/",
-  "scope": "/",
-  "orientation": "portrait",
-  "lang": "en-US"
+  ]
 }
+
