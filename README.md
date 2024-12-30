@@ -92,7 +92,7 @@ tailwind.config.js
 This project is licensed under the MIT License.
 
 ## Contact
-For any inquiries, please contact Shekhar Ranjan at shekhar@example.com.
+For any inquiries, please contact Shekhar Ranjan at https://twitter.com/MontygSharma.
 
-EduWeb is your go-to platform for discovering colleges, courses, and exams for higher education in India. Explore now! ```
+EduWeb is your go-to platform for discovering colleges, courses, and exams for higher education in India. Explore now!
    
